@@ -3,6 +3,8 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <full-calendar defaultView="dayGridMonth" [plugins]="calendarPlugins"></full-calendar>
+  <full-calendar defaultView="list" [plugins]="calendarPlugins" [events]="[
+  { title: 'event 1', date: '2019-09-07' },
+  { title: 'event 2', date: '2019-09-08' }]"></full-calendar>
 
 <router-outlet></router-outlet>

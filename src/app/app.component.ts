@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import list from '@fullcalendar/list'
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,6 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 })
 export class AppComponent {
   title="Aggie Food";
-  calendarPlugins = [dayGridPlugin]; // important!
+  calendarPlugins = [dayGridPlugin, list]; // important!
 
 }
