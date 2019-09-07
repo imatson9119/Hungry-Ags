@@ -28,8 +28,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     MatButtonModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    HttpClientModule,
-    HttpClient
+    HttpClientModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
