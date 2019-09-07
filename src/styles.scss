@@ -2,3 +2,8 @@
 @import "~@fullcalendar/core/main.css";
 @import "~@fullcalendar/list/main.css";
 @import "./app/cool-theme.css";
+
+html * {
+  margin: 0;
+  padding: 0;
+}
