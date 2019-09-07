@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'AggieFood';
+  title="Aggie Food";
+  calendarPlugins = [dayGridPlugin]; // important!
+
 }
