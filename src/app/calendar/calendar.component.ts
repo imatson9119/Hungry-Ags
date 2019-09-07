@@ -10,16 +10,17 @@ import { CalendarService } from '../calendar.service'
 })
 export class CalendarComponent implements OnInit {
   calendarPlugins = [dayGridPlugin, list]; // important!
-  public events;
+  public events : FoodEvent[];
 
   constructor(private calendarService : CalendarService) { }
 
   ngOnInit() {
-    this.calendarService.getEvents().subscribe(events => this.events = events);
-    /*this.events = [
-      { title: 'event 1', date: '2019-09-07' },
-    { title: 'event 2', date: '2019-09-08' }
-    ];*/
+    //this.calendarService.getEvents().subscribe(events => this.events = events);
+    this.calendarService.getEvents()
+    .subscribe(events => {
+        this.events = events as FoodEvent[];
+    })
+    console.log(this.events);
   }
 
 }
