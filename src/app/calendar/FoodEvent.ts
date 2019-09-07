@@ -7,15 +7,4 @@ export class FoodEvent {
     public description : string;
     public location : string;
     public organization : string;
-
-    FoodEvent(eventName, user, sanctioned, startTime, endTime, description, location, organization) {
-        this.eventName = eventName;
-        this.user = user;
-        this.sanctioned = sanctioned;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.description = description;
-        this.location = location;
-        this.organization = organization;
-    } 
 }
