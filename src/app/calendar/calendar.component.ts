@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import list from '@fullcalendar/list'
 import { CalendarService } from '../calendar.service'
+import { FoodEvent } from './FoodEvent';
 
 @Component({
   selector: 'app-calendar',
@@ -10,7 +11,7 @@ import { CalendarService } from '../calendar.service'
 })
 export class CalendarComponent implements OnInit {
   calendarPlugins = [dayGridPlugin, list]; // important!
-  public events : FoodEvent[];
+  public events;
 
   constructor(private calendarService : CalendarService) { }
 
@@ -18,7 +19,7 @@ export class CalendarComponent implements OnInit {
     //this.calendarService.getEvents().subscribe(events => this.events = events);
     this.calendarService.getEvents()
     .subscribe(events => {
-        this.events = events as FoodEvent[];
+        this.events = events;
     })
     console.log(this.events);
   }

@@ -7,13 +7,15 @@ export class FoodEvent {
     public description : string;
     public location : string;
     public organization : string;
-}
 
-"eventName": "Aggie Cru Pizza Social",
-"user": "aggiecru@tamu.edu",
-"sanctioned": true,
-"startTime": "2019-09-08T12:00:00+00:00",
-"endTime": "2019-09-08T13:00:00+00:00",
-"description": "Come meet other Aggies and enjoy free food! We will be providing free pizza and drinks along with games to play afterward.",
-"location": "Academic Plaza",
-"organization": "Cru"
+    FoodEvent(eventName, user, sanctioned, startTime, endTime, description, location, organization) {
+        this.eventName = eventName;
+        this.user = user;
+        this.sanctioned = sanctioned;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.description = description;
+        this.location = location;
+        this.organization = organization;
+    } 
+}
