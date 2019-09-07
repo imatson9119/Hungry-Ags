@@ -6,4 +6,20 @@
 html * {
   margin: 0;
   padding: 0;
+  font-family: "Raleway", sans-serif;
+}
+
+@font-face {
+  font-family: 'Copperplate-Bold';
+  src: url('/assets/Copperplate-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Copperplate-Light';
+  src: url('/assets/Copperplate-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Copperplate';
+  src: url('/assets/Copperplate.ttf');
 }
