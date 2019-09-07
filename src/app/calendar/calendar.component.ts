@@ -21,10 +21,12 @@ export class CalendarComponent implements OnInit {
     this.calendarService.getEvents().subscribe(events => this.events = events);
     console.log("Events Length", this.events.length);
     this.calendarObjects = [];
+
+    //Add all events to calendar
     for(let i = 0; i < this.events.length; i++) {
-      this.calendarObjects.push({title : this.events[i].eventName, date:"2019-09-07"});
+      this.calendarObjects.push({title : this.events[i].eventName,
+    start:this.events[i].startTime, end:this.events[i].endTime});
     }
-    console.log(this.calendarObjects[0]);
   }
 
 }
