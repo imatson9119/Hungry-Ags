@@ -16,4 +16,5 @@ app-page-head {
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   display: flex;
   flex: 1;
+  z-index: -1;
 }
