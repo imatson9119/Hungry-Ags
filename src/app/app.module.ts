@@ -10,6 +10,8 @@ import { AboutComponent } from "./about/about.component";
 import { PageHeadComponent } from "./page-head/page-head.component";
 import { MatButtonModule } from "@angular/material/button";
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -25,9 +27,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     FullCalendarModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    HttpClientModule,
+    HttpClient
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
