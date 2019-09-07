@@ -4,10 +4,12 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PageHeadComponent } from './page-head/page-head.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageHeadComponent
   ],
   imports: [
     BrowserModule,
