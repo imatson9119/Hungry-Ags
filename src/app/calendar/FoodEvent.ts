@@ -7,4 +7,5 @@ export class FoodEvent {
     public description : string;
     public location : string;
     public organization : string;
+    public meetsCriteria : boolean;
 }
