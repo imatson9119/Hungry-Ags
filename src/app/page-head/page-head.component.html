@@ -1,7 +1,30 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <img src="/assets/Logo.svg" height="42">
-    <h1>Hungry Aggies</h1>
-    <span class="example-spacer"></span>
-  </mat-toolbar-row>
-</mat-toolbar>
+<div id="container">
+
+  <mat-toolbar color="primary">
+
+    <div id="left">
+      <img src="assets/Logo.svg" height="52px;" style="margin-left: -10px;"/>
+      <h1 id="site-title"><span style="font-family: Copperplate-Bold">Hungry</span><span style="margin-left: 5px; font-family: Copperplate-Light">Ags</span></h1>
+    </div>
+
+    <div id="center">
+      <div class="white-box">
+        <!-- <mat-form-field>
+          <input matInput placeholder="Input">
+        </mat-form-field> -->
+        <div class="example-container">
+          <mat-form-field>
+            <input matInput placeholder="Input">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div id="right">
+      <div>
+        <button mat-raised-button>Sign In</button>
+      </div>
+    </div>
+
+  </mat-toolbar>
+</div>

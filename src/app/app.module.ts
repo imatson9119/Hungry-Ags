@@ -11,6 +11,10 @@ import { PageHeadComponent } from "./page-head/page-head.component";
 import { MatButtonModule } from "@angular/material/button";
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -28,7 +32,11 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     MatButtonModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatIconModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
