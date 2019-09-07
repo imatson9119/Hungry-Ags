@@ -16,6 +16,10 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
     this.calendarService.getEvents().subscribe(events => this.events = events);
+    /*this.events = [
+      { title: 'event 1', date: '2019-09-07' },
+    { title: 'event 2', date: '2019-09-08' }
+    ];*/
   }
 
 }
