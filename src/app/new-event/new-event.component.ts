@@ -12,14 +12,14 @@ export class NewEventComponent implements OnInit {
   constructor(public fb: FormBuilder, public calendarService : CalendarService, public controller : ControllerService) { }
 
   public registrationForm: FormGroup;
-  public title : string;
-  public location : string;
-  public description : string;
+  public title : string = "";
+  public location : string = "";
+  public description : string = "";
   public date: Date;
-  public start : string;
-  public end : string;
-  public organization : string;
-  public user : string;
+  public start : string = "";
+  public end : string = "";
+  public organization : string = "";
+  public user : string = "";
 
   ngOnInit() {
     this.registrationForm = this.fb.group({

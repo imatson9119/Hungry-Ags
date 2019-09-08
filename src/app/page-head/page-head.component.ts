@@ -36,9 +36,9 @@ export class PageHeadComponent implements OnInit {
         let numFound = 0;
         for (let j = 0; j < filters.length; j++) {
           for(let k = 0; k < event.length; k++) {
+            console.log(filters[j],"vs",event[k])
             if(event[k].toLowerCase().indexOf(filters[j].toLowerCase()) != -1){
               numFound++;
-              console.log(filters[j],"vs",event[k])
               console.log("MATCH FOUND");
               break;
             }
