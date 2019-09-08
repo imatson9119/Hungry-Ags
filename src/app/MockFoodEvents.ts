@@ -103,7 +103,7 @@ export const MockFoodEvents : FoodEvent[] = [
     {
       eventName: "Fall Programming Competition",
       user: "hoke_t@icloud.com",
-      sanctioned: true,
+      sanctioned: false,
       startTime: "2019-09-15T12:30:00+00:00",
       endTime: "2019-09-15T21:45:00+00:00",
       description: "CSCE Fall Programming Competition. Snacks will be provided!",

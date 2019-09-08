@@ -1,9 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import listPlugin from '@fullcalendar/list'
 import { CalendarService } from '../calendar.service'
 import { FoodEvent } from './FoodEvent';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { TouchSequence } from 'selenium-webdriver';
+
+export interface DialogData {
+
+}
 
 @Component({
   selector: 'app-calendar',
@@ -14,24 +19,14 @@ export class CalendarComponent implements OnInit {
   calendarPlugins = [listPlugin]; // important!
   public events : FoodEvent[];
   public calendarObjects: Object[] = [];
+  
 
-  constructor(private calendarService : CalendarService) { }
+  constructor(private calendarService : CalendarService, public eventDialog : MatDialog) { }
 
   ngOnInit() {
     this.calendarService.getEvents().subscribe(events => this.events = events);
     console.log("Events Length", this.events.length);
     this.calendarObjects = [];
-
-    //Add all events to calendar
-    /*for(let i = 0; i < this.events.length; i++) {
-      let color = "#6c1420";
-      if(this.events[i].sanctioned) color = "#00000000";
-      if(this.events[i].meetsCriteria) {
-        this.calendarObjects.push({title : this.events[i].eventName,
-          start:this.events[i].startTime, end:this.events[i].endTime, url:"../login",
-          color:color});
-      }
-    }*/
 
     this.calendarService.getCalendarEvents().subscribe(events => this.calendarObjects = events);
 
@@ -39,6 +34,31 @@ export class CalendarComponent implements OnInit {
       document.getElementsByClassName("fc-scroller")[0].style.height = "100%";
     }
 
+  }
+
+  openDialog(): void {
+    const dialogRef = this.eventDialog.open(this.DialogOverviewExampleDialog, {
+      width: '250px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+
+}
+
+@Component({
+  selector: 'eventDialog',
+  templateUrl: 'eventDialog.html',
+})
+export class DialogOverviewExampleDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }
