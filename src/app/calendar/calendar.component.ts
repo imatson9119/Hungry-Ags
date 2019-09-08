@@ -23,7 +23,7 @@ export class CalendarComponent implements OnInit {
     this.calendarObjects = [];
 
     //Add all events to calendar
-    for(let i = 0; i < this.events.length; i++) {
+    /*for(let i = 0; i < this.events.length; i++) {
       let color = "#6c1420";
       if(this.events[i].sanctioned) color = "#00000000";
       if(this.events[i].meetsCriteria) {
@@ -31,7 +31,10 @@ export class CalendarComponent implements OnInit {
           start:this.events[i].startTime, end:this.events[i].endTime, url:"../login",
           color:color});
       }
-    }
+    }*/
+    this.calendarService.getCalendarEvents().subscribe(events => this.calendarObjects = events);
+
+
   }
 
 }
