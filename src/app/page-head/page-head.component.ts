@@ -28,7 +28,7 @@ export class PageHeadComponent implements OnInit {
         let numFound = 0;
         for (let j = 0; j < filters.length; j++) {
           for(let k = 0; k < event.length; k++) {
-            if(event[k].indexOf(filters[j]) != -1){
+            if(event[k].toLowerCase().indexOf(filters[j].toLowerCase()) != -1){
               numFound++;
               console.log(filters[j],"vs",event[k])
               console.log("MATCH FOUND");
@@ -50,8 +50,8 @@ export class PageHeadComponent implements OnInit {
       console.log("LENGTH:", this.calendarService.calendarEvents.length);
     } else {
       let events = this.calendarService.foodEvents;
-      let color = "#6c1420";
       for (let i = 0; i < events.length; i++) {
+        let color = "#6c1420";
         if(!events[i].sanctioned) color = "#00000000";
         this.calendarService.calendarEvents.push({title:events[i].location + " - " + events[i].eventName
           , start:events[i].startTime
