@@ -6,7 +6,7 @@
         <form class="form">
             <div class=inner-form-container>
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Event Name" value="">
+                    <input matInput ([ngModel])="this.title" placeholder="Event Name" value="">
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
                     <input matInput placeholder="Organization" value="">
@@ -29,7 +29,7 @@
             <mat-form-field>
                 <textarea matInput placeholder="Description"></textarea>
             </mat-form-field><div>
-            <button type = 'submit' class="button-dark" routerLink="/home">Submit</button>
+            <button type = 'submit' class="button-dark" ng-click="addEvent()">Submit</button>
         </div></form>
     </div>
 </div>

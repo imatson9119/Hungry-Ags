@@ -15,7 +15,7 @@
   <div id="center">
     <div *ngIf="router.url === '/home'" class="white-box">
       <i class="material-icons" id="filter-icon">filter_list</i>
-      <input id="search-input" placeholder="Filter..." [(ngModel)]="filter" (input)="ngOnInit()"/>
+      <input id="search-input" placeholder="Filter..." [(ngModel)]="filter" (onshow)="ngOnInit()" (input)="ngOnInit()"/>
     </div>
   </div>
 
