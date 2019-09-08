@@ -23,8 +23,7 @@ export class PageHeadComponent implements OnInit {
         let event = [events[i].description, 
         events[i].eventName, 
         events[i].location, 
-        events[i].organization, 
-        events[i].user];
+        events[i].organization];
         let numFound = 0;
         for (let j = 0; j < filters.length; j++) {
           for(let k = 0; k < event.length; k++) {
