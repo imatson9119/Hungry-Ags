@@ -44,7 +44,7 @@ export class PageHeadComponent implements OnInit {
           if(!events[i].sanctioned) color = "#00000000";
           this.calendarService.calendarEvents.push({title:events[i].location + " - " + events[i].eventName
             , start:events[i].startTime
-            , end:events[i].endTime, url:"../login", color:color});
+            , end:events[i].endTime, color:color});
         }
       }
       console.log("LENGTH:", this.calendarService.calendarEvents.length);
@@ -55,7 +55,7 @@ export class PageHeadComponent implements OnInit {
         if(!events[i].sanctioned) color = "#00000000";
         this.calendarService.calendarEvents.push({title:events[i].location + " - " + events[i].eventName
           , start:events[i].startTime
-          , end:events[i].endTime, url:"../login", color:color});
+          , end:events[i].endTime, color:color});
       }
       console.log("LENGTH:", this.calendarService.calendarEvents.length);
 
