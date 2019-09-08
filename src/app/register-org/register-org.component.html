@@ -1,1 +1,12 @@
-<p>register-org works!</p>
+<div class="main-container">
+    <div class="login-form">
+      <span class="header">Register Your Org</span>
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit(registrationForm)" class="example-form">
+        <mat-form-field  style="width: 240px;" class="example-full-width">
+          <input matInput formControlName="name" placeholder="Organization Name"/>
+        </mat-form-field>
+        <button type='submit' [disabled]="registrationForm.invalid || this.displayPassError" class="button-dark" (click)="openDialog()">Register</button>
+      </form>
+    </div>
+</div>
+  
