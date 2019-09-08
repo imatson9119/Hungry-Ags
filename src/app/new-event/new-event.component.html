@@ -1,1 +1,23 @@
-<p>new-event works!</p>
+<div style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;">
+    <div class='main-container'>
+        Free food? Let the world know.
+    </div>
+    <div class='outer-form-container'>
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Event Name" value="">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Organization" value="">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Location" value="">
+            </mat-form-field>
+            <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+        </form>
+    </div>
+</div>
