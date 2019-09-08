@@ -46,8 +46,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     MatSelectModule,
     MatInputModule,
     MatIconModule,
-    MatDialogModule,
-    ReactiveFormsModule
+    MatDialogModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent],
