@@ -22,6 +22,7 @@ import {
 import { FooterComponent } from "./footer/footer.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ReactiveFormsModule } from "@angular/forms";
     MatSelectModule,
     MatInputModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent],
