@@ -13,6 +13,8 @@ export interface Data {
     location : string;
     description : string;
     organization : string;
+    doLink : boolean;
+    mapLink : string;
 }
 
 @Component({
@@ -24,7 +26,7 @@ export class CalendarComponent implements OnInit {
   calendarPlugins = [listPlugin]; // important!
   public events : FoodEvent[];
   public calendarObjects: Object[] = [];
-  
+  public doLink : boolean;
 
   constructor(private calendarService : CalendarService, public dialog : MatDialog) { }
 
@@ -47,12 +49,24 @@ export class CalendarComponent implements OnInit {
       }
     }
 
+    this.doLink = false;
+    let mapLink = "https://aggiemap.tamu.edu/map/d?ref=HungryAgs&BldgAbbrv=";
+    for (let i = 0; i < buildings.length; i++) {
+      if(event.location.indexOf(buildings[i]) != -1) {
+        this.doLink = true;
+        mapLink += buildings[i];
+        console.log(buildings[i]);
+      }
+    }
+
     const dialogRef = this.dialog.open(EventDialog, {
       width: '400px',
       data: {title:event.eventName,
         location:event.location, 
         description:event.description,
-        organization:event.organization}
+        organization:event.organization,
+        doLink:this.doLink,
+        mapLink:mapLink}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -81,6 +95,11 @@ export class EventDialog {
     this._snackBar.open('Your report has been received.', 'Okay', {
       duration: 3000
     });
+  }
+
+  showMap() : boolean {
+    if(this.data.doLink) return true;
+    return false;
   }
 
 }
