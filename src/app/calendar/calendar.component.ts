@@ -62,6 +62,7 @@ export class CalendarComponent implements OnInit {
 @Component({
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'eventDialog.html',
+  styleUrls:['eventDialog.scss']
 })
 export class EventDialog {
 
