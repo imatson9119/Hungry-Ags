@@ -25,7 +25,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { FormsModule } from '@angular/forms';
 import {MatMenuModule} from '@angular/material/menu';
 import { NewEventComponent } from './new-event/new-event.component';
-import { RegisterOrgComponent } from './register-org/register-org.component';
+import { RegisterOrgComponent, RegistrationDialog } from './register-org/register-org.component';
 
 
 @NgModule({
@@ -40,7 +40,8 @@ import { RegisterOrgComponent } from './register-org/register-org.component';
     ConfirmEmailDialog,
     NewEventComponent,
     RegisterOrgComponent,
-    EventDialog
+    EventDialog,
+    RegistrationDialog
   ],
   imports: [
     BrowserModule,
@@ -61,6 +62,6 @@ import { RegisterOrgComponent } from './register-org/register-org.component';
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent],
-  entryComponents: [ConfirmEmailDialog, EventDialog]
+  entryComponents: [ConfirmEmailDialog, EventDialog,RegistrationDialog]
 })
 export class AppModule {}
