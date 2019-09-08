@@ -6,6 +6,7 @@ import {
 } from "@angular/material/dialog";
 import { RegisterService } from "./register.service";
 import { Router } from "@angular/router";
+import { FormControl, FormGroup } from '@angular/forms';
 export interface DialogData {
   animal: string;
   name: string;
@@ -18,13 +19,20 @@ export interface DialogData {
 export class RegisterComponent implements OnInit {
   animal: string;
   name: string;
+  registrationForm: FormGroup;
 
   constructor(
     public router: Router,
     public registerService: RegisterService,
     public dialog: MatDialog
   ) {}
-  ngOnInit() {}
+  ngOnInit() {
+    this.registrationForm = new FormGroup({
+      email: new FormControl(''),
+      password: new FormControl(''),
+      confirmPassword: new FormControl('')
+    });
+  }
   openDialog(): void {
     const dialogRef = this.dialog.open(ConfirmEmailDialog, {
       width: "250px",
