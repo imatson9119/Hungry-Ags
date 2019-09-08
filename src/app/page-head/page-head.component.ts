@@ -11,5 +11,6 @@ export class PageHeadComponent implements OnInit {
   constructor(public router: Router) {}
   public filter;
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }
