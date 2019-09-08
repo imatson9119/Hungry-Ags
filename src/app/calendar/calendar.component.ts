@@ -5,6 +5,8 @@ import { FoodEvent } from './FoodEvent';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { TouchSequence } from 'selenium-webdriver';
+import { buildings } from '../MockMapExtensions'
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 export interface Data {
     title : string;
@@ -68,10 +70,17 @@ export class EventDialog {
 
   constructor(
     public dialogRef: MatDialogRef<EventDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: Data) {}
+    @Inject(MAT_DIALOG_DATA) public data: Data,
+    private _snackBar: MatSnackBar) {}
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  reportClick() {
+    this._snackBar.open('Your report has been received.', 'Okay', {
+      duration: 3000
+    });
   }
 
 }

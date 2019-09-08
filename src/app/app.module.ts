@@ -28,7 +28,7 @@ import { NewEventComponent } from './new-event/new-event.component';
 import { RegisterOrgComponent, RegistrationDialog } from './register-org/register-org.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -63,7 +63,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     ReactiveFormsModule,
     MatMenuModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSnackBarModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent],
