@@ -1,33 +1,21 @@
-<div id="container">
+<mat-toolbar color="primary" id="nav-bar">
 
-  <mat-toolbar color="primary">
+  <div id="left">
+    <img src="assets/Logo.svg" height="52px;" style="margin-left: -10px;"/>
+    <h1 id="site-title"><span style="font-family: Copperplate-Bold">Hungry</span><span style="margin-left: 5px; font-family: Copperplate-Light">Ags</span></h1>
+  </div>
 
-    <div id="left">
-      <img src="assets/Logo.svg" height="52px;" style="margin-left: -10px;"/>
-      <h1 id="site-title"><span style="font-family: Copperplate-Bold">Hungry</span><span style="margin-left: 5px; font-family: Copperplate-Light">Ags</span></h1>
+  <div id="center">
+    <div class="white-box">
+      <i class="material-icons" id="filter-icon">filter_list</i>
+      <input id="search-input" placeholder="Filter..." />
     </div>
+  </div>
 
-    <div id="center">
-      <div class="white-box">
-        <i class="material-icons" id="filter-icon">
-          filter_list
-        </i>
-        <!-- <mat-form-field>
-          <input matInput placeholder="Input">
-        </mat-form-field> -->
-        <!--<div class="example-container">-->
-        <mat-form-field>
-          <input matInput placeholder="Input">
-        </mat-form-field>
-          <!--</div>-->
-      </div>
+  <div id="right">
+    <div>
+      <button mat-raised-button id="sign-in-button" routerLink="/login">SIGN IN</button>
     </div>
+  </div>
 
-    <div id="right">
-      <div>
-        <button mat-raised-button>Sign In</button>
-      </div>
-    </div>
-
-  </mat-toolbar>
-</div>
+</mat-toolbar>
