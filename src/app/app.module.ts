@@ -4,7 +4,7 @@ import { FullCalendarModule } from "@fullcalendar/angular"; // for FullCalendar!
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { CalendarComponent } from "./calendar/calendar.component";
+import { CalendarComponent, EventDialog } from "./calendar/calendar.component";
 import { LoginComponent } from "./login/login.component";
 import { AboutComponent } from "./about/about.component";
 import { PageHeadComponent } from "./page-head/page-head.component";
@@ -39,7 +39,8 @@ import { RegisterOrgComponent } from './register-org/register-org.component';
     FooterComponent,
     ConfirmEmailDialog,
     NewEventComponent,
-    RegisterOrgComponent
+    RegisterOrgComponent,
+    EventDialog
   ],
   imports: [
     BrowserModule,
@@ -60,6 +61,6 @@ import { RegisterOrgComponent } from './register-org/register-org.component';
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent],
-  entryComponents: [ConfirmEmailDialog]
+  entryComponents: [ConfirmEmailDialog, EventDialog]
 })
 export class AppModule {}
