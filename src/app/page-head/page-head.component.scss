@@ -2,6 +2,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 100%;
   text-align: center;
+  height: 64px;
 }
 
 #left {
@@ -61,3 +62,16 @@
   color: #6c1420;
 }
 
+@media only screen and (max-width: 1000px) {
+  .white-box {
+    width: 90vw;
+  }
+  
+  #left {
+    display: none;
+  }
+
+  #right {
+    display: none;
+  }
+}
