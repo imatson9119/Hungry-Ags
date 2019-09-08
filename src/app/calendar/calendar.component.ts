@@ -37,7 +37,7 @@ export class CalendarComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.eventDialog.open(this.DialogOverviewExampleDialog, {
+    const dialogRef = this.eventDialog.open(this.EventDialog, {
       width: '250px'
     });
 
@@ -52,10 +52,10 @@ export class CalendarComponent implements OnInit {
   selector: 'eventDialog',
   templateUrl: 'eventDialog.html',
 })
-export class DialogOverviewExampleDialog {
+export class EventDialog {
 
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    public dialogRef: MatDialogRef<EventDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {
