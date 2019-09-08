@@ -4,7 +4,7 @@ import { FullCalendarModule } from "@fullcalendar/angular"; // for FullCalendar!
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { CalendarComponent } from "./calendar/calendar.component";
+import { CalendarComponent, EventDialog } from "./calendar/calendar.component";
 import { LoginComponent } from "./login/login.component";
 import { AboutComponent } from "./about/about.component";
 import { PageHeadComponent } from "./page-head/page-head.component";
@@ -24,6 +24,8 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { ReactiveFormsModule } from "@angular/forms";
 import { FormsModule } from '@angular/forms';
 import {MatMenuModule} from '@angular/material/menu';
+import { NewEventComponent } from './new-event/new-event.component';
+import { RegisterOrgComponent, RegistrationDialog } from './register-org/register-org.component';
 
 
 @NgModule({
@@ -35,7 +37,11 @@ import {MatMenuModule} from '@angular/material/menu';
     PageHeadComponent,
     RegisterComponent,
     FooterComponent,
-    ConfirmEmailDialog
+    ConfirmEmailDialog,
+    NewEventComponent,
+    RegisterOrgComponent,
+    EventDialog,
+    RegistrationDialog
   ],
   imports: [
     BrowserModule,
@@ -56,6 +62,6 @@ import {MatMenuModule} from '@angular/material/menu';
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent],
-  entryComponents: [ConfirmEmailDialog]
+  entryComponents: [ConfirmEmailDialog, EventDialog,RegistrationDialog]
 })
 export class AppModule {}
