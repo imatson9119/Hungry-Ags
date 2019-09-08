@@ -13,8 +13,15 @@ import { ControllerService } from '../shared/controller.service';
 export class PageHeadComponent implements OnInit {
   constructor(public controllerService: ControllerService, public router: Router, public calendarService:CalendarService) {}
   public filter : string = "";
+  public wasHome : boolean = false;
 
   ngOnInit() {
+  }
+
+  checkIsHome() {
+    if (!this.wasHome) {
+      this.filter = "";
+    }
     this.calendarService.calendarEvents = [];
     if(this.filter.length > 0) {
       this.calendarService.calendarEvents = [];
@@ -22,7 +29,7 @@ export class PageHeadComponent implements OnInit {
       let filters = this.filter.split(' ');
       for (let i = 0; i < events.length ; i++) {
         let event = [events[i].description, 
-        events[i].eventName, 
+          events[i].eventName, 
         events[i].location, 
         events[i].organization];
         let numFound = 0;
@@ -60,5 +67,8 @@ export class PageHeadComponent implements OnInit {
       console.log("LENGTH:", this.calendarService.calendarEvents.length);
 
     }
+
+    this.wasHome = this.router.url === '/home';
+    return this.wasHome;
   }
 }
