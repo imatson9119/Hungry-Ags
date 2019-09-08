@@ -1,6 +1,6 @@
 <div class="main-container">
   <div class="calendar-container">
-    <full-calendar
+    <full-calendar (eventClick)=""
       defaultView="listWeek"
       [plugins]="calendarPlugins"
       [events]='calendarService.calendarEvents'

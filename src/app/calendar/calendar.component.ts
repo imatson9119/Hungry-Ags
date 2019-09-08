@@ -45,6 +45,7 @@ export class CalendarComponent implements OnInit {
       console.log('The dialog was closed');
     });
 
+  }
 }
 
 @Component({
