@@ -24,6 +24,8 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { ReactiveFormsModule } from "@angular/forms";
 import { FormsModule } from '@angular/forms';
 import {MatMenuModule} from '@angular/material/menu';
+import { NewEventComponent } from './new-event/new-event.component';
+import { RegisterOrgComponent } from './register-org/register-org.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import {MatMenuModule} from '@angular/material/menu';
     PageHeadComponent,
     RegisterComponent,
     FooterComponent,
-    ConfirmEmailDialog
+    ConfirmEmailDialog,
+    NewEventComponent,
+    RegisterOrgComponent
   ],
   imports: [
     BrowserModule,
