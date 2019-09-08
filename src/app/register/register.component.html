@@ -1,1 +1,17 @@
-<p>register works!</p>
+<div class="main-container">
+  <div class="login-form">
+    <span class="header">Register</span>
+    <form class="example-form">
+      <mat-form-field style="width: 240px;" class="example-full-width">
+        <input matInput placeholder="Email" />
+      </mat-form-field>
+      <mat-form-field style="width: 240px;" class="example-full-width">
+        <input type="password" matInput placeholder="Password" />
+      </mat-form-field>
+      <mat-form-field style="width: 240px;" class="example-full-width">
+        <input type="password" matInput placeholder="Confirm Password" />
+      </mat-form-field>
+      <button class="button-dark" (click)="openDialog()">Register</button>
+    </form>
+  </div>
+</div>

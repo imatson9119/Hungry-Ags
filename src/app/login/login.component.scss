@@ -9,7 +9,7 @@
 }
 .login-form {
   z-index: 1;
-  width: 600px;
+  width: 620px;
   height: 400px;
   border-radius: 8px;
   box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.75);
@@ -57,6 +57,7 @@
   padding-bottom: 25px;
 }
 .button {
+  outline: none;
   border: none;
   width: 250px;
   padding: 14px;
@@ -80,11 +81,13 @@
   color: #6c1420;
 }
 .button-dark {
+  outline: none;
   border: none;
   width: 250px;
   padding: 14px;
   border-radius: 10px;
   margin: 10px;
+  margin-top: 34px;
   font-size: 14px;
   font-weight: bold;
   box-sizing: border-box;
