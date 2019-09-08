@@ -15,7 +15,7 @@ export class NewEventComponent implements OnInit {
   public title : string;
   public location : string;
   public description : string;
-  public date: string;
+  public date: Date;
   public start : string;
   public end : string;
   public organization : string;
@@ -32,25 +32,53 @@ export class NewEventComponent implements OnInit {
   addEvent() {
     console.log("SERVED");
     console.log(this.title);
+    
+    let month = String(this.date.getMonth());
+    if(Number(month) < 10) {
+      month = "0"+String(Number(month) + 1);
+    }
+    let day = String(this.date.getDate());
+    day = String(Number(day) + 1);
+    if(Number(day) < 10) {
+      day = "0"+String(Number(day));
+    }
+    let year = String(this.date.getFullYear());
+    console.log(year,"-",month,"-",day);
 
-    let dateParts = this.date.split("/");
     let start = this.start;
     let end = this.end;
 
     if(start.endsWith("am")) {
-      start.replace("am", "");
+      start = start.replace("am", "");
     } else if (start.endsWith("pm")) {
-      start.replace("pm", "");
-      start.slice(0, start.length - 2);
+      start = start.replace("pm", "");
+      let minutes = end.slice(end.length - 3);
+      start = start.slice(0, start.length - 3);
+      if(start != "12") start = String(12 + Number(start));
+      start += minutes;
     }
 
+    if(end.endsWith("am")) {
+      end = end.replace("am", "");
+    } else if (end.endsWith("pm")) {
+      end = end.replace("pm", "");
+      let minutes = end.slice(end.length - 3);
+      end = end.slice(0, end.length - 3);
+      if(end != "12") end = String(12 + Number(end));
+      end += minutes;
+    }
+
+    start = year + "-" + month + "-" + day + "T" + start + "+19:00";
+    end = year + "-" + month + "-" + day + "T" + end + "+19:00";
+
+    console.log("Time: ", start, "  ", end);
 
     this.calendarService.foodEvents.push({
       eventName: this.title,
       user: this.controller.getStorage(this.controller.USERNAME_KEY),
       sanctioned: false,
-      startTime: "2019-09-08T17:00:00+00:00",
-      endTime: "2019-09-08T18:00:00+00:00",
+      startTime: start,
+      endTime: end,
       description: this.description,
       location: this.location,
       organization: this.organization,
