@@ -38,10 +38,7 @@ export class NewEventComponent implements OnInit {
       organization: "",
       meetsCriteria : true
     });
-
-    this.calendarService.calendarEvents.push({
-        title:this.title, 
-    });
+    
     console.log(this.calendarService.foodEvents[this.calendarService.foodEvents.length - 1].eventName);
   }
 
