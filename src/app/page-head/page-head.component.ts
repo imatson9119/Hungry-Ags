@@ -1,20 +1,15 @@
-import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-page-head',
-  templateUrl: './page-head.component.html',
-  styleUrls: ['./page-head.component.scss']
+  selector: "app-page-head",
+  templateUrl: "./page-head.component.html",
+  styleUrls: ["./page-head.component.scss"]
 })
 export class PageHeadComponent implements OnInit {
-  filter = "";
+  constructor(public router: Router) {}
+  public filter;
 
-  constructor() { }
-
-  ngOnInit() {
-    console.log(this.filter);
-  }
-
-
-
+  ngOnInit() {}
 }
