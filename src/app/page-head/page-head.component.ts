@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-head.component.scss']
 })
 export class PageHeadComponent implements OnInit {
+  public filter;
 
   constructor() { }
 
