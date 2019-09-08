@@ -35,31 +35,4 @@ export class CalendarComponent implements OnInit {
     }
 
   }
-
-  openDialog(): void {
-    const dialogRef = this.eventDialog.open(this.EventDialog, {
-      width: '250px'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-
-  }
-}
-
-@Component({
-  selector: 'eventDialog',
-  templateUrl: 'eventDialog.html',
-})
-export class EventDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<EventDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
 }
