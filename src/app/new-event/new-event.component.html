@@ -6,30 +6,30 @@
         <form class="form">
             <div class=inner-form-container>
                 <mat-form-field class="example-full-width">
-                    <input matInput ([ngModel])="this.title" placeholder="Event Name" value="">
+                    <input matInput placeholder="Event Name" value="" [(ngModel)]="title" name="Event Name">
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Organization" value="">
+                    <input matInput placeholder="Organization" [(ngModel)]="organization" value="" name="Organization">
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Location" value="">
+                    <input matInput placeholder="Location" [(ngModel)]="location" value="" name="Location">
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="date" placeholder="Choose a date" name="Date">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Start Time" value="">
+                    <input matInput placeholder="Start Time" [(ngModel)]="start" value="" name="Start">
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="End Time" value="">
+                    <input matInput placeholder="End Time" [(ngModel)]="end" value="" name="End">
                 </mat-form-field>
             </div>
             <mat-form-field>
-                <textarea matInput placeholder="Description"></textarea>
+                <textarea matInput placeholder="Description" [(ngModel)]="description"></textarea>
             </mat-form-field><div>
-            <button type = 'submit' class="button-dark" ng-click="addEvent()">Submit</button>
+            <button type = 'submit' class="button-dark" (click)="addEvent()">Submit</button>
         </div></form>
     </div>
 </div>

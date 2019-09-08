@@ -9,16 +9,17 @@ import { ControllerService } from '../shared/controller.service';
   styleUrls: ['./new-event.component.scss']
 })
 export class NewEventComponent implements OnInit {
-  registrationForm: FormGroup;
-  title : string;
-  location : string;
-  description : string;
-  start : string;
-  end : string;
-  organization : string;
-  user : string;
-
   constructor(public fb: FormBuilder, public calendarService : CalendarService, public controller : ControllerService) { }
+
+  public registrationForm: FormGroup;
+  public title : string;
+  public location : string;
+  public description : string;
+  public date: string;
+  public start : string;
+  public end : string;
+  public organization : string;
+  public user : string;
 
   ngOnInit() {
     this.registrationForm = this.fb.group({
@@ -26,27 +27,27 @@ export class NewEventComponent implements OnInit {
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
     });
-
-    this.calendarService.foodEvents.push({
-      eventName: "NEW",
-      user: this.controller.getStorage(this.controller.USERNAME_KEY),
-      sanctioned: false,
-      startTime: "2019-09-08T17:00:00+00:00",
-      endTime: "2019-09-08T18:00:00+00:00",
-      description: "",
-      location: "",
-      organization: "",
-      meetsCriteria : true
-    });
-    
-    console.log(this.calendarService.foodEvents[this.calendarService.foodEvents.length - 1].eventName);
   }
 
   addEvent() {
     console.log("SERVED");
+    console.log(this.title);
+
+    let dateParts = this.date.split("/");
+    let start = this.start;
+    let end = this.end;
+
+    if(start.endsWith("am")) {
+      start.replace("am", "");
+    } else if (start.endsWith("pm")) {
+      start.replace("pm", "");
+      start.slice(0, start.length - 2);
+    }
+
+
     this.calendarService.foodEvents.push({
       eventName: this.title,
-      user: "placeholder@tamu.edu",
+      user: this.controller.getStorage(this.controller.USERNAME_KEY),
       sanctioned: false,
       startTime: "2019-09-08T17:00:00+00:00",
       endTime: "2019-09-08T18:00:00+00:00",
