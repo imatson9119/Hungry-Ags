@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import list from '@fullcalendar/list'
+import listPlugin from '@fullcalendar/list'
 import { CalendarService } from '../calendar.service'
 import { FoodEvent } from './FoodEvent';
 import { Observable } from 'rxjs';
+import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-calendar',
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  calendarPlugins = [dayGridPlugin, list]; // important!
+  calendarPlugins = [listPlugin]; // important!
   public events : FoodEvent[];
   public calendarObjects: Object[] = [];
 
@@ -24,8 +24,10 @@ export class CalendarComponent implements OnInit {
 
     //Add all events to calendar
     for(let i = 0; i < this.events.length; i++) {
-      this.calendarObjects.push({title : this.events[i].eventName,
-    start:this.events[i].startTime, end:this.events[i].endTime});
+      if(this.events[i].meetsCriteria) {
+        this.calendarObjects.push({title : this.events[i].eventName,
+          start:this.events[i].startTime, end:this.events[i].endTime, url:"../login"});
+      }
     }
   }
 

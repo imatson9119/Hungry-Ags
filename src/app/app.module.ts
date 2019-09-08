@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MatIconModule } from '@angular/material/icon';
     CalendarComponent,
     LoginComponent,
     AboutComponent,
-    PageHeadComponent
+    PageHeadComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
