@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-page-head',
@@ -6,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-head.component.scss']
 })
 export class PageHeadComponent implements OnInit {
-  public filter;
+  filter = "";
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.filter);
   }
+
+
 
 }
