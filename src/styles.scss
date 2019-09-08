@@ -47,3 +47,7 @@ a {
   .fc-event-dot:hover .tooltiptext {
     visibility: visible;
   }
+
+  .fc-list-item:hover {
+      cursor: pointer;
+  }
