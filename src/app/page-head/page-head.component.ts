@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { CalendarService } from '../calendar.service';
 import { stringify } from 'querystring';
+import { ControllerService } from '../shared/controller.service';
 
 @Component({
   selector: "app-page-head",
@@ -10,7 +11,7 @@ import { stringify } from 'querystring';
   styleUrls: ["./page-head.component.scss"]
 })
 export class PageHeadComponent implements OnInit {
-  constructor(public router: Router, public calendarService:CalendarService) {}
+  constructor(public controllerService: ControllerService, public router: Router, public calendarService:CalendarService) {}
   public filter : string = "";
 
   ngOnInit() {

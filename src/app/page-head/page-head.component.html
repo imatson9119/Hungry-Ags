@@ -21,14 +21,17 @@
 
   <div id="right">
     <div>
-      <button
-        *ngIf="router.url != '/login'"
-        mat-raised-button
-        id="sign-in-button"
-        routerLink="/login"
-      >
+      <button *ngIf="router.url != '/login' && !controllerService.signedIn" mat-raised-button id="sign-in-button" routerLink="/login">
         SIGN IN
       </button>
+      <button [matMenuTriggerFor]="menu" mat-icon-button aria-label="Example icon-button with a heart icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+      
     </div>
   </div>
 </mat-toolbar>

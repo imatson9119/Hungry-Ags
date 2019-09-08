@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ControllerService {
-
-  constructor() { }
+  signedIn: boolean
+  constructor() {
+    this.signedIn=false;
+   }
 }

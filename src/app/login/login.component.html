@@ -10,14 +10,14 @@
     </div>
     <div class="right">
       <span class="header">Login</span>
-      <form class="example-form">
+      <form [formGroup]="loginForm" class="example-form" (ngSubmit)="onSubmit(loginForm)">
         <mat-form-field style="width: 240px;" class="example-full-width">
-          <input type='email' matInput placeholder="Email" />
+          <input formControlName="email" type='email' matInput placeholder="Email" />
         </mat-form-field>
         <mat-form-field  style="width: 240px;"class="example-full-width">
-          <input type="password" matInput placeholder="Password" />
+          <input formControlName="password" type="password" matInput placeholder="Password" />
         </mat-form-field>
-        <button class="button-dark" routerLink="/home">Log In</button>
+        <button (click) = 'controllerService.signedIn = true;' type = 'submit' class="button-dark" routerLink="/home">Log In</button>
       </form>
     </div>
   </div>
