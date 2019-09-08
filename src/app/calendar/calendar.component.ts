@@ -5,6 +5,7 @@ import { FoodEvent } from './FoodEvent';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { TouchSequence } from 'selenium-webdriver';
+import { buildings } from '../MockMapExtensions'
 
 export interface Data {
     title : string;
