@@ -1,5 +1,5 @@
 <div>
-   <i (click)="reportClick()" class="material-icons">error</i><a href={{data.mapLink}} class="material-icons" *ngIf="showMap()">map</a>
+   <i (click)="reportClick()" class="material-icons">error</i><a target="_blank" href={{data.mapLink}} class="material-icons" *ngIf="showMap()">map</a>
 
     <h1 mat-dialog-title class="title">{{data.title}}<p class="info">{{data.location}}<br>Organization: {{data.organization}}</p></h1>
     <p class="description">{{data.description}}</p>
