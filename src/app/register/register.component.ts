@@ -4,6 +4,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA
 } from "@angular/material/dialog";
+import { RegisterService } from "./register.service";
 
 export interface DialogData {
   animal: string;
@@ -18,7 +19,10 @@ export class RegisterComponent implements OnInit {
   animal: string;
   name: string;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public registerService: RegisterService,
+    public dialog: MatDialog
+  ) {}
   ngOnInit() {}
   openDialog(): void {
     const dialogRef = this.dialog.open(ConfirmEmailDialog, {
@@ -39,6 +43,7 @@ export class RegisterComponent implements OnInit {
 })
 export class ConfirmEmailDialog {
   constructor(
+    public registerService: RegisterService,
     public dialogRef: MatDialogRef<ConfirmEmailDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
