@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ControllerService {
-  SIGNED_IN_KEY = 'signedIn'
+  SIGNED_IN_KEY = 'signedIn';
+  USERNAME_KEY = 'user';
   signedIn: boolean;
   constructor() {
     if(this.getStorage(this.SIGNED_IN_KEY) != null){

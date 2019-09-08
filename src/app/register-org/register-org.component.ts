@@ -5,8 +5,10 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA
 } from "@angular/material/dialog";
+import { ControllerService } from '../shared/controller.service';
 
 export interface DialogData {
+  orgName: string;
   username: string;
 }
 
@@ -17,9 +19,8 @@ export interface DialogData {
 })
 export class RegisterOrgComponent implements OnInit {
   registrationForm: FormGroup;
-  constructor(public fb: FormBuilder, public dialog: MatDialog) { }
-
-  username: string;
+  constructor(public fb: FormBuilder, public dialog: MatDialog, public controllerService: ControllerService) { }
+  orgName: string;
   ngOnInit() {
     this.registrationForm = this.fb.group({
       name: ['', Validators.required],
@@ -29,7 +30,7 @@ export class RegisterOrgComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(RegistrationDialog, {
       width: '350px',
-      data: {username: this.username}
+      data: {orgName: this.orgName, username: this.controllerService.getStorage(this.controllerService.USERNAME_KEY)}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -37,7 +38,7 @@ export class RegisterOrgComponent implements OnInit {
     });
   }
   onSubmit(){
-    this.username = this.registrationForm.value.name;
+    this.orgName = this.registrationForm.value.name;
     this.openDialog();
 
   }

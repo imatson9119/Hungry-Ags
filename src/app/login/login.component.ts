@@ -20,4 +20,9 @@ export class LoginComponent implements OnInit {
     this.controllerService.signedIn = true;
     console.log("submitted");
   }
+  onLogin(){
+    this.controllerService.signedIn = true; 
+    this.controllerService.setStorage(this.controllerService.SIGNED_IN_KEY,"true"); 
+    this.controllerService.setStorage(this.controllerService.USERNAME_KEY, this.loginForm.value.email);
+  }
 }
