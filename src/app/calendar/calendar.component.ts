@@ -30,9 +30,5 @@ export class CalendarComponent implements OnInit {
 
     this.calendarService.getCalendarEvents().subscribe(events => this.calendarObjects = events);
 
-    if (document.getElementsByClassName("fc-scroller").length > 0) {
-      document.getElementsByClassName("fc-scroller")[0].style.height = "100%";
-    }
-
   }
 }
