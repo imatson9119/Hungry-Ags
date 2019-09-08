@@ -24,9 +24,12 @@ export class CalendarComponent implements OnInit {
 
     //Add all events to calendar
     for(let i = 0; i < this.events.length; i++) {
+      let color = "#6c1420";
+      if(this.events[i].sanctioned) color = "#00000000";
       if(this.events[i].meetsCriteria) {
         this.calendarObjects.push({title : this.events[i].eventName,
-          start:this.events[i].startTime, end:this.events[i].endTime, url:"../login"});
+          start:this.events[i].startTime, end:this.events[i].endTime, url:"../login",
+          color:color});
       }
     }
   }
