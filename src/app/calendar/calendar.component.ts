@@ -67,7 +67,7 @@ export class EventDialog {
 
   constructor(
     public dialogRef: MatDialogRef<EventDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: Data) {}
 
   onNoClick(): void {
     this.dialogRef.close();
