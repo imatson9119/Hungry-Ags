@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { CalendarService } from '../calendar.service';
 import { stringify } from 'querystring';
 import { ControllerService } from '../shared/controller.service';
+import { getMaxListeners } from 'cluster';
 
 @Component({
   selector: "app-page-head",
@@ -60,5 +61,13 @@ export class PageHeadComponent implements OnInit {
       console.log("LENGTH:", this.calendarService.calendarEvents.length);
 
     }
+  }
+  getDisplayName(){
+    let tempName = this.controllerService.getStorage(this.controllerService.USERNAME_KEY);
+    if(tempName == null || !this.controllerService.signedIn)
+      return '';
+    if(tempName.length >= 25)
+      tempName = tempName.substr(0,22) + "...";
+    return tempName;
   }
 }

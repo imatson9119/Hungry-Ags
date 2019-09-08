@@ -27,7 +27,14 @@
   position: absolute;
   right: 1%;
 }
-
+.username{
+  overflow: hidden;
+  font-weight: bold;
+  background: #6c1420;
+  text-align: center;
+  padding: 10px;
+  color: white;
+}
 .white-box {
   background-color: white;
   color: black;
