@@ -1,3 +1,8 @@
 <h1 class="text" mat-dialog-title>
-  A confirmation email has been sent to your address.
+  Are you sure you would like to register <span class='maroon'>{{data.username}}
+  </span> under the email <span class='maroon'>email@tamu.edu</span>? This request will be manually reviewed and may take a few days.
+  <div class= 'buttons' mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Confirm</button>
+  </div>
 </h1>

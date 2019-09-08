@@ -7,8 +7,7 @@ import {
 } from "@angular/material/dialog";
 
 export interface DialogData {
-  animal: string;
-  name: string;
+  username: string;
 }
 
 @Component({
@@ -20,8 +19,7 @@ export class RegisterOrgComponent implements OnInit {
   registrationForm: FormGroup;
   constructor(public fb: FormBuilder, public dialog: MatDialog) { }
 
-  animal: string;
-  name: string;
+  username: string;
   ngOnInit() {
     this.registrationForm = this.fb.group({
       name: ['', Validators.required],
@@ -30,16 +28,17 @@ export class RegisterOrgComponent implements OnInit {
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(RegistrationDialog, {
-      width: '250px',
-      data: {name: this.name, animal: this.animal}
+      width: '350px',
+      data: {username: this.username}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
     });
   }
   onSubmit(){
+    this.username = this.registrationForm.value.name;
+    this.openDialog();
 
   }
 }
