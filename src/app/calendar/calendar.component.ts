@@ -46,7 +46,7 @@ export class CalendarComponent implements OnInit {
     }
 
     const dialogRef = this.dialog.open(EventDialog, {
-      width: '250px',
+      width: '400px',
       data: {title:event.eventName,
         location:event.location, 
         description:event.description,
