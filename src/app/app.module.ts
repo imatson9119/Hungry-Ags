@@ -4,7 +4,7 @@ import { FullCalendarModule } from "@fullcalendar/angular"; // for FullCalendar!
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { CalendarComponent, EventDialog } from "./calendar/calendar.component";
+import { CalendarComponent } from "./calendar/calendar.component";
 import { LoginComponent } from "./login/login.component";
 import { AboutComponent } from "./about/about.component";
 import { PageHeadComponent } from "./page-head/page-head.component";
@@ -35,8 +35,7 @@ import {MatMenuModule} from '@angular/material/menu';
     PageHeadComponent,
     RegisterComponent,
     FooterComponent,
-    ConfirmEmailDialog,
-    EventDialog
+    ConfirmEmailDialog
   ],
   imports: [
     BrowserModule,
@@ -57,7 +56,6 @@ import {MatMenuModule} from '@angular/material/menu';
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent],
-  entryComponents: [ConfirmEmailDialog,
-  EventDialog]
+  entryComponents: [ConfirmEmailDialog]
 })
 export class AppModule {}
