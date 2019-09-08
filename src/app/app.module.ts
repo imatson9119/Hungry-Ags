@@ -27,6 +27,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { NewEventComponent } from './new-event/new-event.component';
 import { RegisterOrgComponent, RegistrationDialog } from './register-org/register-org.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -61,7 +62,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     FormsModule,
     ReactiveFormsModule,
     MatMenuModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent],
