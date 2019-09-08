@@ -24,12 +24,13 @@
       <button *ngIf="router.url != '/login' && !controllerService.signedIn" mat-raised-button id="sign-in-button" routerLink="/login">
         SIGN IN
       </button>
-      <button [matMenuTriggerFor]="menu" mat-icon-button aria-label="Example icon-button with a heart icon">
+      <button *ngIf="controllerService.signedIn" [matMenuTriggerFor]="menu" mat-icon-button aria-label="Example icon-button with a heart icon">
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
+        <button (click) = 'controllerService.signedIn = false; this.router.navigateByUrl("/login");' mat-menu-item>Sign Out</button>
+        <button mat-menu-item>Add an Event</button>
+        <button mat-menu-item>Register an Organization</button>
       </mat-menu>
       
     </div>
