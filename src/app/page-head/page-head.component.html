@@ -20,7 +20,9 @@
   </div>
 
   <div id="right">
-    <div>
+    <div style = "    text-align: center;
+    display: flex;
+    align-items: center;">
       <button *ngIf="router.url != '/login' && !controllerService.signedIn" mat-raised-button id="sign-in-button" routerLink="/login">
         SIGN IN
       </button>
