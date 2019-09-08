@@ -21,7 +21,7 @@ export class CalendarComponent implements OnInit {
   public calendarObjects: Object[] = [];
   
 
-  constructor(private calendarService : CalendarService, public eventDialog : MatDialog) { }
+  constructor(private calendarService : CalendarService) { }
 
   ngOnInit() {
     this.calendarService.getEvents().subscribe(events => this.events = events);
