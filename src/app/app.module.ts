@@ -29,6 +29,7 @@ import { RegisterOrgComponent, RegistrationDialog } from './register-org/registe
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxMaterialTimepickerModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent],
