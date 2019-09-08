@@ -5,7 +5,7 @@ import {
   MAT_DIALOG_DATA
 } from "@angular/material/dialog";
 import { RegisterService } from "./register.service";
-
+import { Router } from "@angular/router";
 export interface DialogData {
   animal: string;
   name: string;
@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
   name: string;
 
   constructor(
+    public router: Router,
     public registerService: RegisterService,
     public dialog: MatDialog
   ) {}
@@ -31,7 +32,7 @@ export class RegisterComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log("The dialog was closed");
+      this.router.navigateByUrl("/home");
       this.animal = result;
     });
   }
@@ -39,7 +40,8 @@ export class RegisterComponent implements OnInit {
 
 @Component({
   selector: "confirm-email",
-  templateUrl: "confirm-email.html"
+  templateUrl: "confirm-email.html",
+  styleUrls: ["./confirm-email.scss"]
 })
 export class ConfirmEmailDialog {
   constructor(
