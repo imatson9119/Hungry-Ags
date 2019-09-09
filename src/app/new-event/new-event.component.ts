@@ -11,7 +11,7 @@ import { ControllerService } from '../shared/controller.service';
 })
 export class NewEventComponent implements OnInit {
   constructor(public fb: FormBuilder, public calendarService : CalendarService, public controller : ControllerService) { }
-  public registrationForm: FormGroup;
+  public eventForm: FormGroup;
   public title : string = "";
   public location : string = "";
   public description : string = "";
@@ -22,10 +22,14 @@ export class NewEventComponent implements OnInit {
   public user : string = "";
 
   ngOnInit() {
-    this.registrationForm = this.fb.group({
-      email: ['', [Validators.required,Validators.email]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
+    this.eventForm = this.fb.group({
+      nameControl: ['', [Validators.required]],
+      orgControl: ['', Validators.required],
+      locControl: ['', Validators.required],
+      dateControl: ['', [Validators.required]],
+      startTimeControl: ['', [Validators.required]],
+      endTimeControl: ['', [Validators.required]],
+      descControl: ['', [Validators.required]],
     });
   }
 

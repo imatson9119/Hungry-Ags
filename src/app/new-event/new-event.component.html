@@ -3,38 +3,45 @@
         <div class='main-container'>
             Free food? Let the world know.
         </div>
-        <form class="form">
+        <form class="form" [formGroup]="eventForm" (ngSubmit)="onSubmit(eventForm)">
             <div class=inner-form-container>
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Event Name" value="" [(ngModel)]="title" name="Event Name">
+                    <input matInput formControlName="nameControl" placeholder="Event Name" value="" name="Event Name">
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Organization" [(ngModel)]="organization" value="" name="Organization">
+                    <input matInput formControlName="orgControl" placeholder="Organization" value="" name="Organization">
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Location" [(ngModel)]="location" value="" name="Location">
+                    <input matInput formControlName="locControl" placeholder="Location" value="" name="Location">
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput [matDatepicker]="picker" [(ngModel)]="date" placeholder="Choose a date" name="Date">
+                    <input matInput formControlName="dateControl" [matDatepicker]="picker" placeholder="Choose a date" name="Date">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                    <input matInput [ngxTimepicker]="timePicker1" placeholder="Start Time" value="" name="Start">
+                    <input formControlName="startTimeControl" matInput [ngxTimepicker]="timePicker1" placeholder="Start Time" value="" name="Start">
                     <ngx-material-timepicker #timePicker1></ngx-material-timepicker>
-                    <ngx-material-timepicker-toggle matSuffix [for]="timePicker1" [disabled]="false"></ngx-material-timepicker-toggle>
+                    <ngx-material-timepicker-toggle matSuffix [for]="timePicker1" [disabled]="false">
+                            <svg style='transform: translate(0,4px);' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" ngxMaterialTimepickerToggleIcon><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M0 0h24v24H0z" fill="none"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    </ngx-material-timepicker-toggle>
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                    <input matInput [ngxTimepicker]="timePicker2" placeholder="End Time" value="" name="End" >
+                    <input formControlName="endTimeControl" matInput [ngxTimepicker]="timePicker2" placeholder="End Time" value="" name="End" >
                     <ngx-material-timepicker #timePicker2 ></ngx-material-timepicker>
-                    <ngx-material-timepicker-toggle matSuffix [for]="timePicker2" [disabled]="false"></ngx-material-timepicker-toggle>
+                    <ngx-material-timepicker-toggle matSuffix [for]="timePicker2" [disabled]="false">
+                            <svg style='transform: translate(0,4px);' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" ngxMaterialTimepickerToggleIcon><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M0 0h24v24H0z" fill="none"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    </ngx-material-timepicker-toggle>
                 </mat-form-field>
             </div>
             <mat-form-field>
-                <textarea matInput placeholder="Description" [(ngModel)]="description" name="First"></textarea>
+                <textarea style='width:100%' formControlName="descControl" matInput placeholder="Description" name="First" cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="10"></textarea>
             </mat-form-field>
             <div>
-                <button type='submit' class="button-dark" (click)="addEvent()">Submit</button>
+                <button type='submit' class="button-dark" >Submit</button>
             </div>
         </form>
     </div>
