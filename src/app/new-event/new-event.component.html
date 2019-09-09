@@ -20,13 +20,19 @@
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                    <input matInput [ngxTimepicker]="timePicker1" [disableClick]="true" placeholder="Start Time" value="" name="Start">
+                    <input matInput [ngxTimepicker]="timePicker1" placeholder="Start Time" value="" name="Start">
                     <ngx-material-timepicker #timePicker1></ngx-material-timepicker>
-                    <ngx-material-timepicker-toggle matSuffix [for]="timePicker1" [disabled]="false"><i class="material-icons">
-                            query_builder
-                            </i></ngx-material-timepicker-toggle>
+                    <ngx-material-timepicker-toggle matSuffix [for]="timePicker1" [disabled]="false"></ngx-material-timepicker-toggle>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <input matInput [ngxTimepicker]="timePicker2" placeholder="End Time" value="" name="End" >
+                    <ngx-material-timepicker #timePicker2 ></ngx-material-timepicker>
+                    <ngx-material-timepicker-toggle matSuffix [for]="timePicker2" [disabled]="false"></ngx-material-timepicker-toggle>
                 </mat-form-field>
             </div>
+            <mat-form-field>
+                <textarea matInput placeholder="Description" [(ngModel)]="description" name="First"></textarea>
+            </mat-form-field>
             <div>
                 <button type='submit' class="button-dark" (click)="addEvent()">Submit</button>
             </div>

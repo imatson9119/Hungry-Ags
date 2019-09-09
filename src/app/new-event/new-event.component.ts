@@ -49,10 +49,10 @@ export class NewEventComponent implements OnInit {
     let start = this.start;
     let end = this.end;
 
-    let pm = start.endsWith("pm"); //stores if start time was am or pm
-    let am = start.endsWith("am")
-    start = start.replace("am", "");
-    start = start.replace("pm", "");
+    let pm = start.toLowerCase().endsWith("pm"); //stores if start time was am or pm
+    let am = start.toLowerCase().endsWith("am")
+    start = start.toLowerCase().replace("am", "");
+    start = start.toLowerCase().replace("pm", "");
     let minutes = start.slice(start.length - 3);
     start = start.slice(0, start.length - 3);
     if(pm) {
@@ -61,13 +61,13 @@ export class NewEventComponent implements OnInit {
     if(am) {
       if(start == "12") start = (String(Number(start) - 12));
     }
-    if(Number(start) < 10) start = "0"+start;
+    //if(Number(start) < 10) start = "0"+start; //Needed before html time picker used
     start += minutes;
 
-    pm = end.endsWith("pm"); //stores if start time was am or pm
-    am = end.endsWith("am");
-    end = end.replace("am", "");
-    end = end.replace("pm", "");
+    pm = end.toLowerCase().endsWith("pm"); //stores if start time was am or pm
+    am = end.toLowerCase().endsWith("am");
+    end = end.toLowerCase().replace("am", "");
+    end = end.toLowerCase().replace("pm", "");
     minutes = end.slice(end.length - 3);
     end = end.slice(0, end.length - 3);
     if(pm) {
@@ -76,7 +76,7 @@ export class NewEventComponent implements OnInit {
     if(am) {
       if(end == "12") end = (String(Number(end) - 12));
     }
-    if(Number(end) < 10) end = "0"+end;
+    //if(Number(end) < 10) end = "0"+end; //Needed before html time picker used
     end += minutes;
 
     start = year + "-" + month + "-" + day + "T" + start + "+19:00";
