@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { CalendarService } from '../calendar.service';
 import { ControllerService } from '../shared/controller.service';
@@ -6,11 +6,11 @@ import { ControllerService } from '../shared/controller.service';
 @Component({
   selector: 'app-new-event',
   templateUrl: './new-event.component.html',
-  styleUrls: ['./new-event.component.scss']
+  styleUrls: ['./new-event.component.scss'],
+
 })
 export class NewEventComponent implements OnInit {
   constructor(public fb: FormBuilder, public calendarService : CalendarService, public controller : ControllerService) { }
-
   public registrationForm: FormGroup;
   public title : string = "";
   public location : string = "";
