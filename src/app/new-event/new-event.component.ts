@@ -48,25 +48,27 @@ export class NewEventComponent implements OnInit {
     let start = this.start;
     let end = this.end;
 
-    if(start.endsWith("am")) {
-      start = start.replace("am", "");
-    } else if (start.endsWith("pm")) {
-      start = start.replace("pm", "");
-      let minutes = end.slice(end.length - 3);
-      start = start.slice(0, start.length - 3);
+    let pm = start.endsWith("pm"); //stores if start time was am or pm
+    start = start.replace("am", "");
+    start = start.replace("pm", "");
+    let minutes = start.slice(start.length - 3);
+    start = start.slice(0, start.length - 3);
+    if(pm) {
       if(start != "12") start = String(12 + Number(start));
-      start += minutes;
     }
+    if(Number(start) < 10) start = "0"+start;
+    start += minutes;
 
-    if(end.endsWith("am")) {
-      end = end.replace("am", "");
-    } else if (end.endsWith("pm")) {
-      end = end.replace("pm", "");
-      let minutes = end.slice(end.length - 3);
-      end = end.slice(0, end.length - 3);
+    pm = end.endsWith("pm"); //stores if start time was am or pm
+    end = end.replace("am", "");
+    end = end.replace("pm", "");
+    minutes = end.slice(end.length - 3);
+    end = end.slice(0, end.length - 3);
+    if(pm) {
       if(end != "12") end = String(12 + Number(end));
-      end += minutes;
     }
+    if(Number(end) < 10) end = "0"+end;
+    end += minutes;
 
     start = year + "-" + month + "-" + day + "T" + start + "+19:00";
     end = year + "-" + month + "-" + day + "T" + end + "+19:00";

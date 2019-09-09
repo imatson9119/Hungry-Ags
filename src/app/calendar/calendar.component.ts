@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from "@angular/core";
+import { Component, OnInit, Inject, ComponentFactoryResolver } from "@angular/core";
 import listPlugin from "@fullcalendar/list";
 import { CalendarService } from "../calendar.service";
 import { FoodEvent } from "./FoodEvent";
@@ -46,6 +46,9 @@ export class CalendarComponent implements OnInit {
     this.calendarService
       .getCalendarEvents()
       .subscribe(events => (this.calendarObjects = events));
+    console.log("Calendar Length", this.calendarObjects.length);
+    console.log(this.calendarObjects);
+
   }
 
   openDialog(arg): void {
