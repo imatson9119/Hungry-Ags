@@ -33,25 +33,25 @@ export class NewEventComponent implements OnInit {
     });
   }
 
-  addEvent() {
+  onSubmit(formGroup: FormGroup) {
     console.log("SERVED");
-    console.log(this.title);
-    
-    let month = String(this.date.getMonth());
+    console.log(formGroup.getRawValue());
+    let formControl = formGroup.getRawValue();
+    let month = String(formControl.dateControl.getMonth());
     month = String(Number(month) + 1);
     if(Number(month) < 10) {
       month = "0"+String(Number(month));
     }
-    let day = String(this.date.getDate());
+    let day = String(formControl.dateControl.getDate());
     day = String(Number(day) + 1);
     if(Number(day) < 10) {
       day = "0"+String(Number(day));
     }
-    let year = String(this.date.getFullYear());
+    let year = String(formControl.dateControl.getFullYear());
     console.log(year,"-",month,"-",day);
 
-    let start = this.start;
-    let end = this.end;
+    let start = formControl.startTimeControl.replace(" ", "");
+    let end = formControl.endTimeControl.replace(" ", "");
 
     let pm = start.toLowerCase().endsWith("pm"); //stores if start time was am or pm
     let am = start.toLowerCase().endsWith("am")
@@ -65,7 +65,7 @@ export class NewEventComponent implements OnInit {
     if(am) {
       if(start == "12") start = (String(Number(start) - 12));
     }
-    //if(Number(start) < 10) start = "0"+start; //Needed before html time picker used
+    if(Number(start) < 10) start = "0"+start; //Needed before html time picker used
     start += minutes;
 
     pm = end.toLowerCase().endsWith("pm"); //stores if start time was am or pm
@@ -80,7 +80,7 @@ export class NewEventComponent implements OnInit {
     if(am) {
       if(end == "12") end = (String(Number(end) - 12));
     }
-    //if(Number(end) < 10) end = "0"+end; //Needed before html time picker used
+    if(Number(end) < 10) end = "0"+end; //Needed before html time picker used
     end += minutes;
 
     start = year + "-" + month + "-" + day + "T" + start + "+19:00";
@@ -89,14 +89,14 @@ export class NewEventComponent implements OnInit {
     console.log("Time: ", start, "  ", end);
 
     this.calendarService.foodEvents.push({
-      eventName: this.title,
+      eventName: formControl.nameControl,
       user: this.controller.getStorage(this.controller.USERNAME_KEY),
       sanctioned: false,
       startTime: start,
       endTime: end,
-      description: this.description,
-      location: this.location,
-      organization: this.organization,
+      description: formControl.descControl,
+      location: formControl.locControl,
+      organization: formControl.orgControl,
       meetsCriteria : true
     });
     console.log(this.calendarService.foodEvents[this.calendarService.foodEvents.length - 1].eventName);
