@@ -34,8 +34,9 @@ export class NewEventComponent implements OnInit {
     console.log(this.title);
     
     let month = String(this.date.getMonth());
+    month = String(Number(month) + 1);
     if(Number(month) < 10) {
-      month = "0"+String(Number(month) + 1);
+      month = "0"+String(Number(month));
     }
     let day = String(this.date.getDate());
     day = String(Number(day) + 1);
