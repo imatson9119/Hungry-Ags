@@ -23,14 +23,14 @@ export class NewEventComponent implements OnInit {
   public user : string = "";
   darkTheme: NgxMaterialTimepickerTheme = {
     container: {
-        bodyBackgroundColor: '#fff',
+        bodyBackgroundColor: '#eee',
         buttonColor: '#6c1420'
     },
     dial: {
         dialBackgroundColor: '#6c1420',
     },
     clockFace: {
-        clockFaceBackgroundColor: '#eee',
+        clockFaceBackgroundColor: '#fff',
         clockHandColor: '#6c1420',
         clockFaceTimeInactiveColor: '#6c1420'
     }
