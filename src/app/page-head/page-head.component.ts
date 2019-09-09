@@ -27,6 +27,7 @@ export class PageHeadComponent implements OnInit {
       this.filter = "";
     }
     this.calendarService.calendarEvents = [];
+    this.filter = this.filter.trim();
     if (this.filter.length > 0) {
       this.calendarService.calendarEvents = [];
       let events = this.calendarService.foodEvents;
