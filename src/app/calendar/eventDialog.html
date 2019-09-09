@@ -1,7 +1,11 @@
 <div>
    <i (click)="reportClick()" *ngIf="controllerService.signedIn" class="material-icons">error</i><a target="_blank" href={{data.mapLink}} class="material-icons" *ngIf="showMap()">map</a>
 
-    <h1 mat-dialog-title class="title">{{data.title}}<p class="info">{{data.location}}<br>Organization: {{data.organization}}</p></h1>
+    <h1 mat-dialog-title class="title">{{data.title}}<p class="info">{{data.location}} - {{data.organization}}</p><span *ngIf="data.sanctioned" class="info"><span class="dot"></span> Verified</span></h1>
     <p class="description">{{data.description}}</p>
+    <br>
+    <p style="color:rgba(0,0,0,0.32);" *ngIf="data.sanctioned" class="info">Contact: {{data.organizer}}</p>
+    <p style="color:rgba(0,0,0,0.32);" *ngIf="!data.sanctioned" class="info">Submitted by an individual user</p>
+
 </div>
 

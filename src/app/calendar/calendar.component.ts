@@ -15,11 +15,13 @@ import { ControllerService } from "../shared/controller.service";
 
 export interface Data {
   title: string;
+  organizer : string;
   location: string;
   description: string;
   organization: string;
   doLink: boolean;
   mapLink: string;
+  sanctioned : boolean;
 }
 
 @Component({
@@ -57,7 +59,9 @@ export class CalendarComponent implements OnInit {
       eventName: "",
       location: "",
       description: "",
-      organization: ""
+      organization: "",
+      user : "",
+      sanctioned : false
     };
     for (let i = 0; i < this.events.length; i++) {
       let verificationString =
@@ -87,7 +91,9 @@ export class CalendarComponent implements OnInit {
         description: event.description,
         organization: event.organization,
         doLink: this.doLink,
-        mapLink: mapLink
+        mapLink: mapLink,
+        organizer : event.user,
+        sanctioned : event.sanctioned
       }
     });
 
