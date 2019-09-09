@@ -60,3 +60,8 @@ mat-form-field{
   .button-dark:hover {
     -webkit-filter: brightness(60%);
   }
+  .button-dark:disabled{
+    cursor: default;
+    filter: grayscale(1) ;
+    
+  }
