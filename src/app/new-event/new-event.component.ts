@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { CalendarService } from '../calendar.service';
 import { ControllerService } from '../shared/controller.service';
+import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
 
 @Component({
   selector: 'app-new-event',
@@ -20,6 +21,20 @@ export class NewEventComponent implements OnInit {
   public end : string = "";
   public organization : string = "";
   public user : string = "";
+  darkTheme: NgxMaterialTimepickerTheme = {
+    container: {
+        bodyBackgroundColor: '#fff',
+        buttonColor: '#6c1420'
+    },
+    dial: {
+        dialBackgroundColor: '#6c1420',
+    },
+    clockFace: {
+        clockFaceBackgroundColor: '#eee',
+        clockHandColor: '#6c1420',
+        clockFaceTimeInactiveColor: '#6c1420'
+    }
+};
 
   ngOnInit() {
     this.eventForm = this.fb.group({
