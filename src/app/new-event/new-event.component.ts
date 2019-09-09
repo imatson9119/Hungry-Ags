@@ -3,6 +3,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { CalendarService } from '../calendar.service';
 import { ControllerService } from '../shared/controller.service';
 import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-event',
@@ -11,7 +12,7 @@ import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
 
 })
 export class NewEventComponent implements OnInit {
-  constructor(public fb: FormBuilder, public calendarService : CalendarService, public controller : ControllerService) { }
+  constructor(public router : Router, public fb: FormBuilder, public calendarService : CalendarService, public controller : ControllerService) { }
   public eventForm: FormGroup;
   public title : string = "";
   public location : string = "";
@@ -115,6 +116,8 @@ export class NewEventComponent implements OnInit {
       meetsCriteria : true
     });
     console.log(this.calendarService.foodEvents[this.calendarService.foodEvents.length - 1].eventName);
+    this.router.navigateByUrl("/home");
   }
 
+  
 }
