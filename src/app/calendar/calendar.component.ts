@@ -11,6 +11,7 @@ import { Observable } from "rxjs";
 import { TouchSequence } from "selenium-webdriver";
 import { buildings } from "../MockMapExtensions";
 import { MatSnackBar, MatSnackBarModule } from "@angular/material/snack-bar";
+import { ControllerService } from "../shared/controller.service";
 
 export interface Data {
   title: string;
@@ -114,7 +115,8 @@ export class EventDialog {
   constructor(
     public dialogRef: MatDialogRef<EventDialog>,
     @Inject(MAT_DIALOG_DATA) public data: Data,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    public controllerService : ControllerService
   ) {}
 
   onNoClick(): void {
