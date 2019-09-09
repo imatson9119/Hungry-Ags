@@ -1,8 +1,8 @@
 <div style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; overflow: auto;">
-    <div class='main-container'>
-        Free food? Let the world know.
-    </div>
     <div class='outer-form-container'>
+        <div class='main-container'>
+            Free food? Let the world know.
+        </div>
         <form class="form">
             <div class=inner-form-container>
                 <mat-form-field class="example-full-width">
@@ -28,8 +28,10 @@
             </div>
             <mat-form-field>
                 <textarea matInput placeholder="Description" [(ngModel)]="description" name="First"></textarea>
-            </mat-form-field><div>
-            <button type = 'submit' class="button-dark" (click)="addEvent()">Submit</button>
-        </div></form>
+            </mat-form-field>
+            <div>
+                <button type='submit' class="button-dark" (click)="addEvent()">Submit</button>
+            </div>
+        </form>
     </div>
 </div>
