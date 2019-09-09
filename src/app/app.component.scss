@@ -7,6 +7,8 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  overflow: auto;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 
 app-page-head {
@@ -15,7 +17,7 @@ app-page-head {
 
 .router-container {
   position: relative;
-  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  
   display: flex;
   flex: 1;
   z-index: -1;
