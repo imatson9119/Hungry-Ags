@@ -31,6 +31,7 @@ export class PageHeadComponent implements OnInit {
     if (this.filter.length > 0) {
       this.calendarService.calendarEvents = [];
       let events = this.calendarService.foodEvents;
+      console.log("Transferred length:", events.length);
       let filters = this.filter.split(" ");
       for (let i = 0; i < events.length; i++) {
         let event = [
