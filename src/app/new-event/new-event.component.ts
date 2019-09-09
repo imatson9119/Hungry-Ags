@@ -49,6 +49,7 @@ export class NewEventComponent implements OnInit {
     let end = this.end;
 
     let pm = start.endsWith("pm"); //stores if start time was am or pm
+    let am = start.endsWith("am")
     start = start.replace("am", "");
     start = start.replace("pm", "");
     let minutes = start.slice(start.length - 3);
@@ -56,16 +57,23 @@ export class NewEventComponent implements OnInit {
     if(pm) {
       if(start != "12") start = String(12 + Number(start));
     }
+    if(am) {
+      if(start == "12") start = (String(Number(start) - 12));
+    }
     if(Number(start) < 10) start = "0"+start;
     start += minutes;
 
     pm = end.endsWith("pm"); //stores if start time was am or pm
+    am = end.endsWith("am");
     end = end.replace("am", "");
     end = end.replace("pm", "");
     minutes = end.slice(end.length - 3);
     end = end.slice(0, end.length - 3);
     if(pm) {
       if(end != "12") end = String(12 + Number(end));
+    }
+    if(am) {
+      if(end == "12") end = (String(Number(end) - 12));
     }
     if(Number(end) < 10) end = "0"+end;
     end += minutes;
