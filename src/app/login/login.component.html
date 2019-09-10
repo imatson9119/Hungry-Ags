@@ -18,7 +18,7 @@
                     <input formControlName="password" type="password" matInput placeholder="Password" />
                 </mat-form-field>
                 <button (click)='onLogin();' type='submit' class="button-dark" routerLink="/home">Log In</button>
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <button (click)='signInWithGoogle();'>Test Login</button>
             </form>
         </div>
     </div>
