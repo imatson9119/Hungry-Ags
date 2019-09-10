@@ -34,10 +34,10 @@
     >
       SIGN IN
     </button>
-    <div class="user-panel">
-      {{ this.getDisplayName() }}
+    <div class="user-panel" *ngIf="controllerService.signedIn">
+      {{ this.controller.user.name}}
       <button
-        *ngIf="controllerService.signedIn"
+        
         [matMenuTriggerFor]="menu"
         mat-icon-button
         aria-label="Example icon-button with a heart icon"
@@ -45,7 +45,7 @@
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <div class="username">{{ this.getDisplayName() }}</div>
+        <div class="username">{{ this.controller.user.name }}</div>
         <button
           (click)="
             this.controllerService.signOut();

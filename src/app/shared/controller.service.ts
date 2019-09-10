@@ -11,10 +11,7 @@ export class ControllerService implements OnInit {
   user: any;
 
   constructor(private authService: AuthService) {
-    if(this.getStorage(this.SIGNED_IN_KEY) != null){
-      this.signedIn = this.getStorage(this.SIGNED_IN_KEY) === 'true';
-    }
-    console.log(this.signedIn);
+
    }
 
    ngOnInit(){

@@ -86,7 +86,4 @@ export class PageHeadComponent implements OnInit {
     this.wasHome = this.router.url === "/home";
     return this.wasHome;
   }
-  getDisplayName() {
-    return this.controllerService.user.name;
-  }
 }

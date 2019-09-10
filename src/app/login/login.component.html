@@ -17,7 +17,7 @@
                 <mat-form-field style="width: 240px;" class="example-full-width">
                     <input formControlName="password" type="password" matInput placeholder="Password" />
                 </mat-form-field>
-                <button (click)='signInWithGoogle();' type='submit' class="button-dark">Log In</button>
+                <button (click)='this.controllerService.signInWithGoogle();' type='submit' class="button-dark">Log In</button>
             </form>
         </div>
     </div>
