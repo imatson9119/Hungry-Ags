@@ -35,7 +35,7 @@
       SIGN IN
     </button>
     <div class="user-panel" *ngIf="controllerService.signedIn">
-      {{ this.controller.user.name}}
+      Filler
       <button
         
         [matMenuTriggerFor]="menu"
@@ -45,7 +45,7 @@
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <div class="username">{{ this.controller.user.name }}</div>
+        <div class="username">Filler</div>
         <button
           (click)="
             this.controllerService.signOut();
