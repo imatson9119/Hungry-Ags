@@ -1,25 +1,26 @@
 <div class="main-container">
-  <div class="login-form">
-    <div class="left">
-      Welcome to <b>Hungry Ags</b>
-      <div class="new">
-        New here?
-      </div>
-      <button class="button" routerLink="/register">Register</button>
-      <button class="button" routerLink="/about">About Us</button>
+    <div class="login-form">
+        <div class="left">
+            Welcome to <b>Hungry Ags</b>
+            <div class="new">
+                New here?
+            </div>
+            <button class="button" routerLink="/register">Register</button>
+            <button class="button" routerLink="/about">About Us</button>
+        </div>
+        <div class="right">
+            <span class="header">Login</span>
+            <form [formGroup]="loginForm" class="example-form" (ngSubmit)="onSubmit(loginForm)">
+                <mat-form-field style="width: 240px;" class="example-full-width">
+                    <input formControlName="email" type='email' matInput placeholder="Email" />
+                </mat-form-field>
+                <mat-form-field style="width: 240px;" class="example-full-width">
+                    <input formControlName="password" type="password" matInput placeholder="Password" />
+                </mat-form-field>
+                <button (click)='onLogin();' type='submit' class="button-dark" routerLink="/home">Log In</button>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            </form>
+        </div>
     </div>
-    <div class="right">
-      <span class="header">Login</span>
-      <form [formGroup]="loginForm" class="example-form" (ngSubmit)="onSubmit(loginForm)">
-        <mat-form-field style="width: 240px;" class="example-full-width">
-          <input formControlName="email" type='email' matInput placeholder="Email" />
-        </mat-form-field>
-        <mat-form-field  style="width: 240px;"class="example-full-width">
-          <input formControlName="password" type="password" matInput placeholder="Password" />
-        </mat-form-field>
-        <button (click) = 'onLogin();' type = 'submit' class="button-dark" routerLink="/home">Log In</button>
-      </form>
-    </div>
-  </div>
-  <app-footer></app-footer>
+    <app-footer></app-footer>
 </div>
