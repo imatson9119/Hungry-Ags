@@ -37,7 +37,7 @@ import { provideRoutes } from '@angular/router';
 let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider("416041496495-c3qbknpdf6alacj31vqjqhaesmgl6v7s.apps.googleusercontent.com"),
+    provider: new GoogleLoginProvider("416041496495-sbu52cqu7jc6ft1oh5u2rcqt5m5ggg3i.apps.googleusercontent.com"),
   }
 ]);
 

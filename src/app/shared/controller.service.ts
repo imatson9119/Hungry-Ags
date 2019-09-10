@@ -31,10 +31,14 @@ export class ControllerService implements OnInit {
      this.setStorage(this.SIGNED_IN_KEY,this.signedIn.toString())
    }
    signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((userData) => {
+      this.user = userData.email;
+      this.signedIn = true;
+   });
   }
   signOut(): void {
     this.authService.signOut();
+    this.signedIn=false;
   }
 
 }

@@ -31,7 +31,7 @@ export class RegisterOrgComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(RegistrationDialog, {
       width: '350px',
-      data: {orgName: this.orgName, username: this.controllerService.getStorage(this.controllerService.USERNAME_KEY)}
+      data: {orgName: this.orgName, username: this.controllerService.user}
     });
 
     dialogRef.afterClosed().subscribe(result => {
