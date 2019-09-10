@@ -23,14 +23,27 @@ import { FooterComponent } from "./footer/footer.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { ReactiveFormsModule } from "@angular/forms";
 import { FormsModule } from '@angular/forms';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { NewEventComponent } from './new-event/new-event.component';
 import { RegisterOrgComponent, RegistrationDialog } from './register-org/register-org.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { GoogleLoginProvider } from "angularx-social-login";
+import { provideRoutes } from '@angular/router';
 
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("416041496495-c3qbknpdf6alacj31vqjqhaesmgl6v7s.apps.googleusercontent.com"),
+  }
+]);
+
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -45,7 +58,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     NewEventComponent,
     RegisterOrgComponent,
     EventDialog,
-    RegistrationDialog
+    RegistrationDialog,
   ],
   imports: [
     BrowserModule,
@@ -66,10 +79,14 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    SocialLoginModule
   ],
-  providers: [HttpClientModule],
+  providers: [HttpClientModule, {
+    provide: AuthServiceConfig,
+    useFactory: provideConfig
+  }],
   bootstrap: [AppComponent],
-  entryComponents: [ConfirmEmailDialog, EventDialog,RegistrationDialog]
+  entryComponents: [ConfirmEmailDialog, EventDialog, RegistrationDialog]
 })
-export class AppModule {}
+export class AppModule { }
