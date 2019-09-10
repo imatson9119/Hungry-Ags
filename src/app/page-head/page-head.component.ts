@@ -2,9 +2,8 @@ import { AppComponent } from "../app.component";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { CalendarService } from "../calendar.service";
-import { stringify } from "querystring";
 import { ControllerService } from "../shared/controller.service";
-import { getMaxListeners } from "cluster";
+import { AuthService } from 'angularx-social-login';
 
 @Component({
   selector: "app-page-head",
@@ -15,7 +14,8 @@ export class PageHeadComponent implements OnInit {
   constructor(
     public controllerService: ControllerService,
     public router: Router,
-    public calendarService: CalendarService
+    public calendarService: CalendarService,
+    private authService: AuthService
   ) {}
   public filter: string = "";
   public wasHome: boolean = false;
@@ -87,11 +87,6 @@ export class PageHeadComponent implements OnInit {
     return this.wasHome;
   }
   getDisplayName() {
-    let tempName = this.controllerService.getStorage(
-      this.controllerService.USERNAME_KEY
-    );
-    if (tempName == null || !this.controllerService.signedIn) return "";
-    if (tempName.length >= 25) tempName = tempName.substr(0, 22) + "...";
-    return tempName;
+    return this.controllerService.user.name;
   }
 }

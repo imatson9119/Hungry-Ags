@@ -1,18 +1,29 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ControllerService {
+export class ControllerService implements OnInit {
   SIGNED_IN_KEY = 'signedIn';
   USERNAME_KEY = 'user';
   signedIn: boolean;
-  constructor() {
+  user: any;
+
+  constructor(private authService: AuthService) {
     if(this.getStorage(this.SIGNED_IN_KEY) != null){
       this.signedIn = this.getStorage(this.SIGNED_IN_KEY) === 'true';
     }
     console.log(this.signedIn);
    }
+
+   ngOnInit(){
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.signedIn = (user != null);
+    });
+  }
+
    setStorage(key: string, value: any){
      window.localStorage.setItem(key, value)
    }
@@ -22,5 +33,11 @@ export class ControllerService {
    ngOnDestroy(){
      this.setStorage(this.SIGNED_IN_KEY,this.signedIn.toString())
    }
+   signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+  signOut(): void {
+    this.authService.signOut();
+  }
 
 }

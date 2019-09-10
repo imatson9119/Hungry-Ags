@@ -48,12 +48,8 @@
         <div class="username">{{ this.getDisplayName() }}</div>
         <button
           (click)="
-            controllerService.signedIn = false;
+            this.controllerService.signOut();
             this.router.navigateByUrl('/login');
-            controllerService.setStorage(
-              controllerService.SIGNED_IN_KEY,
-              'false'
-            )
           "
           mat-menu-item
         >
