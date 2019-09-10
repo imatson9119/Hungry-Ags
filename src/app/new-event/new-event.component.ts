@@ -46,7 +46,37 @@ export class NewEventComponent implements OnInit {
       startTimeControl: ['', [Validators.required]],
       endTimeControl: ['', [Validators.required]],
       descControl: ['', [Validators.required]],
-    });
+    },{validator: this.checkTimes('startTimeControl', 'endTimeControl')});
+  }
+
+  checkTimes(start: string, end: string) {
+    return (group: FormGroup) => {
+      
+      let startTime = group.controls[start],
+          endTime = group.controls[end];
+      if(startTime.value == '' || endTime.value == '')
+        return endTime.setErrors(null);
+      let st = this.formatTime(startTime.value), et = this.formatTime(endTime.value);
+      if (st[0] > et[0] || (st[0] == et[0] && st[1] > et[1])) {
+        return endTime.setErrors({notLogical: true})
+      }
+      else {
+        return endTime.setErrors(null);
+      }
+    }
+  }
+  formatTime(time: string){
+    let timeNum = time.split(' ');
+    let mins = +timeNum[0].split(':')[1];
+    let hrs = +timeNum[0].split(':')[0];
+    if(timeNum[1] == 'PM'){
+      hrs = hrs + 12;
+    }
+    else if (hrs == 12){
+      hrs = 0
+    }
+    console.log(hrs + ":" + mins);
+    return [hrs,mins]
   }
 
   onSubmit(formGroup: FormGroup) {

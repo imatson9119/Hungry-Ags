@@ -16,9 +16,9 @@
 #center {
   display: inline-flex;
   position: absolute;
-  left: 50%; 
+  left: 50%;
   top: 32px;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
 }
 
 #right {
@@ -28,7 +28,15 @@
   position: absolute;
   right: 1%;
 }
-.username{
+.user-panel {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  padding-left: 10px;
+}
+.username {
   overflow: hidden;
   font-weight: bold;
   background: #6c1420;
@@ -74,7 +82,7 @@
   .white-box {
     width: 90vw;
   }
-  
+
   #left {
     display: none;
   }
