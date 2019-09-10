@@ -36,7 +36,7 @@ export class CalendarComponent implements OnInit {
   public doLink: boolean;
 
   constructor(
-    private calendarService: CalendarService,
+    public calendarService: CalendarService,
     public dialog: MatDialog
   ) {}
 

@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
       }
     }
   }
-  onSubmit(form: FormControl){
+  onSubmit(form: FormGroup){
   }
 }
 

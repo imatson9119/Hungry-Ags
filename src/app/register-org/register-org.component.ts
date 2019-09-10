@@ -19,6 +19,7 @@ export interface DialogData {
 })
 export class RegisterOrgComponent implements OnInit {
   registrationForm: FormGroup;
+  displayPassError : boolean = false;
   constructor(public fb: FormBuilder, public dialog: MatDialog, public controllerService: ControllerService) { }
   orgName: string;
   ngOnInit() {
@@ -37,7 +38,7 @@ export class RegisterOrgComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
-  onSubmit(){
+  onSubmit(registrationForm){
     this.orgName = this.registrationForm.value.name;
     this.openDialog();
 
