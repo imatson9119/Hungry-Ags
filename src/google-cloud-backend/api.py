@@ -131,7 +131,7 @@ def home():
     testConstant += "1"
     return jsonify(testConstant)'''
 
-@app.route('/', methods=['GET'])
+@app.route('/api/getevents', methods=['GET'])
 def getEvents():
     return jsonify(events)
 

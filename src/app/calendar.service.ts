@@ -12,12 +12,12 @@ export class CalendarService {
   public calendarEvents = [];
 
   constructor(public http : HttpClient) {
-    this.foodEvents = this.http.get("//127.0.0.1:5000/").subscribe(
+    this.foodEvents = this.http.get("/api/getevents").subscribe(
       events =>  (this.foodEvents = events));;
   }
 
   getEvents() : Observable<FoodEvent[]>{
-      this.foodEvents = this.http.get("//127.0.0.1:5000/").subscribe(
+      this.foodEvents = this.http.get("/api/getevents").subscribe(
         events =>  (this.foodEvents = events));;
       return of(this.foodEvents);
   }

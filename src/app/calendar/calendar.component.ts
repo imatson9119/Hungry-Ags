@@ -47,7 +47,7 @@ export class CalendarComponent implements OnInit {
     /*this.calendarService
       .getEvents()
       .subscribe(events => (this.events = events));*/
-    this.http.get("//127.0.0.1:5000/").subscribe(
+    this.http.get("/api/getevents").subscribe(
       events =>  (this.events = events));
     console.log("Events Length", this.events.length);
     this.calendarObjects = [];
@@ -57,7 +57,7 @@ export class CalendarComponent implements OnInit {
 
     console.log("Calendar Length", this.calendarObjects.length);
     console.log(this.calendarObjects);
-    this.http.get("//127.0.0.1:5000/").subscribe(val => (this.val = String(val)));
+    this.http.get("/api/getevents").subscribe(val => (this.val = String(val)));
   }
 
   openDialog(arg): void {
