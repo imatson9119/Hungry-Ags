@@ -8,6 +8,7 @@ import { RegisterComponent } from "./register/register.component";
 import { NewEventComponent } from './new-event/new-event.component';
 import { RegisterOrgComponent } from './register-org/register-org.component';
 import { DevComponent } from './dev/dev.component';
+import { AuthGuardService } from './shared/auth-guard.service';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -15,8 +16,8 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "about", component: AboutComponent },
   { path: "register", component: RegisterComponent},
-  { path: "new-event", component: NewEventComponent},
-  { path: "register-org", component: RegisterOrgComponent},
+  { path: "new-event", component: NewEventComponent, canActivate: [AuthGuardService]},
+  { path: "register-org", component: RegisterOrgComponent, canActivate: [AuthGuardService]},
   { path: "dev", component: DevComponent},
 ];
 
