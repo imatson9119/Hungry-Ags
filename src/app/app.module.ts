@@ -36,6 +36,7 @@ import { provideRoutes } from '@angular/router';
 import { DevComponent } from './dev/dev.component';
 import { AuthGuardService } from './shared/auth-guard.service';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 let config = new AuthServiceConfig([
   {
@@ -64,6 +65,7 @@ export function provideConfig() {
     RegistrationDialog,
     DevComponent,
     NotAuthorizedComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,
