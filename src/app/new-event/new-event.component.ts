@@ -136,7 +136,7 @@ export class NewEventComponent implements OnInit {
 
     this.calendarService.foodEvents.push({
       eventName: formControl.nameControl,
-      user: this.controller.getStorage(this.controller.USERNAME_KEY),
+      user: this.controller.getStorage(this.controller.AUTH_KEY),
       sanctioned: false,
       startTime: start,
       endTime: end,

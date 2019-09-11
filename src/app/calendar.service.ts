@@ -8,11 +8,18 @@ import { FoodEvent } from './calendar/FoodEvent';
   providedIn: 'root'
 })
 export class CalendarService {
-  public foodEvents : FoodEvent[] = MockFoodEvents;
+  public foodEvents;
   public calendarEvents = [];
 
+  constructor(public http : HttpClient) {
+    this.foodEvents = this.http.get("//127.0.0.1:5000/").subscribe(
+      events =>  (this.foodEvents = events));;
+  }
+
   getEvents() : Observable<FoodEvent[]>{
-      return of(MockFoodEvents);
+      this.foodEvents = this.http.get("//127.0.0.1:5000/").subscribe(
+        events =>  (this.foodEvents = events));;
+      return of(this.foodEvents);
   }
 
   getCalendarEvents() {

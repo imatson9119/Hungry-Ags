@@ -12,6 +12,7 @@ import { TouchSequence } from "selenium-webdriver";
 import { buildings } from "../MockMapExtensions";
 import { MatSnackBar, MatSnackBarModule } from "@angular/material/snack-bar";
 import { ControllerService } from "../shared/controller.service";
+import { HttpClient } from "@angular/common/http";
 
 export interface Data {
   title: string;
@@ -31,27 +32,32 @@ export interface Data {
 })
 export class CalendarComponent implements OnInit {
   calendarPlugins = [listPlugin]; // important!
-  public events: FoodEvent[];
+  public events;
   public calendarObjects: Object[] = [];
   public doLink: boolean;
+  public val : String;
 
   constructor(
     public calendarService: CalendarService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public http : HttpClient
   ) {}
 
   ngOnInit() {
-    this.calendarService
+    /*this.calendarService
       .getEvents()
-      .subscribe(events => (this.events = events));
+      .subscribe(events => (this.events = events));*/
+    this.http.get("//127.0.0.1:5000/").subscribe(
+      events =>  (this.events = events));
     console.log("Events Length", this.events.length);
     this.calendarObjects = [];
     this.calendarService
       .getCalendarEvents()
       .subscribe(events => (this.calendarObjects = events));
+
     console.log("Calendar Length", this.calendarObjects.length);
     console.log(this.calendarObjects);
-
+    this.http.get("//127.0.0.1:5000/").subscribe(val => (this.val = String(val)));
   }
 
   openDialog(arg): void {
@@ -63,6 +69,7 @@ export class CalendarComponent implements OnInit {
       user : "",
       sanctioned : false
     };
+
     for (let i = 0; i < this.events.length; i++) {
       let verificationString =
         this.events[i].location + " - " + this.events[i].eventName;
@@ -86,7 +93,7 @@ export class CalendarComponent implements OnInit {
     const dialogRef = this.dialog.open(EventDialog, {
       width: "400px",
       data: {
-        title: event.eventName,
+        title: this.val,//event.eventName,
         location: event.location,
         description: event.description,
         organization: event.organization,
@@ -123,7 +130,7 @@ export class EventDialog {
     @Inject(MAT_DIALOG_DATA) public data: Data,
     private _snackBar: MatSnackBar,
     public controllerService : ControllerService
-  ) {}
+      ) {}
 
   onNoClick(): void {
     this.dialogRef.close();
