@@ -16,13 +16,12 @@ const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "home", component: CalendarComponent },
   { path: "login", component: LoginComponent },
-  { path: "about", component: AboutComponent },
+  { path: "about", component: AboutUsComponent },
   { path: "register", component: RegisterComponent},
   { path: "new-event", component: NewEventComponent, canActivate: [AuthGuardService]},
   { path: "register-org", component: RegisterOrgComponent, canActivate: [AuthGuardService]},
   { path: "dev", component: DevComponent},
   { path: "not-authorized", component: NotAuthorizedComponent},
-  { path: "about-us", component: AboutUsComponent},
 ];
 
 @NgModule({

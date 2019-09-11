@@ -11,5 +11,9 @@ export class AboutUsComponent implements OnInit {
 
   ngOnInit() {
   }
+  scroll(id: string){
+    document.getElementById(id).scrollIntoView();
+    console.log('scrolling to' + id)
+  }
 
 }
