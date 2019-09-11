@@ -44,10 +44,11 @@ export class CalendarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    let url = "http://127.0.0.1:5000/"
     /*this.calendarService
       .getEvents()
       .subscribe(events => (this.events = events));*/
-    this.http.get("/api/getevents").subscribe(
+    this.http.get(url).subscribe(
       events =>  (this.events = events));
     console.log("Events Length", this.events.length);
     this.calendarObjects = [];
@@ -57,7 +58,7 @@ export class CalendarComponent implements OnInit {
 
     console.log("Calendar Length", this.calendarObjects.length);
     console.log(this.calendarObjects);
-    this.http.get("/api/getevents").subscribe(val => (this.val = String(val)));
+    this.http.get(url).subscribe(val => (this.val = String(val)));
   }
 
   openDialog(arg): void {

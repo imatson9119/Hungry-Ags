@@ -4,7 +4,7 @@ from flask_cors import CORS, cross_origin
 
 
 app = flask.Flask(__name__)
-app.config["DEBUG"] = True
+app.config["DEBUG"] = False
 print("Test")
 testConstant = "1"
 events = [
@@ -121,8 +121,7 @@ events = [
   ]
 
 
-cors = CORS(app, resources={r"/api/getevents": {"origins": "*"}})
-
+cors = CORS(app, resources={r"/": {"origins": "*"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 '''@app.route('/api/getevents', methods=['GET'])
@@ -131,9 +130,12 @@ def home():
     testConstant += "1"
     return jsonify(testConstant)'''
 
-@app.route('/api/getevents', methods=['GET'])
+#@cross_origin()
+@app.route('/', methods=['GET'])
 def getEvents():
-    return jsonify(events)
+    response = flask.jsonify(events)
+    #response.headers.add("Access-Control-Allow-Origin")
+    return response
 
 
 app.run()
