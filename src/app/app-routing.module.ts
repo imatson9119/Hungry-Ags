@@ -7,6 +7,7 @@ import { AboutComponent } from "./about/about.component";
 import { RegisterComponent } from "./register/register.component";
 import { NewEventComponent } from './new-event/new-event.component';
 import { RegisterOrgComponent } from './register-org/register-org.component';
+import { DevComponent } from './dev/dev.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: "register", component: RegisterComponent},
   { path: "new-event", component: NewEventComponent},
   { path: "register-org", component: RegisterOrgComponent},
+  { path: "dev", component: DevComponent},
 ];
 
 @NgModule({

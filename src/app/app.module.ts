@@ -33,6 +33,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { provideRoutes } from '@angular/router';
+import { DevComponent } from './dev/dev.component';
 
 let config = new AuthServiceConfig([
   {
@@ -59,6 +60,7 @@ export function provideConfig() {
     RegisterOrgComponent,
     EventDialog,
     RegistrationDialog,
+    DevComponent,
   ],
   imports: [
     BrowserModule,
