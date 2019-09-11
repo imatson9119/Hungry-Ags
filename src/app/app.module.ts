@@ -35,6 +35,7 @@ import { GoogleLoginProvider } from "angularx-social-login";
 import { provideRoutes } from '@angular/router';
 import { DevComponent } from './dev/dev.component';
 import { AuthGuardService } from './shared/auth-guard.service';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 
 let config = new AuthServiceConfig([
   {
@@ -62,6 +63,7 @@ export function provideConfig() {
     EventDialog,
     RegistrationDialog,
     DevComponent,
+    NotAuthorizedComponent,
   ],
   imports: [
     BrowserModule,
