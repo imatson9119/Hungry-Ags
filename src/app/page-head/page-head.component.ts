@@ -20,7 +20,13 @@ export class PageHeadComponent implements OnInit {
   public filter: string = "";
   public wasHome: boolean = false;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.controllerService.photo = this.controllerService.getStorage(this.controllerService.PHOTO_KEY);
+    this.controllerService.user = this.controllerService.getStorage(this.controllerService.EMAIL_KEY);
+    if(this.controllerService.user != null){
+      this.controllerService.signedIn=true;
+    }
+  }
 
   checkIsHome() {
     if (!this.wasHome) {
@@ -31,7 +37,6 @@ export class PageHeadComponent implements OnInit {
     if (this.filter.length > 0) {
       this.calendarService.calendarEvents = [];
       let events = this.calendarService.foodEvents;
-      console.log("Transferred length:", events.length);
       let filters = this.filter.split(" ");
       for (let i = 0; i < events.length; i++) {
         let event = [

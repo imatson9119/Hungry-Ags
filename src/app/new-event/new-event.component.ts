@@ -75,13 +75,10 @@ export class NewEventComponent implements OnInit {
     else if (hrs == 12){
       hrs = 0
     }
-    console.log(hrs + ":" + mins);
     return [hrs,mins]
   }
 
   onSubmit(formGroup: FormGroup) {
-    console.log("SERVED");
-    console.log(formGroup.getRawValue());
     let formControl = formGroup.getRawValue();
     let month = String(formControl.dateControl.getMonth());
     month = String(Number(month) + 1);
@@ -94,7 +91,6 @@ export class NewEventComponent implements OnInit {
       day = "0"+String(Number(day));
     }
     let year = String(formControl.dateControl.getFullYear());
-    console.log(year,"-",month,"-",day);
 
     let start = formControl.startTimeControl.replace(" ", "");
     let end = formControl.endTimeControl.replace(" ", "");
@@ -132,7 +128,6 @@ export class NewEventComponent implements OnInit {
     start = year + "-" + month + "-" + day + "T" + start + "+19:00";
     end = year + "-" + month + "-" + day + "T" + end + "+19:00";
 
-    console.log("Time: ", start, "  ", end);
 
     this.calendarService.foodEvents.push({
       eventName: formControl.nameControl,
@@ -145,7 +140,6 @@ export class NewEventComponent implements OnInit {
       organization: formControl.orgControl,
       meetsCriteria : true
     });
-    console.log(this.calendarService.foodEvents[this.calendarService.foodEvents.length - 1].eventName);
     this.router.navigateByUrl("/home");
   }
 

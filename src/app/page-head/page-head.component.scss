@@ -34,7 +34,7 @@
   align-items: center;
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.1);
-  padding-left: 10px;
+  padding-right: 10px;
 }
 .username {
   overflow: hidden;
@@ -75,9 +75,17 @@
 }
 
 #sign-in-button {
-  color: #6c1420;
+  height: 42px;
+  border-radius: 13px;
+  cursor: pointer;
 }
-
+.user-photo {
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  height: 35px;
+  width: 35px;
+  margin: 5px;
+}
 @media only screen and (max-width: 1000px) {
   .white-box {
     width: 90vw;

@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
     });
   }
   onSubmit(form: FormGroup){
-    console.log("submitted");
   }
 
 }
