@@ -1,0 +1,116 @@
+.main-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+}
+
+.sub-container {
+  width: 100%;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile {
+  width: 100%;
+  transition: transform .2s;
+  align-items: left;
+}
+
+.profile:hover {
+  transform: scale(1.02); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.about-section {
+  background-color: #ededed;
+  height: 400px;
+  width: 100%;
+}
+
+.column1 {
+  float: left;
+  vertical-align: middle;
+  width: 50%;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  padding-left: 5%;
+}
+
+.column2 {
+  padding-top: 75px;
+  float: left;
+  width: 38%;
+  padding-right: 2px;
+}
+
+.name {
+  align-items: left;
+  align-content: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 15pt;
+}
+
+.bio {
+  display: flex;
+  float: left;
+}
+
+.title {
+  font-size: 35px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  color: #520c16;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title2 {
+  font-size: 35px;
+  padding-top: 80px;
+  padding-bottom: 35px;
+  color: #520c16;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  float: left;
+  width: 215px;
+  height: 300px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.row {
+  content: "";
+  display: flex;
+  clear: both;
+  justify-content: center;
+  align-items: center;
+}
+
+.row2 {
+  content: "";
+  display: flex;
+  clear: both;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.row1:after {
+  content: "";
+  display: flex;
+  clear: both;
+  width: 85%;
+}

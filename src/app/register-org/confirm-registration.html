@@ -1,0 +1,8 @@
+<h1 class="text" mat-dialog-title>
+  Are you sure you would like to register <span class='maroon'>{{data.orgName}}
+  </span> under the email <span class='maroon'>{{data.username}}</span>? This request will be manually reviewed and may take a few days.
+  <div class= 'buttons' mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button routerLink = '/home' cdkFocusInitial>Confirm</button>
+  </div>
+</h1>

@@ -8,7 +8,6 @@ import list from '@fullcalendar/list'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title="Aggie Food";
+  title="Hungry Ags!";
   calendarPlugins = [dayGridPlugin, list]; // important!
-
 }

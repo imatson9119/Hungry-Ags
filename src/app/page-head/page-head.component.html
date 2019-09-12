@@ -1,0 +1,65 @@
+<mat-toolbar color="primary" id="nav-bar">
+  <div id="left">
+    <img
+      src="assets/logo.png"
+      routerLink="/home"
+      height="42px;"
+      style="margin-left: -10px; cursor: pointer; outline: none;"
+    />
+    <h1 id="site-title" routerLink="/home">
+      <span style="font-family: Copperplate-Bold">Hungry</span
+      ><span style="margin-left: 5px; font-family: Copperplate-Light">Ags</span>
+    </h1>
+  </div>
+
+  <div id="center">
+    <div *ngIf="checkIsHome()" class="white-box">
+      <i class="material-icons" id="filter-icon">filter_list</i>
+      <input
+        id="search-input"
+        placeholder="Filter..."
+        [(ngModel)]="filter"
+        (onshow)="checkIsHome()"
+        (input)="checkIsHome()"
+      />
+    </div>
+  </div>
+
+  <div id="right">
+    <button
+      *ngIf="router.url != '/login' && !controllerService.signedIn"
+      mat-raised-button
+      id="sign-in-button"
+      routerLink="/login"
+    >
+      SIGN IN
+    </button>
+    <div class="user-panel" *ngIf = 'this.controllerService.signedIn == true;'>
+      {{this.controllerService.user}}
+      <button
+        
+        [matMenuTriggerFor]="menu"
+        mat-icon-button
+        aria-label="Example icon-button with a heart icon"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <div class="username">{{this.controllerService.user}}</div>
+        <button
+          (click)="
+            this.controllerService.signOut();
+            this.router.navigateByUrl('/login');
+          "
+          mat-menu-item
+        >
+          Sign Out
+        </button>
+        <button mat-menu-item routerLink="/new-event">Add an Event</button>
+        <button mat-menu-item routerLink="/register-org">
+          Register an Organization
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>
