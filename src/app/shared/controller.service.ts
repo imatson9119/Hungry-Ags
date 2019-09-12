@@ -30,7 +30,8 @@ export class ControllerService implements OnInit, OnDestroy {
   }
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((userData) => {
-      this.user = userData.email;
+      this.user = userData.firstName + " " + userData.lastName;
+      
       this.signedIn = true;
       
     });
