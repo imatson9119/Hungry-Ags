@@ -101,7 +101,6 @@ if (!environment.firebase) {
     MatNativeDateModule,
     MatSnackBarModule,
     NgxMaterialTimepickerModule,
-    SocialLoginModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
