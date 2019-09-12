@@ -15,13 +15,13 @@ export class CalendarService {
 
   constructor(public firebase: AngularFireFunctions,public http : HttpClient) {
     let url = "https://us-central1-hungry-ags.cloudfunctions.net/sendEvents";
-    this.foodEvents = this.http.get(url, {params:{}}).subscribe(
+    this.foodEvents = this.http.get(url, {params:{}, observe:"response"}).subscribe(
       events =>  (this.foodEvents = events));
   }
 
   getEvents() : Observable<FoodEvent[]>{
     let url = "https://us-central1-hungry-ags.cloudfunctions.net/sendEvents";
-      this.foodEvents = this.http.get(url, {params:{}}).subscribe(
+      this.foodEvents = this.http.get(url, {params:{}, observe:'response'}).subscribe(
         events =>  (this.foodEvents = events));;
       return of(this.foodEvents);
   }
