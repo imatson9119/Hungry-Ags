@@ -37,6 +37,10 @@ import { DevComponent } from './dev/dev.component';
 import { AuthGuardService } from './shared/auth-guard.service';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
 
 let config = new AuthServiceConfig([
   {
@@ -47,6 +51,14 @@ let config = new AuthServiceConfig([
 
 export function provideConfig() {
   return config;
+}
+
+if (!environment.firebase) {
+  if (!environment.firebase.apiKey) {
+    window.alert(configErrMsg);
+  } else if (environment.firebase.storageBucket === '') {
+    window.alert(bucketErrMsg);
+  }
 }
 
 @NgModule({
@@ -87,7 +99,10 @@ export function provideConfig() {
     MatNativeDateModule,
     MatSnackBarModule,
     NgxMaterialTimepickerModule,
-    SocialLoginModule
+    SocialLoginModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [HttpClientModule, {
     provide: AuthServiceConfig,

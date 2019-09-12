@@ -12,13 +12,13 @@ export class CalendarService {
   public calendarEvents = [];
 
   constructor(public http : HttpClient) {
-    let url = "http://127.0.0.1:5000/"
+    let url = "https://hungry-ags.appspot.com/api/";
     this.foodEvents = this.http.get(url).subscribe(
       events =>  (this.foodEvents = events));;
   }
 
   getEvents() : Observable<FoodEvent[]>{
-    let url = "http://127.0.0.1:5000/"
+    let url = "https://hungry-ags.appspot.com/api/";
       this.foodEvents = this.http.get(url).subscribe(
         events =>  (this.foodEvents = events));;
       return of(this.foodEvents);

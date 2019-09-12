@@ -44,7 +44,7 @@ export class CalendarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    let url = "http://127.0.0.1:5000/"
+    let url = "https://hungry-ags.appspot.com/api/";
     /*this.calendarService
       .getEvents()
       .subscribe(events => (this.events = events));*/
@@ -94,7 +94,7 @@ export class CalendarComponent implements OnInit {
     const dialogRef = this.dialog.open(EventDialog, {
       width: "400px",
       data: {
-        title: this.val,//event.eventName,
+        title: event.eventName,//event.eventName,
         location: event.location,
         description: event.description,
         organization: event.organization,
