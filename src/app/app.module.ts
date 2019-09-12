@@ -30,7 +30,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { SocialLoginModule, AuthServiceConfig, AuthService } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { provideRoutes } from '@angular/router';
 import { DevComponent } from './dev/dev.component';
@@ -109,7 +109,7 @@ if (!environment.firebase) {
   providers: [HttpClientModule, {
     provide: AuthServiceConfig,
     useFactory: provideConfig
-  }, AuthGuardService
+  }, AuthGuardService, AuthService
   ],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmEmailDialog, EventDialog, RegistrationDialog]
