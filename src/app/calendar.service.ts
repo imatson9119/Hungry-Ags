@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { MockFoodEvents } from './MockFoodEvents'
 import { of, Observable } from 'rxjs';
 import { FoodEvent } from './calendar/FoodEvent';
+import { AngularFireFunctions } from '@angular/fire/functions'
+import firebase from 'firebase';
+import { sendEvents } from '../functions';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +14,15 @@ export class CalendarService {
   public foodEvents;
   public calendarEvents = [];
 
-  constructor(public http : HttpClient) {
-    let url = "https://hungry-ags.appspot.com/api/";
+  constructor(public firebase: AngularFireFunctions,public http : HttpClient) {
+    let url = "https://us-central1-hungry-ags.cloudfunctions.net/sendEvents";
     this.foodEvents = this.http.get(url).subscribe(
-      events =>  (this.foodEvents = events));;
+      events =>  (this.foodEvents = events));
   }
 
   getEvents() : Observable<FoodEvent[]>{
-    let url = "https://hungry-ags.appspot.com/api/";
-      this.foodEvents = this.http.get(url).subscribe(
+    let url = "https://us-central1-hungry-ags.cloudfunctions.net/sendEvents";
+      this.foodEvents = this.http.get(url, 'tes').subscribe(
         events =>  (this.foodEvents = events));;
       return of(this.foodEvents);
   }
