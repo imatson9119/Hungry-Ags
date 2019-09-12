@@ -108,7 +108,7 @@ events = [
       "meetsCriteria":False
     },
     {
-      "eventName": "EFall Programming Competition",
+      "eventName": "Fall Programming Competition",
       "user": "hoke_t@icloud.com",
       "sanctioned": False,
       "startTime": "2019-09-15T12:30:00+00:00",
@@ -121,7 +121,7 @@ events = [
   ]
 
 
-cors = CORS(app, resources={r"/": {"origins": "*"}})
+cors = CORS(app, resources={r"/api": {"origins": "*"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 '''@app.route('/api/getevents', methods=['GET'])
@@ -131,7 +131,7 @@ def home():
     return jsonify(testConstant)'''
 
 #@cross_origin()
-@app.route('/', methods=['GET'])
+@app.route('/api', methods=['GET'])
 def getEvents():
     response = flask.jsonify(events)
     #response.headers.add("Access-Control-Allow-Origin")
