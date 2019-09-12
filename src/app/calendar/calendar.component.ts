@@ -44,7 +44,7 @@ export class CalendarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    let url = "https://hungry-ags.appspot.com/api/";
+    let url = "https://us-central1-hungry-ags.cloudfunctions.net/sendEvents";
     /*this.calendarService
       .getEvents()
       .subscribe(events => (this.events = events));*/

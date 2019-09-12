@@ -41,6 +41,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { AngularFireFunctions, AngularFireFunctionsModule } from '@angular/fire/functions';
+
 
 let config = new AuthServiceConfig([
   {
@@ -102,7 +104,8 @@ if (!environment.firebase) {
     SocialLoginModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireFunctionsModule
   ],
   providers: [HttpClientModule, {
     provide: AuthServiceConfig,
