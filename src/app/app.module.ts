@@ -55,9 +55,9 @@ export function provideConfig() {
 
 if (!environment.firebase) {
   if (!environment.firebase.apiKey) {
-    window.alert(configErrMsg);
+    window.alert("configErrMsg");
   } else if (environment.firebase.storageBucket === '') {
-    window.alert(bucketErrMsg);
+    window.alert("bucketErrMsg");
   }
 }
 
