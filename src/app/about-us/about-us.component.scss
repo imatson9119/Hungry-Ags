@@ -19,6 +19,8 @@
   background-size: cover;
   filter: brightness(50%);
   z-index: -1;
+  background-attachment: fixed;
+  background-position: center;
 }
 .main-container {
   width: 100%;
@@ -161,6 +163,8 @@
   background-size: cover;
   filter: brightness(70%);
   z-index: -1;
+  background-attachment: fixed;
+  background-position: center;
 }
 .back-to-top {
   position: absolute;
@@ -175,6 +179,8 @@
   width: 100%;
   display: flex;
   flex-direction: row;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .bottom-left {
   display: flex;
