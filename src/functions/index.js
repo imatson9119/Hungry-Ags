@@ -30,7 +30,7 @@ const storageClient = new Storage();
 const language = require('@google-cloud/language');
 const languageClient = new language.LanguageServiceClient();
 
-exports.sendEvents = functions.https.onCall(data => {
+exports.sendEvents = functions.https.onCall((req, res) => {
   var events = [
     {
       "eventName": "Aggie Cru Pizza Social",
