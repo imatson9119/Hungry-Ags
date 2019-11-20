@@ -27,7 +27,7 @@
     "@fullcalendar/daygrid": "^4.3.0",
     "@fullcalendar/list": "^4.3.0",
     "@fullcalendar/timegrid": "^4.3.0",
-    "angular": "^1.7.8",
+    "angular": "^1.7.9",
     "angularx-social-login": "^1.2.7",
     "cluster": "^0.7.7",
     "fire": "^0.55.1",
