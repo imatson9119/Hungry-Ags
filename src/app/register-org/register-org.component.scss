@@ -1,0 +1,58 @@
+.main-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-form {
+    z-index: 1;
+    width: 330px;
+    height: 250px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.35);
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    font-size: 20px;
+    align-items: center;
+    background: rgba(0,0,0,.06);
+    color: #520c16;
+  }
+  .header {
+    font-size: 35px;
+    margin-top: 30px;
+    margin-bottom: 11px;
+  }
+  .button-dark {
+    outline: none;
+    border: none;
+    width: 250px;
+    padding: 14px;
+    border-radius: 10px;
+    margin-top: 13px;
+    font-size: 14px;
+    font-weight: bold;
+    box-sizing: border-box;
+    color: white;
+    transition: 0.4s;
+    cursor: pointer;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background: transparent;
+    background: #6c1420;
+    background: linear-gradient(153deg, #6c1420 0%, #913441 100%);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+  }
+  .button-dark:hover {
+    -webkit-filter: brightness(60%);
+  }
+  .button-dark:disabled{
+    cursor: default;
+    filter: grayscale(1) ;
+    
+  }
+  

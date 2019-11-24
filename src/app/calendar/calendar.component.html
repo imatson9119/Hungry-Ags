@@ -1,1 +1,13 @@
-<p>calendar works!</p>
+<div class="main-container">
+  <div class="calendar-container">
+    <full-calendar
+      (eventClick)="openDialog($event)"
+      noEventsMessage=""
+      handleWindowResize="true;"
+      defaultView="listWeek"
+      [plugins]="calendarPlugins"
+      [events]="calendarService.calendarEvents"
+    ></full-calendar>
+  </div>
+  <app-footer></app-footer>
+</div>

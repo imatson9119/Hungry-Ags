@@ -16,6 +16,7 @@
     "@angular/common": "~8.2.0",
     "@angular/compiler": "~8.2.0",
     "@angular/core": "~8.2.0",
+    "@angular/fire": "^5.2.1",
     "@angular/forms": "~8.2.0",
     "@angular/material": "^8.1.4",
     "@angular/platform-browser": "~8.2.0",
@@ -26,7 +27,19 @@
     "@fullcalendar/daygrid": "^4.3.0",
     "@fullcalendar/list": "^4.3.0",
     "@fullcalendar/timegrid": "^4.3.0",
+<<<<<<< HEAD
     "angular-cli": "^1.0.0-beta.28.3",
+=======
+    "angular": "^1.7.8",
+    "angularx-social-login": "^1.2.7",
+    "cluster": "^0.7.7",
+    "fire": "^0.55.1",
+    "firebase": "^6.6.0",
+    "firebase-admin": "^8.5.0",
+    "firebase-auth": "^0.1.2",
+    "firebase-tools": "^7.3.2",
+    "ngx-material-timepicker": "^5.0.0",
+>>>>>>> f3e554d6ae1ad08f8fc66b914ffe3b4fdb4b7c82
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "webpack": "^4.39.3",

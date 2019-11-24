@@ -1,0 +1,37 @@
+.title {
+    color:#6c1420;
+    line-height: 90%;
+
+}
+
+.dot {
+    height: 8px;
+    width: 8px;
+    background-color: #6c1420;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.material-icons {
+    color:rgb(170,170,170);
+    float:right;
+    top:0;
+    right:0;
+    transition:0.5s all;
+    outline:none;
+    text-decoration: none;
+}
+
+.material-icons:hover {
+    cursor: pointer;
+    color:#6c1420;
+}
+
+.info {
+    font-size:12px;
+    padding:0em;
+}
+
+.footer{
+    color:rgba(0,0,0,0.55);
+}

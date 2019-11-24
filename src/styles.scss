@@ -1,3 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@fullcalendar/core/main.css';
-@import '~@fullcalendar/list/main.css';
+@import "~@fullcalendar/core/main.css";
+@import "~@fullcalendar/list/main.css";
+@import "./app/cool-theme.css";
+
+html * {
+  margin: 0;
+  padding: 0;
+  font-family: "Raleway", sans-serif;
+}
+
+a {
+  color: #6c1420;
+}
+
+@font-face {
+  font-family: 'Copperplate-Bold';
+  src: url('/assets/Copperplate-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Copperplate-Light';
+  src: url('/assets/Copperplate-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Copperplate';
+  src: url('/assets/Copperplate.ttf');
+}
+  
+  /* Tooltip text */
+  .fc-event-dot .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .fc-event-dot:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .fc-list-item:hover {
+      cursor: pointer;
+  }

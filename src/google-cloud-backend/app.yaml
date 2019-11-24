@@ -1,0 +1,10 @@
+runtime: python37
+service: default
+
+handlers:
+- url: /
+  static_files: dist/AggieFood/index.html
+  upload: dist/AggieFood/index.html
+- url: /
+  static_dir: dist
+

@@ -10,5 +10,4 @@ import list from '@fullcalendar/list'
 export class AppComponent {
   title="Hungry Ags!";
   calendarPlugins = [dayGridPlugin, list]; // important!
-
 }
