@@ -13,6 +13,7 @@ import { buildings } from "../MockMapExtensions";
 import { MatSnackBar, MatSnackBarModule } from "@angular/material/snack-bar";
 import { ControllerService } from "../shared/controller.service";
 import { HttpClient } from "@angular/common/http";
+import { AngularFireDatabase } from '@angular/fire/database';
 
 export interface Data {
   title: string;
@@ -40,25 +41,29 @@ export class CalendarComponent implements OnInit {
   constructor(
     public calendarService: CalendarService,
     public dialog: MatDialog,
-    public http : HttpClient
+    public http : HttpClient,
+    public dataBase : AngularFireDatabase
   ) {}
 
   ngOnInit() {
-    let url = "https://us-central1-hungry-ags.cloudfunctions.net/sendEvents";
-    /*this.calendarService
-      .getEvents()
-      .subscribe(events => (this.events = events));*/
-    this.http.get(url,  {params:{}, observe:'response'}).subscribe(
-      events =>  (this.events = events));
-    console.log("Events Length", this.events.length);
     this.calendarObjects = [];
-    this.calendarService
-      .getCalendarEvents()
-      .subscribe(events => (this.calendarObjects = events));
+    
+    this.dataBase.list<any>('/events').valueChanges().subscribe((values) => {
+        // If you want to push in values, however this may lead to duplicates
+        //values.forEach((value) => this.calendarObjects.push(value));
+  
+        // If you want Moniteurs to be just the new data
+        console.log("Updating");
+        this.calendarObjects = values;
+        this.events = values;
+        this.calendarService.calendarEvents = values;
+        //return of(values);
+        console.log("Calendar Length", this.calendarObjects.length);
+        console.log(this.calendarObjects);
+      });
 
     console.log("Calendar Length", this.calendarObjects.length);
     console.log(this.calendarObjects);
-    this.http.get(url,  {params:{},observe:'response'}).subscribe(val => (this.val = String(val)));
   }
 
   openDialog(arg): void {
