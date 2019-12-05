@@ -14,6 +14,7 @@ export class CalendarService {
   public foodEvents = [];
   public calendarEvents = [];
   public eventsRef : AngularFireList<any>;
+  public nextID;
 
   constructor(public firebase: AngularFireFunctions,public http : HttpClient, private dataBase : AngularFireDatabase) {
     /*let url = "https://us-central1-hungry-ags.cloudfunctions.net/sendEvents";
@@ -28,6 +29,10 @@ export class CalendarService {
       name: "TestPush",
       email: "TestEmail"
     });*/
+    this.dataBase.object('/nextID').valueChanges().subscribe((value) => {
+      this.nextID = value;
+    });
+
     this.dataBase.list<any>('/events').valueChanges().subscribe((values) => { //NOTE: Where data is actually read from database
       this.foodEvents = [];
       // If you want to push in values, however this may lead to duplicates
@@ -59,6 +64,7 @@ export class CalendarService {
 
 
         let test : FoodEvent = {
+          id : value.id,
           eventName : value.eventName,
           user : value.user,
           sanctioned: value.sanctioned,

@@ -25,7 +25,7 @@ export interface Data {
   doLink: boolean;
   mapLink: string;
   sanctioned : boolean;
-  index : number
+  id : number
 }
 
 @Component({
@@ -75,6 +75,7 @@ export class CalendarComponent implements OnInit {
       description: "",
       organization: "",
       user : "",
+      id : Number,
       sanctioned : false
     };
     this.events = this.calendarService.foodEvents;
@@ -89,7 +90,6 @@ export class CalendarComponent implements OnInit {
       console.log(selectedString + " " + verificationString);
       if (selectedString == verificationString) {
         event = this.events[i];
-        eventIndex = i;
         console.log("EVENT FOUND");
         console.log(event);
 
@@ -117,7 +117,7 @@ export class CalendarComponent implements OnInit {
         mapLink: mapLink,
         organizer : event.user,
         sanctioned : event.sanctioned,
-        index : eventIndex
+        id : event.id
       },
     });
 
@@ -162,14 +162,14 @@ export class EventDialog {
   }
 
   editClick() {
-    let id = this.data.index;
-    let eventRef : AngularFireObject<any> = this.dataBase.object('/events/' + id);
-    console.log(eventRef);
-    this.dataBase.list<any>('/events').snapshotChanges().subscribe((values) => { 
-      values.forEach((value) => {
-        console.log(value.key);
-      });
-    });
+    let id = this.data.id;
+    let clickedEvent;
+    for(let i = 0; i < this.calendarService.foodEvents.length; i++) {
+      if(this.calendarService.foodEvents[i].id == id) {
+        clickedEvent = this.calendarService.foodEvents[i];
+      }
+    }
+    //pass clicked event to new event page
   }
 
   showMap(): boolean {

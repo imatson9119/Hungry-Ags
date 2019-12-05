@@ -173,7 +173,9 @@ export class NewEventComponent implements OnInit {
       organization: formControl.orgControl,
       meetsCriteria : true
     });*/
+    console.log("ID: " + this.calendarService.nextID);
     this.eventsRef.push({
+      id : this.calendarService.nextID,
       eventName: formControl.nameControl,
       user: this.controller.user,
       sanctioned: false,
@@ -184,7 +186,9 @@ export class NewEventComponent implements OnInit {
       organization: formControl.orgControl,
       meetsCriteria : true
     });
-
+    let updates = {};
+    updates['/nextID'] = this.calendarService.nextID + 1;
+    this.dataBase.database.ref().update(updates);    
     this.router.navigateByUrl("/home");
   }
 

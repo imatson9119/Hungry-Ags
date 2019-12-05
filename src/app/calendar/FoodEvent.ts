@@ -1,4 +1,5 @@
 export class FoodEvent {
+    public id : number;
     public eventName : string;
     public user : string;
     public sanctioned : boolean;
