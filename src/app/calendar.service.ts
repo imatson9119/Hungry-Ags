@@ -37,10 +37,10 @@ export class CalendarService {
         console.log(start);
         console.log(start.toJSON());
         console.log(start.getTimezoneOffset());
-        let hoursDiff = start.getHours() + start.getTimezoneOffset() / 60 - 23;
+        let hoursDiff = start.getHours() + (start.getTimezoneOffset() / 60) - 24;
         let minutesDiff = (start.getMinutes() - start.getTimezoneOffset()) % 60;
         start.setHours(hoursDiff);
-        start.setMinutes(minutesDiff);
+        //start.setMinutes(minutesDiff);
         console.log("AFTER START DATE");
         console.log(start);
         console.log(start.toJSON());
@@ -48,10 +48,10 @@ export class CalendarService {
         
         let end = new Date(value.endTime);
         console.log(end.getTimezoneOffset());
-        hoursDiff = end.getHours() + end.getTimezoneOffset() / 60 - 23;
+        hoursDiff = end.getHours() + (end.getTimezoneOffset() / 60) - 24;
         minutesDiff = (end.getMinutes() - end.getTimezoneOffset()) % 60;
         end.setHours(hoursDiff);
-        end.setMinutes(minutesDiff);
+        //end.setMinutes(minutesDiff);
         console.log("END DATE");
         console.log(end);
         console.log(end.toJSON());
