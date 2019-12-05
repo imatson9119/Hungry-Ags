@@ -33,19 +33,22 @@ export class CalendarService {
       // If you want to push in values, however this may lead to duplicates
       values.forEach((value) => {
         let start = new Date(value.startTime);
+        console.log("BEFORE START DATE");
+        console.log(start);
+        console.log(start.toJSON());
         console.log(start.getTimezoneOffset());
-        let hoursDiff = start.getHours() - start.getTimezoneOffset() / 60;
+        let hoursDiff = start.getHours() + start.getTimezoneOffset() / 60 - 23;
         let minutesDiff = (start.getMinutes() - start.getTimezoneOffset()) % 60;
         start.setHours(hoursDiff);
         start.setMinutes(minutesDiff);
-        console.log("START DATE");
+        console.log("AFTER START DATE");
         console.log(start);
         console.log(start.toJSON());
         console.log();
         
         let end = new Date(value.endTime);
         console.log(end.getTimezoneOffset());
-        hoursDiff = end.getHours() - end.getTimezoneOffset() / 60;
+        hoursDiff = end.getHours() + end.getTimezoneOffset() / 60 - 23;
         minutesDiff = (end.getMinutes() - end.getTimezoneOffset()) % 60;
         end.setHours(hoursDiff);
         end.setMinutes(minutesDiff);
@@ -59,8 +62,8 @@ export class CalendarService {
           eventName : value.eventName,
           user : value.user,
           sanctioned: value.sanctioned,
-          startTime: value.startTime,
-          endTime: value.endTime,
+          startTime: start.toJSON(),
+          endTime: end.toJSON(),
           description: value.description,
           location: value.location,
           organization: value.organization,
