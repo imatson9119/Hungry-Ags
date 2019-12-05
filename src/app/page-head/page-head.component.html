@@ -19,13 +19,10 @@
   <div id="right">
     <img *ngIf="router.url != '/login' && !controllerService.signedIn" id='sign-in-button'
       src='assets/btn_google_signin_light_normal_web.png' (click)='this.controllerService.signInWithGoogle();'>
-    <div class="user-panel" *ngIf='this.controllerService.signedIn == true;'>
+    <div class="user-panel" *ngIf='this.controllerService.signedIn == true;' [matMenuTriggerFor]="menu">
       <img src={{this.controllerService.photo}} class='user-photo'>
       {{this.controllerService.user}}
     </div>
-    <button [matMenuTriggerFor]="menu" mat-icon-button *ngIf='this.controllerService.signedIn == true;'>
-      <mat-icon>menu</mat-icon>
-    </button>
     <mat-menu #menu="matMenu">
       <div class="username">{{this.controllerService.user}}</div>
       <button (click)="

@@ -29,6 +29,7 @@
   right: 1%;
 }
 .user-panel {
+  cursor:pointer;
   text-align: center;
   display: flex;
   align-items: center;
@@ -37,6 +38,7 @@
   padding-right: 10px;
 }
 .username {
+  user-select: none;
   overflow: hidden;
   font-weight: bold;
   background: #6c1420;
