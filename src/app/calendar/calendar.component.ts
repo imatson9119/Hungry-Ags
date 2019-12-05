@@ -75,15 +75,22 @@ export class CalendarComponent implements OnInit {
       user : "",
       sanctioned : false
     };
-
+    this.events = this.calendarService.foodEvents;
+    console.log("Opening dialog");
+    console.log(this.events);
     for (let i = 0; i < this.events.length; i++) {
       let verificationString =
-        this.events[i].location + " - " + this.events[i].eventName;
+        this.events[i].eventName + " - " + this.events[i].location;
+      console.log("EVENT");
+        console.log(this.events[i]);
       let selectedString = arg.event._def.title;
+      console.log(selectedString + " " + verificationString);
       if (selectedString == verificationString) {
         event = this.events[i];
         console.log("EVENT FOUND");
-      }
+        console.log(event);
+
+      } else { console.log("EVENT NOT FOUND"); }
     }
 
     this.doLink = false;

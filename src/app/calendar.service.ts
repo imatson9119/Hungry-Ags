@@ -19,7 +19,7 @@ export class CalendarService {
     /*let url = "https://us-central1-hungry-ags.cloudfunctions.net/sendEvents";
     this.foodEvents = this.http.get(url, {params:{}, observe:"response"}).subscribe(
       events =>  (this.foodEvents = events));*/
-    this.calendarEvents = MockFoodEvents;
+    //this.calendarEvents = MockFoodEvents;
   }
 
   getEvents() : Observable<FoodEvent[]>{
@@ -28,7 +28,7 @@ export class CalendarService {
       name: "TestPush",
       email: "TestEmail"
     });*/
-    this.dataBase.list<any>('/events').valueChanges().subscribe((values) => {
+    this.dataBase.list<any>('/events').valueChanges().subscribe((values) => { //NOTE: Where data is actually read from database
       this.foodEvents = [];
       // If you want to push in values, however this may lead to duplicates
       values.forEach((value) => {
@@ -57,11 +57,28 @@ export class CalendarService {
       name: "TestPush",
       email: "TestEmail"
     })*/
-    this.eventsRef = this.dataBase.list<any>('\events');
+    //this.eventsRef = this.dataBase.list<any>('\events');
     console.log("Calendar Events:");
-    console.log(this.eventsRef);
-    //this.calendarEvents = this.eventsRef;
-    this.calendarEvents = MockFoodEvents;
+    //console.log(this.eventsRef);
+    /*this.dataBase.list<any>('/events').valueChanges().subscribe((values) => {
+      this.calendarEvents = [];
+      // If you want to push in values, however this may lead to duplicates
+      values.forEach((value) => {
+        let test = {
+          eventName : value.eventName,
+          user : value.user,
+          sanctioned: value.sanctioned,
+          startTime: value.startTime,
+          endTime: value.endTime,
+          description: value.description,
+          location: value.location,
+          organization: value.organization,
+          meetsCriteria : true
+        };
+      this.calendarEvents.push(test);
+      });
+    });*/
+
     return of(this.calendarEvents);
   }
 }
