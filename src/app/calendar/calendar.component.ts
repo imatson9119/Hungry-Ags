@@ -13,7 +13,7 @@ import { buildings } from "../MockMapExtensions";
 import { MatSnackBar, MatSnackBarModule } from "@angular/material/snack-bar";
 import { ControllerService } from "../shared/controller.service";
 import { HttpClient } from "@angular/common/http";
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import { MockFoodEvents } from '../MockFoodEvents';
 
 export interface Data {
@@ -25,6 +25,7 @@ export interface Data {
   doLink: boolean;
   mapLink: string;
   sanctioned : boolean;
+  index : number
 }
 
 @Component({
@@ -67,6 +68,7 @@ export class CalendarComponent implements OnInit {
   }
 
   openDialog(arg): void {
+    let eventIndex = -1;
     let event = {
       eventName: "",
       location: "",
@@ -87,6 +89,7 @@ export class CalendarComponent implements OnInit {
       console.log(selectedString + " " + verificationString);
       if (selectedString == verificationString) {
         event = this.events[i];
+        eventIndex = i;
         console.log("EVENT FOUND");
         console.log(event);
 
@@ -113,8 +116,9 @@ export class CalendarComponent implements OnInit {
         doLink: this.doLink,
         mapLink: mapLink,
         organizer : event.user,
-        sanctioned : event.sanctioned
-      }
+        sanctioned : event.sanctioned,
+        index : eventIndex
+      },
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -142,7 +146,9 @@ export class EventDialog {
     public dialogRef: MatDialogRef<EventDialog>,
     @Inject(MAT_DIALOG_DATA) public data: Data,
     private _snackBar: MatSnackBar,
-    public controllerService : ControllerService
+    public controllerService : ControllerService,
+    public dataBase : AngularFireDatabase,
+    public calendarService : CalendarService
       ) {}
 
   onNoClick(): void {
@@ -154,8 +160,16 @@ export class EventDialog {
       duration: 3000
     });
   }
+
   editClick() {
-    //TODO
+    let id = this.data.index;
+    let eventRef : AngularFireObject<any> = this.dataBase.object('/events/' + id);
+    console.log(eventRef);
+    this.dataBase.list<any>('/events').snapshotChanges().subscribe((values) => { 
+      values.forEach((value) => {
+        console.log(value.key);
+      });
+    });
   }
 
   showMap(): boolean {
