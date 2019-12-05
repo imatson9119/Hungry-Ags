@@ -154,6 +154,9 @@ export class EventDialog {
       duration: 3000
     });
   }
+  editClick() {
+    //TODO
+  }
 
   showMap(): boolean {
     if (this.data.doLink) return true;
