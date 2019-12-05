@@ -23,7 +23,7 @@
       <img src={{this.controllerService.photo}} class='user-photo'>
       {{this.controllerService.user}}
     </div>
-    <mat-menu #menu="matMenu">
+    <mat-menu #menu="matMenu" xPosition ="before">
       <div class="username">{{this.controllerService.user}}</div>
       <button (click)="
             this.controllerService.signOut();

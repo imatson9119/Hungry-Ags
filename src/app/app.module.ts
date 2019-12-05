@@ -15,6 +15,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
 import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {
   RegisterComponent,
   ConfirmEmailDialog
@@ -42,6 +43,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AngularFireFunctions, AngularFireFunctionsModule } from '@angular/fire/functions';
+
 
 
 let config = new AuthServiceConfig([
@@ -104,7 +106,8 @@ if (!environment.firebase) {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireFunctionsModule
+    AngularFireFunctionsModule,
+    MatTooltipModule,
   ],
   providers: [HttpClientModule, {
     provide: AuthServiceConfig,
