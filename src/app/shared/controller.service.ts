@@ -18,7 +18,6 @@ export class ControllerService implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.signedIn = (user != null);
@@ -50,7 +49,6 @@ export class ControllerService implements OnInit, OnDestroy {
     this.authService.signOut();
     this.signedIn = false;
     this.clearStorage();
-    console.log('cleared storage');
     let snackBarRef = this.snackBar.open('Successfully logged out.', 'Ok',{
       duration: 3000
     });
