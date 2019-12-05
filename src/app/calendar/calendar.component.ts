@@ -14,6 +14,7 @@ import { MatSnackBar, MatSnackBarModule } from "@angular/material/snack-bar";
 import { ControllerService } from "../shared/controller.service";
 import { HttpClient } from "@angular/common/http";
 import { AngularFireDatabase } from '@angular/fire/database';
+import { MockFoodEvents } from '../MockFoodEvents';
 
 export interface Data {
   title: string;
@@ -46,24 +47,23 @@ export class CalendarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.calendarObjects = [];
-    
-    this.dataBase.list<any>('/events').valueChanges().subscribe((values) => {
-        // If you want to push in values, however this may lead to duplicates
-        //values.forEach((value) => this.calendarObjects.push(value));
-  
-        // If you want Moniteurs to be just the new data
-        console.log("Updating");
-        this.calendarObjects = values;
-        this.events = values;
-        this.calendarService.calendarEvents = values;
-        //return of(values);
-        console.log("Calendar Length", this.calendarObjects.length);
-        console.log(this.calendarObjects);
-      });
+      this.calendarService
+        .getEvents()
+        .subscribe(events => (this.events = events));
 
+      console.log("Events Length", this.events.length);
+      this.calendarObjects = [];
+      this.calendarService
+        .getCalendarEvents()
+        .subscribe(events => (this.calendarObjects = events));
+  
+
+    /*this.calendarObjects = [];
+    this.calendarObjects = MockFoodEvents;
     console.log("Calendar Length", this.calendarObjects.length);
     console.log(this.calendarObjects);
+    console.log(this.calendarService.calendarEvents);*/
+
   }
 
   openDialog(arg): void {

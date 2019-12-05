@@ -19,16 +19,7 @@ export class CalendarService {
     /*let url = "https://us-central1-hungry-ags.cloudfunctions.net/sendEvents";
     this.foodEvents = this.http.get(url, {params:{}, observe:"response"}).subscribe(
       events =>  (this.foodEvents = events));*/
-      this.eventsRef = dataBase.list<any>('/events');
-      
-      this.dataBase.list<any>('/events').valueChanges().subscribe((values) => {
-        // If you want to push in values, however this may lead to duplicates
-        values.forEach((value) => this.calendarEvents.push(value));
-  
-        // If you want Moniteurs to be just the new data
-        this.calendarEvents = values;
-        return of(values);
-      });
+    this.calendarEvents = MockFoodEvents;
   }
 
   getEvents() : Observable<FoodEvent[]>{
@@ -38,9 +29,10 @@ export class CalendarService {
       email: "TestEmail"
     });*/
     this.dataBase.list<any>('/events').valueChanges().subscribe((values) => {
+      this.foodEvents = [];
       // If you want to push in values, however this may lead to duplicates
       values.forEach((value) => {
-        this.foodEvents.push({
+        let test : FoodEvent = {
           eventName : value.eventName,
           user : value.user,
           sanctioned: value.sanctioned,
@@ -50,11 +42,13 @@ export class CalendarService {
           location: value.location,
           organization: value.organization,
           meetsCriteria : true
-        })
+        };
+      this.foodEvents.push(test);
       });
     });
 
-      return of(this.foodEvents);
+    //this.foodEvents = MockFoodEvents;
+    return of(this.foodEvents);
   }
 
   getCalendarEvents() {
@@ -64,9 +58,10 @@ export class CalendarService {
       email: "TestEmail"
     })*/
     this.eventsRef = this.dataBase.list<any>('\events');
-    console.log("Calendar Events");
+    console.log("Calendar Events:");
     console.log(this.eventsRef);
     //this.calendarEvents = this.eventsRef;
-    return of(this.eventsRef);
+    this.calendarEvents = MockFoodEvents;
+    return of(this.calendarEvents);
   }
 }

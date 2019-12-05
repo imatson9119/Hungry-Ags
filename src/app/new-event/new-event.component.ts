@@ -4,6 +4,8 @@ import { CalendarService } from '../calendar.service';
 import { ControllerService } from '../shared/controller.service';
 import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
 import { Router } from '@angular/router';
+import { FirebaseDatabase } from '@angular/fire';
+import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'app-new-event',
@@ -12,7 +14,6 @@ import { Router } from '@angular/router';
 
 })
 export class NewEventComponent implements OnInit {
-  constructor(public router : Router, public fb: FormBuilder, public calendarService : CalendarService, public controller : ControllerService) { }
   public eventForm: FormGroup;
   public title : string = "";
   public location : string = "";
@@ -22,6 +23,13 @@ export class NewEventComponent implements OnInit {
   public end : string = "";
   public organization : string = "";
   public user : string = "";
+  public eventsRef : AngularFireList<any>;
+
+  constructor(public router : Router, public fb: FormBuilder, public calendarService : CalendarService, public controller : ControllerService, public dataBase : AngularFireDatabase) {
+    this.eventsRef = this.dataBase.list<any>('\events');
+  }
+
+
   darkTheme: NgxMaterialTimepickerTheme = {
     container: {
         bodyBackgroundColor: '#eee',
@@ -129,7 +137,18 @@ export class NewEventComponent implements OnInit {
     end = year + "-" + month + "-" + day + "T" + end + "+19:00";
 
 
-    this.calendarService.foodEvents.push({
+    /*this.calendarService.foodEvents.push({
+      eventName: formControl.nameControl,
+      user: this.controller.getStorage(this.controller.AUTH_KEY),
+      sanctioned: false,
+      startTime: start,
+      endTime: end,
+      description: formControl.descControl,
+      location: formControl.locControl,
+      organization: formControl.orgControl,
+      meetsCriteria : true
+    });*/
+    this.eventsRef.push({
       eventName: formControl.nameControl,
       user: this.controller.getStorage(this.controller.AUTH_KEY),
       sanctioned: false,
@@ -140,6 +159,7 @@ export class NewEventComponent implements OnInit {
       organization: formControl.orgControl,
       meetsCriteria : true
     });
+
     this.router.navigateByUrl("/home");
   }
 
