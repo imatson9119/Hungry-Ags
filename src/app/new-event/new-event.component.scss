@@ -7,14 +7,16 @@
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
 }
 .outer-form-container{
-    background: rgba(0,0,0,.06);
-    margin: 50px;
-    margin-left: 80px;
-    margin-right: 80px;
-    border-radius: 8px;
-    color: #520c16;
-    font-size: 20px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.06);
+  margin: 50px;
+  margin-left: 80px;
+  margin-right: 80px;
+  border-radius: 8px;
+  color: #520c16;
+  font-size: 20px;
+  flex: 1;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+  max-width: 700px;
 }
 .inner-form-container{
     display: flex;

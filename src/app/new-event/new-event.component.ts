@@ -78,7 +78,8 @@ export class NewEventComponent implements OnInit {
     let mins = +timeNum[0].split(':')[1];
     let hrs = +timeNum[0].split(':')[0];
     if(timeNum[1] == 'PM'){
-      hrs = hrs + 12;
+      if(hrs != 12)
+        hrs = hrs + 12;
     }
     else if (hrs == 12){
       hrs = 0
