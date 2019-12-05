@@ -6,6 +6,7 @@ import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
 import { Router } from '@angular/router';
 import { FirebaseDatabase } from '@angular/fire';
 import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
+import { EventLoaderService } from './event-loader.service';
 
 @Component({
   selector: 'app-new-event',
@@ -25,7 +26,7 @@ export class NewEventComponent implements OnInit {
   public user : string = "";
   public eventsRef : AngularFireList<any>;
 
-  constructor(public router : Router, public fb: FormBuilder, public calendarService : CalendarService, public controller : ControllerService, public dataBase : AngularFireDatabase) {
+  constructor(public router : Router, public fb: FormBuilder, public calendarService : CalendarService, public controller : ControllerService, public dataBase : AngularFireDatabase, public eventLoaderService : EventLoaderService) {
     this.eventsRef = this.dataBase.list<any>('\events');
   }
 
@@ -55,6 +56,10 @@ export class NewEventComponent implements OnInit {
       endTimeControl: ['', [Validators.required]],
       descControl: ['', [Validators.required]],
     },{validator: this.checkTimes('startTimeControl', 'endTimeControl')});
+  }
+
+  ngOnDestroy() {
+    this.eventLoaderService.loadEvent = false;
   }
 
   checkTimes(start: string, end: string) {
@@ -188,7 +193,7 @@ export class NewEventComponent implements OnInit {
     });
     let updates = {};
     updates['/nextID'] = this.calendarService.nextID + 1;
-    this.dataBase.database.ref().update(updates);    
+    this.dataBase.database.ref().update(updates); 
     this.router.navigateByUrl("/home");
   }
 
