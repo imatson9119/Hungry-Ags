@@ -32,6 +32,29 @@ export class CalendarService {
       this.foodEvents = [];
       // If you want to push in values, however this may lead to duplicates
       values.forEach((value) => {
+        let start = new Date(value.startTime);
+        console.log(start.getTimezoneOffset());
+        let hoursDiff = start.getHours() - start.getTimezoneOffset() / 60;
+        let minutesDiff = (start.getMinutes() - start.getTimezoneOffset()) % 60;
+        start.setHours(hoursDiff);
+        start.setMinutes(minutesDiff);
+        console.log("START DATE");
+        console.log(start);
+        console.log(start.toJSON());
+        console.log();
+        
+        let end = new Date(value.endTime);
+        console.log(end.getTimezoneOffset());
+        hoursDiff = end.getHours() - end.getTimezoneOffset() / 60;
+        minutesDiff = (end.getMinutes() - end.getTimezoneOffset()) % 60;
+        end.setHours(hoursDiff);
+        end.setMinutes(minutesDiff);
+        console.log("END DATE");
+        console.log(end);
+        console.log(end.toJSON());
+        console.log();
+
+
         let test : FoodEvent = {
           eventName : value.eventName,
           user : value.user,
@@ -52,32 +75,10 @@ export class CalendarService {
   }
 
   getCalendarEvents() {
-    console.log("Reading/Pushing dummy data to database");
     /*this.eventsRef.push({
       name: "TestPush",
       email: "TestEmail"
     })*/
-    //this.eventsRef = this.dataBase.list<any>('\events');
-    console.log("Calendar Events:");
-    //console.log(this.eventsRef);
-    /*this.dataBase.list<any>('/events').valueChanges().subscribe((values) => {
-      this.calendarEvents = [];
-      // If you want to push in values, however this may lead to duplicates
-      values.forEach((value) => {
-        let test = {
-          eventName : value.eventName,
-          user : value.user,
-          sanctioned: value.sanctioned,
-          startTime: value.startTime,
-          endTime: value.endTime,
-          description: value.description,
-          location: value.location,
-          organization: value.organization,
-          meetsCriteria : true
-        };
-      this.calendarEvents.push(test);
-      });
-    });*/
 
     return of(this.calendarEvents);
   }

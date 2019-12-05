@@ -80,7 +80,7 @@ export class CalendarComponent implements OnInit {
     console.log(this.events);
     for (let i = 0; i < this.events.length; i++) {
       let verificationString =
-        this.events[i].eventName + " - " + this.events[i].location;
+        this.events[i].location + " - " + this.events[i].eventName;
       console.log("EVENT");
         console.log(this.events[i]);
       let selectedString = arg.event._def.title;

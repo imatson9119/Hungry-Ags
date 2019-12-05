@@ -133,8 +133,32 @@ export class NewEventComponent implements OnInit {
     if(Number(end) < 10) end = "0"+end; //Needed before html time picker used
     end += minutes;
 
-    start = year + "-" + month + "-" + day + "T" + start + "+19:00";
-    end = year + "-" + month + "-" + day + "T" + end + "+19:00";
+
+
+    start = year + "-" + month + "-" + day + "T" + start + "+00:00";
+    end = year + "-" + month + "-" + day + "T" + end + "+00:00";
+
+    start = new Date(start);
+    /*console.log(start.getTimezoneOffset());
+    let hoursDiff = start.getHours() - start.getTimezoneOffset() / 60;
+    let minutesDiff = (start.getMinutes() - start.getTimezoneOffset()) % 60;
+    start.setHours(hoursDiff);
+    start.setMinutes(minutesDiff);*/
+    console.log("ADD START DATE");
+    console.log(start);
+    console.log(start.toJSON());
+    console.log();
+
+    end = new Date(end);
+    /*console.log(end.getTimezoneOffset());
+    hoursDiff = end.getHours() - end.getTimezoneOffset() / 60;
+    minutesDiff = (end.getMinutes() - end.getTimezoneOffset()) % 60;
+    end.setHours(hoursDiff);
+    end.setMinutes(minutesDiff);*/
+    console.log("ADD END DATE");
+    console.log(end);
+    console.log(end.toJSON());
+    console.log();
 
 
     /*this.calendarService.foodEvents.push({
@@ -152,8 +176,8 @@ export class NewEventComponent implements OnInit {
       eventName: formControl.nameControl,
       user: this.controller.getStorage(this.controller.AUTH_KEY),
       sanctioned: false,
-      startTime: start,
-      endTime: end,
+      startTime: start.toJSON(),
+      endTime: end.toJSON(),
       description: formControl.descControl,
       location: formControl.locControl,
       organization: formControl.orgControl,
