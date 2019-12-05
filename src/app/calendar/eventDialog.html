@@ -1,4 +1,5 @@
 <div>
+    <mat-icon matTooltip="Delete event" (click)="deleteClick()" *ngIf="controllerService.signedIn && data.organizer == controllerService.user" class="material-icons">delete</mat-icon>
     <mat-icon matTooltip="Edit event" (click)="editClick()" *ngIf="controllerService.signedIn && data.organizer == controllerService.user" class="material-icons">create</mat-icon>
     <mat-icon matTooltip="Report event" (click)="reportClick()" *ngIf="controllerService.signedIn && data.organizer != controllerService.user" class="material-icons">error</mat-icon>
     <a target="_blank" href={{data.mapLink}} *ngIf="showMap()"><mat-icon matTooltip="Show on map" class = material-icons>map</mat-icon></a>

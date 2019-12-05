@@ -160,7 +160,9 @@ export class EventDialog {
       duration: 3000
     });
   }
-
+  deleteClick(){
+    //TODO
+  }
   editClick() {
     let id = this.data.index;
     let eventRef : AngularFireObject<any> = this.dataBase.object('/events/' + id);
