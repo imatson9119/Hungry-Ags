@@ -15,6 +15,7 @@ import { ControllerService } from "../shared/controller.service";
 import { HttpClient } from "@angular/common/http";
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import { MockFoodEvents } from '../MockFoodEvents';
+import { EventLoaderService } from "../new-event/event-loader.service";
 
 export interface Data {
   title: string;
@@ -148,7 +149,8 @@ export class EventDialog {
     private _snackBar: MatSnackBar,
     public controllerService : ControllerService,
     public dataBase : AngularFireDatabase,
-    public calendarService : CalendarService
+    public calendarService : CalendarService,
+    public eventLoaderService : EventLoaderService
       ) {}
 
   onNoClick(): void {
@@ -160,6 +162,7 @@ export class EventDialog {
       duration: 3000
     });
   }
+
   deleteClick(){
     //TODO
   }
@@ -169,9 +172,12 @@ export class EventDialog {
     for(let i = 0; i < this.calendarService.foodEvents.length; i++) {
       if(this.calendarService.foodEvents[i].id == id) {
         clickedEvent = this.calendarService.foodEvents[i];
+        break;
       }
     }
-    //pass clicked event to new event page
+    
+    this.eventLoaderService.loadEvent = true;
+    this.eventLoaderService.curEvent = clickedEvent;
   }
 
   showMap(): boolean {
