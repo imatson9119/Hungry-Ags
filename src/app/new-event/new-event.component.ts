@@ -56,6 +56,12 @@ export class NewEventComponent implements OnInit {
       endTimeControl: ['', [Validators.required]],
       descControl: ['', [Validators.required]],
     },{validator: this.checkTimes('startTimeControl', 'endTimeControl')});
+    if(this.eventLoaderService.loadEvent){
+      this.eventForm.controls.descControl.setValue("Loading");
+      this.eventForm.controls.nameControl.setValue("Loading");
+      this.eventForm.controls.nameControl.updateValueAndValidity();
+      console.log(this.eventForm.controls.nameControl.value);
+    }
   }
 
   ngOnDestroy() {
@@ -195,6 +201,7 @@ export class NewEventComponent implements OnInit {
     updates['/nextID'] = this.calendarService.nextID + 1;
     this.dataBase.database.ref().update(updates); 
     this.router.navigateByUrl("/home");
+    
   }
 
   

@@ -16,6 +16,7 @@ import { HttpClient } from "@angular/common/http";
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import { MockFoodEvents } from '../MockFoodEvents';
 import { EventLoaderService } from "../new-event/event-loader.service";
+import { Router } from '@angular/router';
 
 export interface Data {
   title: string;
@@ -45,7 +46,8 @@ export class CalendarComponent implements OnInit {
     public calendarService: CalendarService,
     public dialog: MatDialog,
     public http : HttpClient,
-    public dataBase : AngularFireDatabase
+    public dataBase : AngularFireDatabase,
+    
   ) {}
 
   ngOnInit() {
@@ -150,7 +152,8 @@ export class EventDialog {
     public controllerService : ControllerService,
     public dataBase : AngularFireDatabase,
     public calendarService : CalendarService,
-    public eventLoaderService : EventLoaderService
+    public eventLoaderService : EventLoaderService,
+    public router : Router
       ) {}
 
   onNoClick(): void {
@@ -167,6 +170,7 @@ export class EventDialog {
     //TODO
   }
   editClick() {
+    
     let id = this.data.id;
     let clickedEvent;
     for(let i = 0; i < this.calendarService.foodEvents.length; i++) {
@@ -178,6 +182,8 @@ export class EventDialog {
     
     this.eventLoaderService.loadEvent = true;
     this.eventLoaderService.curEvent = clickedEvent;
+    this.dialogRef.close();
+    this.router.navigateByUrl("/new-event");
   }
 
   showMap(): boolean {
