@@ -167,8 +167,31 @@ export class EventDialog {
   }
 
   deleteClick(){
-    //TODO
+    let id = this.data.id;
+    let clickedIndex = -1;
+    for(let i = 0; i < this.calendarService.foodEvents.length; i++) {
+      if(this.calendarService.foodEvents[i].id == id) {
+        clickedIndex = i;
+        break;
+      }
+    }
+
+    if(clickedIndex == -1) return;
+
+    let toDelete; //Key of value to delete
+    this.dataBase.list<any>('/events').snapshotChanges().subscribe((values) => {
+      let i = 0;
+      values.forEach((value) => {
+        if(i == clickedIndex) {
+          let remove = this.dataBase.object('/events/' + value.key);
+          remove.remove();
+        }
+        i++;
+      });
+    });
+    this.dialogRef.close();
   }
+
   editClick() {
     
     let id = this.data.id;
