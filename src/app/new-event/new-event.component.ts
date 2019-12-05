@@ -175,7 +175,7 @@ export class NewEventComponent implements OnInit {
     });*/
     this.eventsRef.push({
       eventName: formControl.nameControl,
-      user: this.controller.getStorage(this.controller.AUTH_KEY),
+      user: this.controller.user,
       sanctioned: false,
       startTime: start.toJSON(),
       endTime: end.toJSON(),
