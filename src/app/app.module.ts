@@ -46,7 +46,6 @@ import { AngularFireFunctions, AngularFireFunctionsModule } from '@angular/fire/
 import { NotFoundComponent } from './not-found/not-found.component';
 
 
-
 let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,

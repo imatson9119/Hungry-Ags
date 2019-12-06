@@ -36,4 +36,27 @@
       </button>
     </mat-menu>
   </div>
+  <div id="right-compact">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" xPosition ="before">
+      <div class="username" *ngIf ="controllerService.signedIn">{{this.controllerService.user}}</div>
+      <button mat-menu-item *ngIf="router.url != '/login' && !controllerService.signedIn" id='sign-in-button' (click)='this.controllerService.signInWithGoogle();'>
+        Sign in with Google
+      </button>
+      <button *ngIf="router.url != '/home'" mat-menu-item routerLink="/home">
+        Home
+      </button>
+      <button (click)="
+            this.controllerService.signOut();
+          " mat-menu-item routerLink='/home' *ngIf ="controllerService.signedIn">
+        Sign Out
+      </button>
+      <button *ngIf ="controllerService.signedIn" mat-menu-item routerLink="/new-event">Add an Event</button>
+      <button *ngIf ="controllerService.signedIn" mat-menu-item routerLink="/register-org">
+        Register an Organization
+      </button>
+    </mat-menu>
+  </div>
 </mat-toolbar>
