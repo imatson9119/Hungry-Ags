@@ -179,12 +179,13 @@ export class EventDialog {
     if(clickedIndex == -1) return;
 
     let toDelete; //Key of value to delete
-    this.dataBase.list<any>('/events').snapshotChanges().subscribe((values) => {
+    let subscription = this.dataBase.list<any>('/events').snapshotChanges().subscribe((values) => {
       let i = 0;
       values.forEach((value) => {
         if(i == clickedIndex) {
           let remove = this.dataBase.object('/events/' + value.key);
           remove.remove();
+          subscription.unsubscribe();
         }
         i++;
       });
