@@ -1,0 +1,3 @@
+1. Register emails for domain and enable admin privilages for that domain
+2. Send confirmation email to that email upon org registration
+3. Integrate verified accounts with verified badge functionality
