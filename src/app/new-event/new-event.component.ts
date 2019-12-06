@@ -26,7 +26,13 @@ export class NewEventComponent implements OnInit {
   public user : string = "";
   public eventsRef : AngularFireList<any>;
 
-  constructor(public router : Router, public fb: FormBuilder, public calendarService : CalendarService, public controller : ControllerService, public dataBase : AngularFireDatabase, public eventLoaderService : EventLoaderService) {
+  constructor(
+    public router : Router, 
+    public fb: FormBuilder, 
+    public calendarService : CalendarService, 
+    public controller : ControllerService, 
+    public dataBase : AngularFireDatabase, 
+    public eventLoaderService : EventLoaderService) {
     this.eventsRef = this.dataBase.list<any>('\events');
   }
 
@@ -57,13 +63,19 @@ export class NewEventComponent implements OnInit {
       descControl: ['', [Validators.required]],
     },{validator: this.checkTimes('startTimeControl', 'endTimeControl')});
     if(this.eventLoaderService.loadEvent){
-      this.eventForm.controls.descControl.setValue("Loading");
-      this.eventForm.controls.nameControl.setValue("Loading");
-      this.eventForm.controls.nameControl.updateValueAndValidity();
-      console.log(this.eventForm.controls.nameControl.value);
+      
+      this.eventForm.setValue({
+        nameControl: "Hi",
+        orgControl: "Org",
+        locControl: "Loc",
+        dateControl: new Date(this.eventLoaderService.curEvent.startTime),
+        startTimeControl: "1:22 PM",
+        endTimeControl: "1:23 PM",
+        descControl: "Description"
+      })
+      
     }
   }
-
   ngOnDestroy() {
     this.eventLoaderService.loadEvent = false;
   }
