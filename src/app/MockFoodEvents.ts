@@ -2,6 +2,7 @@ import { FoodEvent } from './calendar/FoodEvent'
 
 export const MockFoodEvents : FoodEvent[] = [
     {
+      id : 1,
       eventName: "Aggie Cru Pizza Social",
       user: "aggiecru@tamu.edu",
       sanctioned: true,
@@ -13,6 +14,7 @@ export const MockFoodEvents : FoodEvent[] = [
       meetsCriteria : true
     },
     {
+      id : 1,
       eventName: "ICPC Programming Contest",
       user: "tannerhoke@tamu.edu",
       sanctioned: false,
@@ -24,6 +26,7 @@ export const MockFoodEvents : FoodEvent[] = [
       meetsCriteria:true
     },
     {
+      id : 1,
       eventName: "TANSA Informational",
       user: "TANSAAggies@tamu.edu",
       sanctioned: true,
@@ -35,6 +38,7 @@ export const MockFoodEvents : FoodEvent[] = [
       meetsCriteria:true
     },
     {
+      id : 1,
       eventName: "Course Scheduling Social",
       user: "dannyboy@gmail.com",
       sanctioned: false,
@@ -46,6 +50,7 @@ export const MockFoodEvents : FoodEvent[] = [
       meetsCriteria:true
     },
     {
+      id : 1,
       eventName: "Bro Brunch",
       user: "aggiemensclub@gmail.com",
       sanctioned: false,
@@ -57,6 +62,7 @@ export const MockFoodEvents : FoodEvent[] = [
       meetsCriteria:true
     },
     {
+      id : 1,
       eventName: "BSM Free Lunch",
       user: "imatson9119@tamu.edu",
       sanctioned: false,
@@ -68,6 +74,7 @@ export const MockFoodEvents : FoodEvent[] = [
       meetsCriteria:true
     },
     {
+      id : 1,
       eventName: "MSC Fish Informational",
       user: "mscfish@tamu.edu",
       sanctioned: true,
@@ -79,6 +86,7 @@ export const MockFoodEvents : FoodEvent[] = [
       meetsCriteria:false
     },
     {
+      id : 1,
       eventName: "Fish Aides Informational",
       user: "travis.cantwell@tamu.edu",
       sanctioned: false,
@@ -90,6 +98,7 @@ export const MockFoodEvents : FoodEvent[] = [
       meetsCriteria:false
     },
     {
+      id : 1,
       eventName: "Intramural Sports Social",
       user: "intramuralsportsoffice@tamu.edu",
       sanctioned: true,
@@ -101,6 +110,7 @@ export const MockFoodEvents : FoodEvent[] = [
       meetsCriteria:false
     },
     {
+      id : 1,
       eventName: "Fall Programming Competition",
       user: "hoke_t@icloud.com",
       sanctioned: false,
