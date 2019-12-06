@@ -65,13 +65,13 @@ export class NewEventComponent implements OnInit {
     if(this.eventLoaderService.loadEvent){
       
       this.eventForm.setValue({
-        nameControl: "Hi",
-        orgControl: "Org",
-        locControl: "Loc",
+        nameControl: this.eventLoaderService.curEvent.eventName,
+        orgControl: this.eventLoaderService.curEvent.organization,
+        locControl: this.eventLoaderService.curEvent.location,
         dateControl: new Date(this.eventLoaderService.curEvent.startTime),
         startTimeControl: "1:22 PM",
-        endTimeControl: "1:23 PM",
-        descControl: "Description"
+        endTimeControl: "1:23 PM", //TODO: Parse times
+        descControl: this.eventLoaderService.curEvent.description
       })
       
     }
@@ -197,21 +197,70 @@ export class NewEventComponent implements OnInit {
       meetsCriteria : true
     });*/
     console.log("ID: " + this.calendarService.nextID);
-    this.eventsRef.push({
-      id : this.calendarService.nextID,
-      eventName: formControl.nameControl,
-      user: this.controller.user,
-      sanctioned: false,
-      startTime: start.toJSON(),
-      endTime: end.toJSON(),
-      description: formControl.descControl,
-      location: formControl.locControl,
-      organization: formControl.orgControl,
-      meetsCriteria : true
-    });
-    let updates = {};
-    updates['/nextID'] = this.calendarService.nextID + 1;
-    this.dataBase.database.ref().update(updates); 
+
+    if(!this.eventLoaderService.loadEvent) {
+      this.eventsRef.push({
+        id : this.calendarService.nextID,
+        eventName: formControl.nameControl,
+        user: this.controller.user,
+        sanctioned: false,
+        startTime: start.toJSON(),
+        endTime: end.toJSON(),
+        description: formControl.descControl,
+        location: formControl.locControl,
+        organization: formControl.orgControl,
+        meetsCriteria : true
+      });
+      let updates = {};
+      updates['/nextID'] = this.calendarService.nextID + 1;
+      this.dataBase.database.ref().update(updates); 
+    } else {
+      let event = {
+        id : this.eventLoaderService.curEvent.id,
+        eventName: formControl.nameControl,
+        user: this.controller.user,
+        sanctioned: false,
+        startTime: start.toJSON(),
+        endTime: end.toJSON(),
+        description: formControl.descControl,
+        location: formControl.locControl,
+        organization: formControl.orgControl,
+        meetsCriteria : true
+      }
+
+      let targetID = this.eventLoaderService.curEvent.id;
+      let targetIndex = -1;
+      let valSubscription = this.dataBase.list<any>('/events').valueChanges().subscribe((values) => {
+        let i = 0;
+        values.forEach((value) => {
+          if(value.id == targetID) {
+            targetIndex = i;
+
+            //Use target index to update
+            console.log(targetIndex);
+            if(targetIndex == -1) return; //Unsuccessful edit
+      
+            let snapSubscription = this.dataBase.list<any>('/events').snapshotChanges().subscribe((values) => {
+              let i = 0;
+              values.forEach((value) => {
+                if(i == targetIndex) {
+                  console.log("UPDATING");
+                  let updates = {};
+                  updates['/events/' + value.key] = event;
+                  this.dataBase.database.ref().update(updates); 
+                  console.log("UPDATING2");
+                  snapSubscription.unsubscribe();
+                }
+                i++;
+              });
+            });
+            valSubscription.unsubscribe();
+          }
+          i++;
+        });
+      });
+
+    }
     this.router.navigateByUrl("/home");
     
   }
