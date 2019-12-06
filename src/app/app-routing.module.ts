@@ -11,6 +11,7 @@ import { DevComponent } from './dev/dev.component';
 import { AuthGuardService } from './shared/auth-guard.service';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -22,6 +23,8 @@ const routes: Routes = [
   { path: "register-org", component: RegisterOrgComponent, canActivate: [AuthGuardService]},
   { path: "dev", component: DevComponent},
   { path: "not-authorized", component: NotAuthorizedComponent},
+  { path: "404", component: NotFoundComponent},
+  { path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({

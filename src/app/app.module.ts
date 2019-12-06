@@ -43,6 +43,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AngularFireFunctions, AngularFireFunctionsModule } from '@angular/fire/functions';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
@@ -83,6 +84,7 @@ if (!environment.firebase) {
     DevComponent,
     NotAuthorizedComponent,
     AboutUsComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
