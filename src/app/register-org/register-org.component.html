@@ -1,13 +1,45 @@
-<div class="main-container">
-    <div class="login-form">
-      <span class="header">Register Your Org</span>
-      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit(registrationForm)" class="example-form">
-        <mat-form-field  style="width: 240px;" class="example-full-width">
-          <input matInput formControlName="name" placeholder="Organization Name"/>
-        </mat-form-field>
-        <button type='submit' [disabled]="registrationForm.invalid || this.displayPassError" class="button-dark">Register</button>
-      </form>
+<div class="scroll-container">
+  <div class="main-container">
+    <div class = "login-form-container">
+      <div class="login-form">
+        <span class="header">Register Your Org</span>
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit(registrationForm)" class="example-form">
+          <mat-form-field  style="width: 240px;" class="example-full-width">
+            <input matInput formControlName="name" placeholder="Organization Name"/>
+          </mat-form-field>
+          <br>
+          <button type='submit' [disabled]="registrationForm.invalid || this.displayPassError" class="button-dark">Register</button>
+        </form>
+      </div>
     </div>
+    <div class = "text-container">
+      <span (click)='scroll("why-register");' style = 'cursor: pointer;'>Why register?</span>
+      <br>
+      <i (click)='scroll("why-register");' class="material-icons big-icon">
+          keyboard_arrow_down
+      </i>
+    </div>
+  </div>
+  <div class = why-register id = why-register>
+    <div class = 'top-bottom'>
+        <div class = 'filler'></div>
+        <div class = 'text-section'>
+          <div class = 'info-text-top'>
+            Verified Badge
+          </div>
+        </div>
+    </div>
+    <div class = 'middle'>
+      <button class = 'preview' (click) = 'openSampleDialog()'>Preview</button>
+    </div>
+    <div class = 'top-bottom'>
+      <div class = 'text-section'>
+          <div class = 'info-text-bottom'>
+            Contact Email
+          </div>
+      </div>
+      <div class = 'filler'></div>
+    </div>
+  </div>
+  <app-footer></app-footer>
 </div>
-<app-footer></app-footer>
-  

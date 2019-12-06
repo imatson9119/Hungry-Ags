@@ -26,7 +26,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { FormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
 import { NewEventComponent } from './new-event/new-event.component';
-import { RegisterOrgComponent, RegistrationDialog } from './register-org/register-org.component';
+import { RegisterOrgComponent, RegistrationDialog, SampleDialog } from './register-org/register-org.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -79,6 +79,7 @@ if (!environment.firebase) {
     RegisterOrgComponent,
     EventDialog,
     RegistrationDialog,
+    SampleDialog,
     DevComponent,
     NotAuthorizedComponent,
     AboutUsComponent,
@@ -115,6 +116,6 @@ if (!environment.firebase) {
   }, AuthGuardService, AuthService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ConfirmEmailDialog, EventDialog, RegistrationDialog]
+  entryComponents: [ConfirmEmailDialog, EventDialog, RegistrationDialog,SampleDialog]
 })
 export class AppModule { }

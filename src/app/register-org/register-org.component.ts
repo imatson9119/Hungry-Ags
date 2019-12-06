@@ -28,6 +28,9 @@ export class RegisterOrgComponent implements OnInit {
     });
     
   }
+  scroll(id: string){
+    document.getElementById(id).scrollIntoView();
+  }
   openDialog(): void {
     const dialogRef = this.dialog.open(RegistrationDialog, {
       width: '350px',
@@ -42,7 +45,17 @@ export class RegisterOrgComponent implements OnInit {
     this.openDialog();
 
   }
+  openSampleDialog(arg): void {
+    const dialogRef = this.dialog.open(SampleDialog, {
+      width: "400px",
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("The dialog was closed");
+    });
+  }
 }
+
 @Component({
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'confirm-registration.html',
@@ -53,6 +66,20 @@ export class RegistrationDialog {
   constructor(
     public dialogRef: MatDialogRef<RegistrationDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+@Component({
+  selector: "dialog-overview-example-dialog",
+  templateUrl: "eventDialog.html",
+  styleUrls: ["eventDialog.scss"]
+})
+export class SampleDialog {
+  constructor(
+    public dialogRef: MatDialogRef<SampleDialog>) {}
 
   onNoClick(): void {
     this.dialogRef.close();
