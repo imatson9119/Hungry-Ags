@@ -45,7 +45,7 @@ export class RegisterOrgComponent implements OnInit {
     this.openDialog();
 
   }
-  openSampleDialog(arg): void {
+  openSampleDialog(): void {
     const dialogRef = this.dialog.open(SampleDialog, {
       width: "400px",
     });
