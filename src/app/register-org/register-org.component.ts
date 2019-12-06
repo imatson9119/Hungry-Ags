@@ -67,6 +67,11 @@ export class RegistrationDialog {
     public dialogRef: MatDialogRef<RegistrationDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
+  onConfirmClick() : void {
+    console.log("Registration confirmed");
+    this.dialogRef.close();
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
   }
