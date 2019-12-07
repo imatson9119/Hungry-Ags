@@ -5,6 +5,7 @@
     color: white;
     font-size: 35px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+    transition: .4s
 }
 .outer-form-container{
   background: rgba(0, 0, 0, 0.06);
@@ -15,7 +16,7 @@
   color: #520c16;
   font-size: 20px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
-  
+  transition: .4s;
 }
 .inner-form-container{
     display: flex;
@@ -65,4 +66,8 @@ mat-form-field{
     cursor: default;
     filter: grayscale(1) ;
     
+  }
+  @media only screen and (max-width: 600px) {
+    .outer-form-container{margin:0px;margin-top:50px}
+    .main-container{border-radius:0px;}
   }
