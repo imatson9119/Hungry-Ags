@@ -6,6 +6,7 @@
   position: absolute;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
 }
 
 .calendar-container {
@@ -24,4 +25,18 @@
 .empty-icon {
   color: rgba(0, 0, 0, 0.2);
   font-size: 45px;
+}
+@media only screen and (max-width: 450px){
+  ::ng-deep .fc-toolbar h2{
+    white-space: nowrap;
+    font-size: 20px;
+  }
+  ::ng-deep .fc-right{
+    white-space:nowrap;
+  }
+}
+@media only screen and (max-width: 370px){
+  ::ng-deep .fc-toolbar h2{
+    font-size: 15px;
+  }
 }

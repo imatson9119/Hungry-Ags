@@ -2,12 +2,13 @@
   <div class="calendar-container">
     <full-calendar
       (eventClick)="openDialog($event)"
-      noEventsMessage=""
-      handleWindowResize="true;"
+      noEventsMessage="There doesn't seem to be anything here..."
+      handleWindowResize="false"
       defaultView="listWeek"
       [plugins]="calendarPlugins"
       [events]="calendarService.calendarEvents"
       deepChangeDetection="true"
+      height='parent'
     ></full-calendar>
   </div>
   <app-footer></app-footer>

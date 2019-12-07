@@ -63,7 +63,7 @@ export class NewEventComponent implements OnInit {
       descControl: ['', [Validators.required]],
     },{validator: this.checkTimes('startTimeControl', 'endTimeControl')});
     if(this.eventLoaderService.loadEvent){
-      
+      console.log(this.eventLoaderService.curEvent.startTime.substring(11,16));
       this.eventForm.setValue({
         nameControl: this.eventLoaderService.curEvent.eventName,
         orgControl: this.eventLoaderService.curEvent.organization,
