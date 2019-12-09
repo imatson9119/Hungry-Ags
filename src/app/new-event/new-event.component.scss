@@ -31,6 +31,7 @@
 
 mat-form-field{
     margin: 20px;
+    transition:.4s;
     flex: 1;
 }
 .button-dark {
@@ -69,5 +70,6 @@ mat-form-field{
   }
   @media only screen and (max-width: 600px) {
     .outer-form-container{margin:0px;margin-top:50px}
-    .main-container{border-radius:0px;}
+    .main-container{border-radius:0px; background: transparent; color: #6c1420; box-shadow:none}
+    mat-form-field{margin: 5px;}
   }
