@@ -22,6 +22,9 @@
     <div class="user-panel" *ngIf='this.controllerService.signedIn == true;' [matMenuTriggerFor]="menu">
       <img src={{this.controllerService.photo}} class='user-photo'>
       {{this.controllerService.user}}
+      <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
     </div>
     <mat-menu #menu="matMenu" xPosition ="before">
       <div class="username">{{this.controllerService.user}}</div>
