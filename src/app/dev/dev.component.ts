@@ -15,5 +15,6 @@ export class DevComponent implements OnInit {
   login(){
     this.controllerService.signedIn = true;
     this.controllerService.user = 'dev@tamu.edu';
+    this.controllerService.admin = true;
   }
 }

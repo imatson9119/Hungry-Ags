@@ -12,9 +12,10 @@ export class ControllerService implements OnInit, OnDestroy {
   signedIn: boolean;
   user: any;
   photo: string;
+  admin: boolean
 
   constructor(private authService: AuthService, private snackBar: MatSnackBar) {
-
+    this.admin = false;
   }
 
   ngOnInit() {
@@ -22,6 +23,9 @@ export class ControllerService implements OnInit, OnDestroy {
       this.user = user;
       this.signedIn = (user != null);
     });
+    if(this.user = "hungryagsofficial@gmail.com"){
+      this.admin = true;
+    }
   }
   setStorage(key: string, value: any) {
     window.localStorage.setItem(key, value)
