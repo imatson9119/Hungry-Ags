@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: "about", component: AboutUsComponent },
   { path: "register", component: RegisterComponent},
   { path: "new-event", component: NewEventComponent, canActivate: [AuthGuardService]},
-  { path: "register-org", component: RegisterOrgComponent, canActivate: [AuthGuardService]},
+  { path: "register-org", component: RegisterOrgComponent, /*canActivate: [AuthGuardService]*/},
   { path: "dev", component: DevComponent},
   { path: "not-authorized", component: NotAuthorizedComponent},
   { path: "404", component: NotFoundComponent},

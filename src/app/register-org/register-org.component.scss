@@ -37,6 +37,14 @@
     height: 100%;
     width:100%;
   }
+  #main-footer {
+    background: none;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2.5rem;
+    color: #6c1420;
+  }  
   .big-icon{
     font-size: 80px; 
     color: dimgray;
@@ -118,7 +126,8 @@
   .text-section{
     flex:2;
     display:flex;
-    height:100%
+    height:270px;
+    transition:.4s;
   }
   .info-text-top{
     background: rgba(255, 255, 255, 0.45);
@@ -156,6 +165,7 @@
   }
   .filler{
     flex:1;
+    transition:.4s;
   }
   .preview{
     outline: none;
@@ -193,6 +203,8 @@
     .big-icon{font-size:60px}
     .info-text-bottom{font-size: 30px;}
     .info-text-top{font-size: 30px;}
+    .filler{flex:0;}
+    .text-section{height:230px}
   }
   @media only screen and (max-width: 1000px) {
     .preview{width: calc(100vw + 100px);}

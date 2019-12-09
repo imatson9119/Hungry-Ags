@@ -3,7 +3,6 @@
 - Send confirmation email to our domain email upon org registration
 - Integrate verified accounts with verified badge functionality
 - Add ability to filter calander events by verified status
-- Make add event page more appealing on mobile platforms
 - Make register event page more appealing on mobile platforms
 - Brainstorm ways to make our platform cater more to organizations (organization homepage? Link to org website on events?)
 - Help page/contact info?
