@@ -6,6 +6,7 @@ import {
   MAT_DIALOG_DATA
 } from "@angular/material/dialog";
 import { ControllerService } from '../shared/controller.service';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 export interface DialogData {
   orgName: string;
@@ -65,10 +66,19 @@ export class RegistrationDialog {
 
   constructor(
     public dialogRef: MatDialogRef<RegistrationDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, public http : HttpClient) {}
 
   onConfirmClick() : void {
     console.log("Registration confirmed");
+    let emailContent = this.data.orgName + ' requests to be registered under the following account: ' + this.data.username;
+    let url = 'https://us-central1-hungry-ags.cloudfunctions.net/sendMail?dest=support@hungryags.com&subject=ORGANIZATION REGISTRATION REQUEST: ' + this.data.orgName + '&content=' + emailContent;
+    // Prepare the header 
+    let headers: HttpHeaders = new HttpHeaders();
+    //headers.set('parameter-name' , 'parameter-value');
+
+    // Send request with parameters            
+    let test = this.http.get(url, {responseType: 'text'}).subscribe(res => {});   
+    console.log("SENT");
     this.dialogRef.close();
   }
 

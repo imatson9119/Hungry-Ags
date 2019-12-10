@@ -29,14 +29,6 @@ export class CalendarService {
       name: "TestPush",
       email: "TestEmail"
     });*/
-    let url = 'https://us-central1-hungry-ags.cloudfunctions.net/sendMail?dest=support@hungryags.com';
-    // Prepare the header 
-    let headers: HttpHeaders = new HttpHeaders();
-    //headers.set('parameter-name' , 'parameter-value');
-
-    // Send request with parameters            
-    let test = this.http.get(url, {responseType: 'text'}).subscribe(res => {});   
-    console.log("SENT");
 
     this.dataBase.object('/nextID').valueChanges().subscribe((value) => {
       this.nextID = value;
