@@ -8,12 +8,13 @@
 }
 .top{
     position: relative;
-    height: calc(100vh - 64px);
+    height: calc(100vh - 33px);
     width: 100%;
     display:flex;
     align-content: center;
     justify-content: center;
     flex-direction:column;
+    
 }
 .image{
     position: absolute;
@@ -27,12 +28,106 @@
     z-index: -1;
     background-attachment: fixed;
     background-position: center;
-    filter: blur(20px);
-    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+    display:flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction:column;
+    /*filter: blur(20px);
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);*/
 }
-.banner{
+.banner-blur{
     height: 300px;
     width: 100%;
-    background-image: linear-gradient(to top, rgba(207, 217, 223, .5) 0%, rgba(226, 235, 240, .5) 100%);
+    background: inherit;
     box-shadow: 0 0 10px rgba(0, 0, 0, .3);
-  }
+    position: relative;
+    overflow:hidden;
+}
+.banner-blur::before{
+    content: "";
+    position: absolute;
+    background: inherit;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+    filter: blur(10px);
+    margin: -20px;
+    overflow: hidden;
+}
+.banner-left{
+    flex:1;
+    flex: 1;
+    color: #6c1420;
+    font-size: 70px;
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+}
+.banner-right{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.banner{
+    background-image: linear-gradient(to top, rgba(207, 217, 223, .3) 0%, rgba(226, 235, 240, .3) 100%);
+    height: 300px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.info-container{
+    background:white;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0px 0px 15px 18px #FFFFFF;
+}
+.info-title{
+    font-size:60px;
+    margin-bottom:50px;
+}
+.section{
+    background-image: linear-gradient(175deg, darken(#fff,8%) 0%, darken(#f9f9f9,8%) 100%);
+    border-radius: 8px;
+    margin-bottom: 60px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    padding: 30px;
+    text-align: left;
+}
+.section-header{
+    font-size: 30px;
+}
+.help-link{
+    cursor: pointer;
+    margin: 15px;
+    font-size: 20px;
+    color: #6c1420;
+    font-weight: bold;
+}
+@media only screen and (max-width: 1000px) {
+    .banner-left{
+        font-size: 50px;
+    }
+    .help-link{margin:13px;}
+}
+@media only screen and (max-width: 700px) {
+    .banner-left{
+        font-size: 40px;
+    }
+    .help-link{font-size:15px}
+}
+@media only screen and (max-width: 500px) {
+    .banner{
+        flex-direction: column;
+    }
+    .banner-left{flex:1}
+    .banner-right{flex:2}
+    .help-link{margin:10px;}
+    .info-container{font-size:13px}
+}

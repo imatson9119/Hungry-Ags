@@ -11,5 +11,7 @@ export class HelpComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  scroll(id: string){
+    document.getElementById(id).scrollIntoView();
+  }
 }
