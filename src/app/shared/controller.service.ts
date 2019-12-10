@@ -48,7 +48,7 @@ export class ControllerService implements OnInit, OnDestroy {
       this.signedIn = true;
       this.setStorage(this.EMAIL_KEY,this.user);
       this.setStorage(this.PHOTO_KEY,this.photo);
-      if(this.user = "hungryagsofficial@gmail.com"){
+      if(this.user == "hungryagsofficial@gmail.com"){
         this.admin = true;
       }
     });
