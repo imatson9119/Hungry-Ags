@@ -44,6 +44,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AngularFireFunctions, AngularFireFunctionsModule } from '@angular/fire/functions';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { HelpComponent } from './help/help.component';
 
 
 let config = new AuthServiceConfig([
@@ -84,6 +85,7 @@ if (!environment.firebase) {
     NotAuthorizedComponent,
     AboutUsComponent,
     NotFoundComponent,
+    HelpComponent,
   ],
   imports: [
     BrowserModule,

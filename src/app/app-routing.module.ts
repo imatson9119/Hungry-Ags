@@ -12,6 +12,7 @@ import { AuthGuardService } from './shared/auth-guard.service';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { HelpComponent } from './help/help.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: "about", component: AboutUsComponent },
   { path: "register", component: RegisterComponent},
   { path: "new-event", component: NewEventComponent, canActivate: [AuthGuardService]},
-  { path: "register-org", component: RegisterOrgComponent, /*canActivate: [AuthGuardService]*/},
+  { path: "register-org", component: RegisterOrgComponent, canActivate: [AuthGuardService]},
+  { path: "help", component: HelpComponent },
   { path: "dev", component: DevComponent},
   { path: "not-authorized", component: NotAuthorizedComponent},
   { path: "404", component: NotFoundComponent},
