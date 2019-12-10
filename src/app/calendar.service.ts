@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MockFoodEvents } from './MockFoodEvents'
 import { of, Observable } from 'rxjs';
 import { FoodEvent } from './calendar/FoodEvent';
@@ -29,6 +29,7 @@ export class CalendarService {
       name: "TestPush",
       email: "TestEmail"
     });*/
+
     this.dataBase.object('/nextID').valueChanges().subscribe((value) => {
       this.nextID = value;
     });
