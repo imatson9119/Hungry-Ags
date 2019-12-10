@@ -71,7 +71,7 @@ export class RegistrationDialog {
   onConfirmClick() : void {
     console.log("Registration confirmed");
     let emailContent = this.data.orgName + ' requests to be registered under the following account: ' + this.data.username;
-    let url = 'https://us-central1-hungry-ags.cloudfunctions.net/sendMail?dest=support@hungryags.com&subject=ORGANIZATION REGISTRATION REQUEST: ' + this.data.orgName + '&content=' + emailContent;
+    let url = 'https://us-central1-hungry-ags.cloudfunctions.net/sendMail?dest=support@hungryags.com&subject=REGISTRATION REQUEST: ' + this.data.orgName + '&content=' + emailContent;
     // Prepare the header 
     let headers: HttpHeaders = new HttpHeaders();
     //headers.set('parameter-name' , 'parameter-value');
