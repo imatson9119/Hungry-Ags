@@ -69,16 +69,12 @@ export class RegistrationDialog {
     @Inject(MAT_DIALOG_DATA) public data: DialogData, public http : HttpClient) {}
 
   onConfirmClick() : void {
-    console.log("Registration confirmed");
+    //Sends email for request
     let emailContent = this.data.orgName + ' requests to be registered under the following account: ' + this.data.username;
     let url = 'https://us-central1-hungry-ags.cloudfunctions.net/sendMail?dest=support@hungryags.com&subject=REGISTRATION REQUEST: ' + this.data.orgName + '&content=' + emailContent;
-    // Prepare the header 
-    let headers: HttpHeaders = new HttpHeaders();
-    //headers.set('parameter-name' , 'parameter-value');
 
     // Send request with parameters            
-    let test = this.http.get(url, {responseType: 'text'}).subscribe(res => {});   
-    console.log("SENT");
+    let emailRequest = this.http.get(url, {responseType: 'text'}).subscribe(res => {});   
     this.dialogRef.close();
   }
 
