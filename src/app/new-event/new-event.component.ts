@@ -15,6 +15,7 @@ import { EventLoaderService } from './event-loader.service';
 
 })
 export class NewEventComponent implements OnInit {
+  //New event data fields
   public eventForm: FormGroup;
   public title : string = "";
   public location : string = "";
@@ -24,7 +25,7 @@ export class NewEventComponent implements OnInit {
   public end : string = "";
   public organization : string = "";
   public user : string = "";
-  public eventsRef : AngularFireList<any>;
+  public eventsRef : AngularFireList<any>; //Reference to editable event
 
   constructor(
     public router : Router, 
@@ -32,9 +33,10 @@ export class NewEventComponent implements OnInit {
     public calendarService : CalendarService, 
     public controller : ControllerService, 
     public dataBase : AngularFireDatabase, 
-    public eventLoaderService : EventLoaderService) {
-    this.eventsRef = this.dataBase.list<any>('\events');
-  }
+    public eventLoaderService : EventLoaderService) 
+    {
+      this.eventsRef = this.dataBase.list<any>('\events');
+    }
 
 
   darkTheme: NgxMaterialTimepickerTheme = {
@@ -53,6 +55,7 @@ export class NewEventComponent implements OnInit {
 };
 
   ngOnInit() {
+    //Initializes form fields
     this.eventForm = this.fb.group({
       nameControl: ['', [Validators.required]],
       orgControl: ['', Validators.required],
@@ -63,13 +66,14 @@ export class NewEventComponent implements OnInit {
       descControl: ['', [Validators.required]],
     },{validator: this.checkTimes('startTimeControl', 'endTimeControl')});
     if(this.eventLoaderService.loadEvent){
+      //If event being edited, populates with events current data
       console.log(this.eventLoaderService.curEvent.startTime.substring(11,16));
       this.eventForm.setValue({
         nameControl: this.eventLoaderService.curEvent.eventName,
         orgControl: this.eventLoaderService.curEvent.organization,
         locControl: this.eventLoaderService.curEvent.location,
         dateControl: new Date(this.eventLoaderService.curEvent.startTime),
-        startTimeControl: "1:22 PM",
+        startTimeControl: "1:22 PM", //TODO: Parse times
         endTimeControl: "1:23 PM", //TODO: Parse times
         descControl: this.eventLoaderService.curEvent.description
       })
@@ -81,6 +85,7 @@ export class NewEventComponent implements OnInit {
   }
 
   checkTimes(start: string, end: string) {
+    //Ensures start time is before end time
     return (group: FormGroup) => {
       
       let startTime = group.controls[start],
@@ -96,7 +101,9 @@ export class NewEventComponent implements OnInit {
       }
     }
   }
+
   formatTime(time: string){
+    //Parses time into military time [hours, minutes]
     let timeNum = time.split(' ');
     let mins = +timeNum[0].split(':')[1];
     let hrs = +timeNum[0].split(':')[0];
@@ -111,7 +118,11 @@ export class NewEventComponent implements OnInit {
   }
 
   onSubmit(formGroup: FormGroup) {
+    //Creates new event/edits event based on field values
+
     let formControl = formGroup.getRawValue();
+
+    /*Parse date (day and month)*/
     let month = String(formControl.dateControl.getMonth());
     month = String(Number(month) + 1);
     if(Number(month) < 10) {
@@ -123,13 +134,16 @@ export class NewEventComponent implements OnInit {
       day = "0"+String(Number(day));
     }
     let year = String(formControl.dateControl.getFullYear());
+    /*End parse date*/
 
+    /*Parse times (hrs and mins)*/
     let start = formControl.startTimeControl.replace(" ", "");
     let end = formControl.endTimeControl.replace(" ", "");
 
+    //Parse start time
     let pm = start.toLowerCase().endsWith("pm"); //stores if start time was am or pm
     let am = start.toLowerCase().endsWith("am")
-    start = start.toLowerCase().replace("am", "");
+    start = start.toLowerCase().replace("am", ""); //removes am/pm suffixes
     start = start.toLowerCase().replace("pm", "");
     let minutes = start.slice(start.length - 3);
     start = start.slice(0, start.length - 3);
@@ -142,6 +156,7 @@ export class NewEventComponent implements OnInit {
     if(Number(start) < 10) start = "0"+start; //Needed before html time picker used
     start += minutes;
 
+    //Now parse end time
     pm = end.toLowerCase().endsWith("pm"); //stores if start time was am or pm
     am = end.toLowerCase().endsWith("am");
     end = end.toLowerCase().replace("am", "");
@@ -156,49 +171,18 @@ export class NewEventComponent implements OnInit {
     }
     if(Number(end) < 10) end = "0"+end; //Needed before html time picker used
     end += minutes;
+    /*End parse times*/
 
-
-
+    //Format times for storing in JSON
     start = year + "-" + month + "-" + day + "T" + start + "+00:00";
     end = year + "-" + month + "-" + day + "T" + end + "+00:00";
 
+    //Create new date objects using JSON format
     start = new Date(start);
-    /*console.log(start.getTimezoneOffset());
-    let hoursDiff = start.getHours() - start.getTimezoneOffset() / 60;
-    let minutesDiff = (start.getMinutes() - start.getTimezoneOffset()) % 60;
-    start.setHours(hoursDiff);
-    start.setMinutes(minutesDiff);*/
-    console.log("ADD START DATE");
-    console.log(start);
-    console.log(start.toJSON());
-    console.log();
-
     end = new Date(end);
-    /*console.log(end.getTimezoneOffset());
-    hoursDiff = end.getHours() - end.getTimezoneOffset() / 60;
-    minutesDiff = (end.getMinutes() - end.getTimezoneOffset()) % 60;
-    end.setHours(hoursDiff);
-    end.setMinutes(minutesDiff);*/
-    console.log("ADD END DATE");
-    console.log(end);
-    console.log(end.toJSON());
-    console.log();
-
-
-    /*this.calendarService.foodEvents.push({
-      eventName: formControl.nameControl,
-      user: this.controller.getStorage(this.controller.AUTH_KEY),
-      sanctioned: false,
-      startTime: start,
-      endTime: end,
-      description: formControl.descControl,
-      location: formControl.locControl,
-      organization: formControl.orgControl,
-      meetsCriteria : true
-    });*/
-    console.log("ID: " + this.calendarService.nextID);
 
     if(!this.eventLoaderService.loadEvent) {
+      //Creates brand new event
       this.eventsRef.push({
         id : this.calendarService.nextID,
         eventName: formControl.nameControl,
@@ -215,6 +199,8 @@ export class NewEventComponent implements OnInit {
       updates['/nextID'] = this.calendarService.nextID + 1;
       this.dataBase.database.ref().update(updates); 
     } else {
+      //Updates event if it is an edit
+      //Create new event object
       let event = {
         id : this.eventLoaderService.curEvent.id,
         eventName: formControl.nameControl,
@@ -228,11 +214,12 @@ export class NewEventComponent implements OnInit {
         meetsCriteria : true
       }
 
+      //Find event in database with ID of edited event
       let targetID = this.eventLoaderService.curEvent.id;
       let targetIndex = -1;
       let valSubscription = this.dataBase.list<any>('/events').valueChanges().subscribe((values) => {
         let i = 0;
-        values.forEach((value) => {
+        values.forEach((value) => { //Finds index of target event in database
           if(value.id == targetID) {
             targetIndex = i;
 
@@ -243,13 +230,11 @@ export class NewEventComponent implements OnInit {
             let snapSubscription = this.dataBase.list<any>('/events').snapshotChanges().subscribe((values) => {
               let i = 0;
               values.forEach((value) => {
-                if(i == targetIndex) {
-                  console.log("UPDATING");
+                if(i == targetIndex) { //Finds event at target index
                   let updates = {};
                   updates['/events/' + value.key] = event;
-                  this.dataBase.database.ref().update(updates); 
-                  console.log("UPDATING2");
-                  snapSubscription.unsubscribe();
+                  this.dataBase.database.ref().update(updates); //Pushes update to database
+                  snapSubscription.unsubscribe(); //Unsubscribe to prevent further unintended changes
                 }
                 i++;
               });
@@ -261,7 +246,7 @@ export class NewEventComponent implements OnInit {
       });
 
     }
-    this.router.navigateByUrl("/home");
+    this.router.navigateByUrl("/home"); //Go home when finished
     
   }
 

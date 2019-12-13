@@ -11,7 +11,8 @@ import { AngularFireDatabase, AngularFireObject, AngularFireList } from '@angula
   providedIn: 'root'
 })
 export class CalendarService {
-  public foodEvents = [];
+  public foodEvents = []; //Handles all event data (including that not displayed on calendar)
+  public calendarEvents = []; //Referenced in page head and handles data displayed on calendar
   public eventsRef : AngularFireList<any>;
   public nextID;
 
