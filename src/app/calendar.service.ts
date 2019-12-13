@@ -12,58 +12,36 @@ import { AngularFireDatabase, AngularFireObject, AngularFireList } from '@angula
 })
 export class CalendarService {
   public foodEvents = [];
-  public calendarEvents = [];
   public eventsRef : AngularFireList<any>;
   public nextID;
 
-  constructor(public firebase: AngularFireFunctions,public http : HttpClient, private dataBase : AngularFireDatabase) {
-    /*let url = "https://us-central1-hungry-ags.cloudfunctions.net/sendEvents";
-    this.foodEvents = this.http.get(url, {params:{}, observe:"response"}).subscribe(
-      events =>  (this.foodEvents = events));*/
-    //this.calendarEvents = MockFoodEvents;
-  }
+  constructor(public firebase: AngularFireFunctions,public http : HttpClient, private dataBase : AngularFireDatabase) {}
 
   getEvents() : Observable<FoodEvent[]>{
-    console.log("Pushing dummy data to database");
-    /*this.eventsRef.push({
-      name: "TestPush",
-      email: "TestEmail"
-    });*/
-
+    //Gets ID of next event
     this.dataBase.object('/nextID').valueChanges().subscribe((value) => {
       this.nextID = value;
     });
 
     this.dataBase.list<any>('/events').valueChanges().subscribe((values) => { //NOTE: Where data is actually read from database
       this.foodEvents = [];
-      // If you want to push in values, however this may lead to duplicates
+      // Pushes each value retrieved from database into array
       values.forEach((value) => {
+        //Adjust time zone to CST
+        //Start time
         let start = new Date(value.startTime);
-        console.log("BEFORE START DATE");
-        console.log(start);
-        console.log(start.toJSON());
-        console.log(start.getTimezoneOffset());
         let hoursDiff = start.getHours() + (start.getTimezoneOffset() / 60) - 24;
         let minutesDiff = (start.getMinutes() - start.getTimezoneOffset()) % 60;
         start.setHours(hoursDiff);
-        //start.setMinutes(minutesDiff);
-        console.log("AFTER START DATE");
-        console.log(start);
-        console.log(start.toJSON());
-        console.log();
         
+        //End time
         let end = new Date(value.endTime);
         console.log(end.getTimezoneOffset());
         hoursDiff = end.getHours() + (end.getTimezoneOffset() / 60) - 24;
         minutesDiff = (end.getMinutes() - end.getTimezoneOffset()) % 60;
         end.setHours(hoursDiff);
-        //end.setMinutes(minutesDiff);
-        console.log("END DATE");
-        console.log(end);
-        console.log(end.toJSON());
-        console.log();
 
-
+        //Creates new food event to push
         let test : FoodEvent = {
           id : value.id,
           eventName : value.eventName,
@@ -76,20 +54,11 @@ export class CalendarService {
           organization: value.organization,
           meetsCriteria : true
         };
-      this.foodEvents.push(test);
+
+        this.foodEvents.push(test);
       });
     });
 
-    //this.foodEvents = MockFoodEvents;
     return of(this.foodEvents);
-  }
-
-  getCalendarEvents() {
-    /*this.eventsRef.push({
-      name: "TestPush",
-      email: "TestEmail"
-    })*/
-
-    return of(this.calendarEvents);
   }
 }

@@ -18,6 +18,7 @@ import { MockFoodEvents } from '../MockFoodEvents';
 import { EventLoaderService } from "../new-event/event-loader.service";
 import { Router } from '@angular/router';
 
+//Data interface for dialog boxes
 export interface Data {
   title: string;
   organizer : string;
@@ -37,10 +38,8 @@ export interface Data {
 })
 export class CalendarComponent implements OnInit {
   calendarPlugins = [listPlugin]; // important!
-  public events;
-  public calendarObjects: Object[] = [];
-  public doLink: boolean;
-  public val : String;
+  public events; //List of events retrieved from database
+  public doLink: boolean; //Whether or not map link exists
 
   constructor(
     public calendarService: CalendarService,
@@ -51,28 +50,17 @@ export class CalendarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    //Creates subscription to calendarService
       this.calendarService
         .getEvents()
         .subscribe(events => (this.events = events));
-
-      console.log("Events Length", this.events.length);
-      this.calendarObjects = [];
-      this.calendarService
-        .getCalendarEvents()
-        .subscribe(events => (this.calendarObjects = events));
-  
-
-    /*this.calendarObjects = [];
-    this.calendarObjects = MockFoodEvents;
-    console.log("Calendar Length", this.calendarObjects.length);
-    console.log(this.calendarObjects);
-    console.log(this.calendarService.calendarEvents);*/
-
   }
 
   openDialog(arg): void {
-    let eventIndex = -1;
-    let event = {
+    //Occurs when an event is clicked on in the calendar
+    let eventIndex = -1; //Index of event in eventsList (corresponds to database index)
+
+    let event = { //Represents event that was clicked on
       eventName: "",
       location: "",
       description: "",
@@ -81,24 +69,21 @@ export class CalendarComponent implements OnInit {
       id : Number,
       sanctioned : false
     };
-    this.events = this.calendarService.foodEvents;
-    console.log("Opening dialog");
-    console.log(this.events);
+
+    this.events = this.calendarService.foodEvents; //Gets list of events for dialog
+
+    /*TODO: Make event finding no longer rely on location and name only (perhaps ID)*/
     for (let i = 0; i < this.events.length; i++) {
       let verificationString =
         this.events[i].location + " - " + this.events[i].eventName;
-      console.log("EVENT");
-        console.log(this.events[i]);
-      let selectedString = arg.event._def.title;
-      console.log(selectedString + " " + verificationString);
-      if (selectedString == verificationString) {
-        event = this.events[i];
-        console.log("EVENT FOUND");
-        console.log(event);
 
+      let selectedString = arg.event._def.title;
+      if (selectedString == verificationString) {
+        event = this.events[i]; //Found event that was clicked on
       } else { console.log("EVENT NOT FOUND"); }
     }
 
+    //Handles linking to AggieMap
     this.doLink = false;
     let mapLink = "https://aggiemap.tamu.edu/map/d?ref=HungryAgs&BldgAbbrv=";
     for (let i = 0; i < buildings.length; i++) {
@@ -109,10 +94,11 @@ export class CalendarComponent implements OnInit {
       }
     }
 
+    //Opens new dialog; passes in data interface
     const dialogRef = this.dialog.open(EventDialog, {
       width: "400px",
       data: {
-        title: event.eventName,//event.eventName,
+        title: event.eventName,
         location: event.location,
         description: event.description,
         organization: event.organization,
@@ -167,6 +153,9 @@ export class EventDialog {
   }
 
   deleteClick(){
+    //Handles event deletion
+
+    //Gets ID of event that was clicked on
     let id = this.data.id;
     let clickedIndex = -1;
     for(let i = 0; i < this.calendarService.foodEvents.length; i++) {
@@ -176,8 +165,9 @@ export class EventDialog {
       }
     }
 
-    if(clickedIndex == -1) return;
+    if(clickedIndex == -1) return; //If event was not found, do nothing
 
+    //Finds event in the database with selected ID and removes from database
     let toDelete; //Key of value to delete
     let subscription = this.dataBase.list<any>('/events').snapshotChanges().subscribe((values) => {
       let i = 0;
@@ -194,7 +184,7 @@ export class EventDialog {
   }
 
   editClick() {
-    
+    //Gets ID of clicked event
     let id = this.data.id;
     let clickedEvent;
     for(let i = 0; i < this.calendarService.foodEvents.length; i++) {
@@ -204,8 +194,9 @@ export class EventDialog {
       }
     }
     
-    this.eventLoaderService.loadEvent = true;
-    this.eventLoaderService.curEvent = clickedEvent;
+    //Opens new event page with edited behavior enabled
+    this.eventLoaderService.loadEvent = true; //Enables editable behavior
+    this.eventLoaderService.curEvent = clickedEvent; //Event to be edited
     this.dialogRef.close();
     this.router.navigateByUrl("/new-event");
   }
