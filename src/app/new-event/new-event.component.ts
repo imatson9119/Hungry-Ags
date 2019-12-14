@@ -89,26 +89,17 @@ export class NewEventComponent implements OnInit {
     //i.e. input is something like "2019-09-08T18:00:00+00:00", output is something like "8:23 PM"
     formatted = formatted.slice(11, 11 + 5);
     let suffix = "AM";
-    console.log("Time: " + formatted);
     let date = new Date();
     let timezoneOffset = date.getTimezoneOffset();
-    console.log(timezoneOffset);
     let hours = Number(formatted.slice(0, 2)); //Get hour representation as an integer
     let minutes = formatted.slice(3, 5); //Get minute representation as an integer
-
-    console.log("Hours: " + hours);
 
     hours = (hours + 12 + (timezoneOffset / 60));
     if(hours % 24 >= 12) suffix = "PM";
     hours = hours % 12;
 
-    console.log("Hours: " + hours);
-
     let finalTime : string = hours + ":" + minutes + " " + suffix;
-
-    console.log("Final time: " + finalTime);
     return finalTime;
-
   }
 
   checkTimes(start: string, end: string) {
