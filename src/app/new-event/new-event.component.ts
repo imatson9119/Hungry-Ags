@@ -99,7 +99,7 @@ export class NewEventComponent implements OnInit {
     console.log("Hours: " + hours);
 
     hours = (hours + 12 + (timezoneOffset / 60));
-    if(hours >= 12) suffix = "PM";
+    if(hours % 24 >= 12) suffix = "PM";
     hours = hours % 12;
 
     console.log("Hours: " + hours);
