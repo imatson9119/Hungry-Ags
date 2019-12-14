@@ -73,8 +73,8 @@ export class NewEventComponent implements OnInit {
         orgControl: this.eventLoaderService.curEvent.organization,
         locControl: this.eventLoaderService.curEvent.location,
         dateControl: new Date(this.eventLoaderService.curEvent.startTime),
-        startTimeControl: "1:22 PM", //TODO: Parse times
-        endTimeControl: "1:23 PM", //TODO: Parse times
+        startTimeControl: this.parseTime(this.eventLoaderService.curEvent.startTime), //TODO: Parse times
+        endTimeControl: this.parseTime(this.eventLoaderService.curEvent.endTime), //TODO: Parse times
         descControl: this.eventLoaderService.curEvent.description
       })
       
@@ -82,6 +82,33 @@ export class NewEventComponent implements OnInit {
   }
   ngOnDestroy() {
     this.eventLoaderService.loadEvent = false;
+  }
+
+  parseTime(formatted : string) {
+    //Takes JSON formatted string and parses it back into displayable format
+    //i.e. input is something like "2019-09-08T18:00:00+00:00", output is something like "8:23 PM"
+    formatted = formatted.slice(11, 11 + 5);
+    let suffix = "AM";
+    console.log("Time: " + formatted);
+    let date = new Date();
+    let timezoneOffset = date.getTimezoneOffset();
+    console.log(timezoneOffset);
+    let hours = Number(formatted.slice(0, 2)); //Get hour representation as an integer
+    let minutes = formatted.slice(3, 5); //Get minute representation as an integer
+
+    console.log("Hours: " + hours);
+
+    hours = (hours + 12 + (timezoneOffset / 60));
+    if(hours >= 12) suffix = "PM";
+    hours = hours % 12;
+
+    console.log("Hours: " + hours);
+
+    let finalTime : string = hours + ":" + minutes + " " + suffix;
+
+    console.log("Final time: " + finalTime);
+    return finalTime;
+
   }
 
   checkTimes(start: string, end: string) {
@@ -139,7 +166,7 @@ export class NewEventComponent implements OnInit {
     /*Parse times (hrs and mins)*/
     let start = formControl.startTimeControl.replace(" ", "");
     let end = formControl.endTimeControl.replace(" ", "");
-
+    console.log("Before parsing: " + start);
     //Parse start time
     let pm = start.toLowerCase().endsWith("pm"); //stores if start time was am or pm
     let am = start.toLowerCase().endsWith("am")
@@ -177,9 +204,15 @@ export class NewEventComponent implements OnInit {
     start = year + "-" + month + "-" + day + "T" + start + "+00:00";
     end = year + "-" + month + "-" + day + "T" + end + "+00:00";
 
+    console.log("START: " + start);
+    console.log("END: " + end);
+
     //Create new date objects using JSON format
     start = new Date(start);
     end = new Date(end);
+
+    console.log("START: " + start);
+    console.log("END: " + end);
 
     if(!this.eventLoaderService.loadEvent) {
       //Creates brand new event
