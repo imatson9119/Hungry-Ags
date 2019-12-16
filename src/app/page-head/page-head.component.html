@@ -23,7 +23,7 @@
       src='assets/btn_google_signin_light_normal_web.png' (click)='this.controllerService.signInWithGoogle();'>
     <div class="user-panel" *ngIf='this.controllerService.signedIn == true;' [matMenuTriggerFor]="menu">
       <img src={{this.controllerService.photo}} class='user-photo'>
-      {{this.controllerService.user}}
+      {{this.getUser()}}
       <button mat-icon-button>
         <mat-icon>menu</mat-icon>
       </button>

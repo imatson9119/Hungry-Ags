@@ -95,10 +95,17 @@ export class PageHeadComponent implements OnInit {
     this.wasHome = this.router.url === "/home";
     return this.wasHome;
   }
-  
+
   ngOnDestroy(){
     var elem = document.getElementById("left")
     if(!elem.classList.contains("minimized"))
       elem.classList.remove("minimized");
+  }
+  getUser() : string{
+    let user = this.controllerService.user;
+    if(user.length < 24){
+      return user;
+    }
+    return user.substring(0,22) + "...";
   }
 }
