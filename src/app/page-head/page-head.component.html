@@ -12,7 +12,7 @@
     <div *ngIf="checkIsHome()" class="white-box">
       <i class="material-icons" id="filter-icon">filter_list</i>
       <input id="search-input" placeholder="Filter..." [(ngModel)]="filter" (onshow)="checkIsHome()"
-        (input)="checkIsHome()" (focused) = 'hideCheckText()'/>
+        (input)="checkIsHome()"/>
         <span id = 'checkbox-label' class = checkbox-label>Verified Only</span>
         <mat-checkbox [(ngModel)]="verifiedOnly" (change) = "checkIsHome()" matTooltip = "Verified Only" class = 'checkbox'></mat-checkbox>
     </div>
