@@ -18,14 +18,6 @@ export class ControllerService implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.photo = this.getStorage(this.PHOTO_KEY); 
-    this.user = this.getStorage(this.EMAIL_KEY);
-    if(this.user != null){
-      this.signedIn=true;
-      if(this.user = "hungryagsofficial@gmail.com"){
-        this.admin = true;
-      }
-    }
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.signedIn = (user != null);
@@ -66,5 +58,14 @@ export class ControllerService implements OnInit, OnDestroy {
       duration: 3000
     });
   }
-
+  initUser(){
+    this.photo = this.getStorage(this.PHOTO_KEY); 
+    this.user = this.getStorage(this.EMAIL_KEY);
+    if(this.user != null){
+      this.signedIn=true;
+      if(this.user = "hungryagsofficial@gmail.com"){
+        this.admin = true;
+      }
+    }
+  }
 }

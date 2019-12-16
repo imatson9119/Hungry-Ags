@@ -24,7 +24,7 @@ export class PageHeadComponent implements OnInit {
   // This is where cached user info is retrieved and applied.
   ////////////////////////////////////////////////////////////////////////////////
   ngOnInit() {
-
+    this.controllerService.initUser();
   }
 
   checkIsHome() {
