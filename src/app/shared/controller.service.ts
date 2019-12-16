@@ -12,10 +12,9 @@ export class ControllerService implements OnInit, OnDestroy {
   signedIn: boolean;
   user: any;
   photo: string;
-  admin: boolean
+  admin: boolean = false;
 
   constructor(private authService: AuthService, private snackBar: MatSnackBar) {
-    this.admin = false;
   }
 
   ngOnInit() {
@@ -48,9 +47,6 @@ export class ControllerService implements OnInit, OnDestroy {
       this.signedIn = true;
       this.setStorage(this.EMAIL_KEY,this.user);
       this.setStorage(this.PHOTO_KEY,this.photo);
-      if(this.user == "hungryagsofficial@gmail.com"){
-        this.admin = true;
-      }
     });
   }
   signOut(): void {
