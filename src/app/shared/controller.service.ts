@@ -9,9 +9,11 @@ export class ControllerService implements OnInit, OnDestroy {
   AUTH_KEY = 'signedIn';
   PHOTO_KEY = 'photo';
   EMAIL_KEY = 'email'
+  ORGNAME_KEY = 'orgName'
   signedIn: boolean;
   user: any;
   photo: string;
+  orgName: string = "";
   admin: boolean = false;
 
   constructor(private authService: AuthService, private snackBar: MatSnackBar) {
@@ -33,6 +35,7 @@ export class ControllerService implements OnInit, OnDestroy {
   clearStorage(){
     window.localStorage.removeItem(this.EMAIL_KEY)
     window.localStorage.removeItem(this.PHOTO_KEY)
+    window.localStorage.removeItem(this.ORGNAME_KEY)
   }
   ngOnDestroy() {
     this.setStorage(this.AUTH_KEY, this.authService.authState)
@@ -47,12 +50,17 @@ export class ControllerService implements OnInit, OnDestroy {
       if(this.user == "hungryagsofficial@gmail.com"){
         this.admin = true;
       }
+      ///////////////////////////////////////////
+      // Alex here- set this.orgName
+      ///////////////////////////////////////////
+      this.setStorage(this.ORGNAME_KEY,this.orgName);
     });
   }
   signOut(): void {
     this.authService.signOut();
     this.signedIn = false;
     this.admin = false;
+    this.orgName = "";
     this.clearStorage();
     let snackBarRef = this.snackBar.open('Successfully logged out.', 'Ok',{
       duration: 3000
@@ -66,6 +74,10 @@ export class ControllerService implements OnInit, OnDestroy {
       if(this.user == "hungryagsofficial@gmail.com"){
         this.admin = true;
       }
+      ///////////////////////////////////////////
+      // Alex here
+      ///////////////////////////////////////////
+      this.setStorage(this.ORGNAME_KEY,this.orgName);
     }
   }
 }
