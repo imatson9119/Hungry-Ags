@@ -47,6 +47,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HelpComponent } from './help/help.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AuthGuardAdminService } from './shared/auth-guard-admin.service';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 let config = new AuthServiceConfig([
   {
@@ -114,6 +115,7 @@ if (!environment.firebase) {
     AngularFireAuthModule,
     AngularFireFunctionsModule,
     MatTooltipModule,
+    MatCheckboxModule,
   ],
   providers: [HttpClientModule, {
     provide: AuthServiceConfig,

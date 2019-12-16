@@ -19,6 +19,7 @@ export class PageHeadComponent implements OnInit {
   ) {}
   public filter: string = "";
   public wasHome: boolean = false;
+  public verifiedOnly: boolean = false;
 
   ////////////////////////////////////////////////////////////////////////////////
   // This is where cached user info is retrieved and applied.
@@ -31,6 +32,7 @@ export class PageHeadComponent implements OnInit {
   checkIsHome() {
     if (!this.wasHome) {
       this.filter = "";
+      this.verifiedOnly = false;
     }
 
     this.calendarService.calendarEvents = [];
@@ -64,6 +66,22 @@ export class PageHeadComponent implements OnInit {
         if (numFound == filters.length) { //Makes sure every word in filter found as a match
           let color = "#6c1420"; //Verified by default
           if (!events[i].sanctioned) color = "#00000000"; //If not verified
+          if(!this.verifiedOnly || events[i].sanctioned){
+            this.calendarService.calendarEvents.push({ //Push event to display on calendar
+              title: events[i].location + " - " + events[i].eventName,
+              start: events[i].startTime,
+              end: events[i].endTime,
+              color: color
+            });
+          }
+        }
+      }
+    } else { //If filter is empty, show all events
+      let events = this.calendarService.foodEvents;
+      for (let i = 0; i < events.length; i++) {
+        let color = "#6c1420";
+        if (!events[i].sanctioned) color = "#00000000";
+        if(!this.verifiedOnly || events[i].sanctioned){
           this.calendarService.calendarEvents.push({ //Push event to display on calendar
             title: events[i].location + " - " + events[i].eventName,
             start: events[i].startTime,
@@ -72,24 +90,12 @@ export class PageHeadComponent implements OnInit {
           });
         }
       }
-    } else { //If filter is empty, show all events
-      let events = this.calendarService.foodEvents;
-      for (let i = 0; i < events.length; i++) {
-        let color = "#6c1420";
-        if (!events[i].sanctioned) color = "#00000000";
-        this.calendarService.calendarEvents.push({
-          title: events[i].location + " - " + events[i].eventName,
-          start: events[i].startTime,
-          end: events[i].endTime,
-          color: color
-        });
-      }
     }
 
     this.wasHome = this.router.url === "/home";
     return this.wasHome;
   }
-
+  
   ngOnDestroy(){
     var elem = document.getElementById("left")
     if(!elem.classList.contains("minimized"))
