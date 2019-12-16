@@ -9,7 +9,7 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 export class AdminDashboardComponent implements OnInit {
 
   public orgsRef : AngularFireList<any>;
-  public orgs = []
+  public orgs = [];
 
   constructor(public database : AngularFireDatabase) { }
 
@@ -24,10 +24,36 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
-  onChange(orgName, user, checked) {
-    console.log(orgName);
-    console.log(user);
-    console.log(checked);
+  onChange(org, orgName, user) {
+    org = {orgName : orgName, user : user, approved : String(org.approved), requestDate : org.requestDate};
+    console.log(org.approved);
+
+    let valSubscription = this.database.list<any>('/orgs').valueChanges().subscribe((values) => {
+      let i = 0;
+      values.forEach(value => {
+        if (value.orgName == orgName && value.user == user) {
+          let targetIndex = i;
+          let idSubscribtion = this.database.list<any>('/orgs').snapshotChanges().subscribe((vals) => {
+            let j = 0;
+            vals.forEach(val => {
+              if(j == targetIndex) {
+                //Update target
+                let updates = {};
+                updates['/orgs/' + val.key] = org;
+                this.database.database.ref().update(updates); //Pushes update to database
+                console.log("UPDATED");
+                idSubscribtion.unsubscribe(); //Unsubscribe to prevent further unintended changes
+              }
+              j++;
+            });
+            idSubscribtion.unsubscribe();
+          });
+          valSubscription.unsubscribe();
+        }
+        i++;
+      });
+      valSubscription.unsubscribe();
+    });
   }
 
   delete(orgName, user) {

@@ -10,7 +10,7 @@
     <tr *ngFor="let org of orgs">
         <td>{{org.name}}</td>
         <td>{{org.user}}</td>
-        <td><input checked=org.approved type="checkbox" ng-model="value" (change)="onChange(org.name, org.user, $event)"></td>
+        <td><input type="checkbox" [(ngModel)]="org.approved" checked={{org.approved}} (change)="onChange(org, org.name, org.user)"></td>
         <td>{{org.requestDate}}</td>
         <td><button (click)="delete(org.name, org.user)">Delete</button></td>
     </tr>
