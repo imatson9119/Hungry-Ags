@@ -25,6 +25,7 @@ export class PageHeadComponent implements OnInit {
   ////////////////////////////////////////////////////////////////////////////////
   ngOnInit() {
     this.controllerService.initUser();
+    console.log("User:" + this.controllerService.user);
   }
 
   checkIsHome() {
