@@ -209,13 +209,16 @@ export class NewEventComponent implements OnInit {
     console.log("START: " + start);
     console.log("END: " + end);
 
+    let sanctioned = false;
+    if(this.controller.orgName != "") sanctioned =true; 
+
     if(!this.eventLoaderService.loadEvent) {
       //Creates brand new event
       this.eventsRef.push({
         id : this.calendarService.nextID,
         eventName: formControl.nameControl,
         user: this.controller.user,
-        sanctioned: false,
+        sanctioned: sanctioned,
         startTime: start.toJSON(),
         endTime: end.toJSON(),
         description: formControl.descControl,
@@ -233,7 +236,7 @@ export class NewEventComponent implements OnInit {
         id : this.eventLoaderService.curEvent.id,
         eventName: formControl.nameControl,
         user: this.eventLoaderService.curEvent.user,
-        sanctioned: false,
+        sanctioned: sanctioned,
         startTime: start.toJSON(),
         endTime: end.toJSON(),
         description: formControl.descControl,
