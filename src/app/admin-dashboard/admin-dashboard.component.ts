@@ -24,7 +24,7 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
-  onChange(org, orgName, user, checked) {
+  onChange(org, orgName, user) {
     let approved = "false"
     if(org.approved == "false") approved = "true";
 

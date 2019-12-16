@@ -85,7 +85,7 @@ export class RegistrationDialog {
     this.orgsRef.push({
       orgName : this.data.orgName,
       user : this.data.username,
-      approved : false,
+      approved : "false",
       requestDate : date.toJSON()
     });
 
