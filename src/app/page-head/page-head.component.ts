@@ -103,6 +103,7 @@ export class PageHeadComponent implements OnInit {
   }
   getUser() : string{
     let user = this.controllerService.user;
+    user = user.substring(0,user.indexOf('@'));
     if(user.length < 24){
       return user;
     }
