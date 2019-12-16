@@ -15,6 +15,7 @@ export class DevComponent implements OnInit {
   login(){
     this.controllerService.signedIn = true;
     this.controllerService.user = 'hungryagsofficial@gmail.com';
-    //this.controllerService.admin = true;
+    this.controllerService.orgName = 'Your Organization'
+    this.controllerService.admin = true;
   }
 }

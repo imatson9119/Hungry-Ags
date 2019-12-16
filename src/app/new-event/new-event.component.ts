@@ -79,6 +79,10 @@ export class NewEventComponent implements OnInit {
       })
       
     }
+    if(this.controller.orgName != ''){
+      this.eventForm.controls.orgControl.setValue(this.controller.orgName);
+      this.eventForm.controls.orgControl.disable();
+    }
   }
   ngOnDestroy() {
     this.eventLoaderService.loadEvent = false;
