@@ -8,7 +8,9 @@
   align-items: center;
   overflow-y: auto;
 }
-
+::ng-deep .fc-event-dot{
+  background: rgba(0,0,0,0);
+}
 .calendar-container {
   position: relative;
   width: 95%;
