@@ -7,6 +7,7 @@ import {
 } from "@angular/material/dialog";
 import { ControllerService } from '../shared/controller.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
 
 export interface DialogData {
   orgName: string;
@@ -64,9 +65,13 @@ export class RegisterOrgComponent implements OnInit {
 })
 export class RegistrationDialog {
 
+  public orgsRef : AngularFireList<any>
+
   constructor(
     public dialogRef: MatDialogRef<RegistrationDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, public http : HttpClient) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, public http : HttpClient, public dataBase : AngularFireDatabase) {
+      this.orgsRef = this.dataBase.list<any>('\orgs');
+    }
 
   onConfirmClick() : void {
     //Sends email for request
@@ -74,7 +79,16 @@ export class RegistrationDialog {
     let url = 'https://us-central1-hungry-ags.cloudfunctions.net/sendMail?dest=support@hungryags.com&subject=REGISTRATION REQUEST: ' + this.data.orgName + '&content=' + emailContent;
 
     // Send request with parameters            
-    let emailRequest = this.http.get(url, {responseType: 'text'}).subscribe(res => {});   
+    let emailRequest = this.http.get(url, {responseType: 'text'}).subscribe(res => {});
+    
+    let date = new Date()
+    this.orgsRef.push({
+      orgName : this.data.orgName,
+      user : this.data.username,
+      approved : false,
+      requestDate : date.toJSON()
+    });
+
     this.dialogRef.close();
   }
 
