@@ -18,14 +18,17 @@ export class AdminDashboardComponent implements OnInit {
     let orgSubscription = this.database.list<any>('/orgs').valueChanges().subscribe((values) => {
       this.orgs = []
       values.forEach(value => {
-        let org = {name : value.orgName, user : value.user, approved : Boolean(value.approved), requestDate : value.requestDate}
+        let org = {name : value.orgName, user : value.user, approved : value.approved, requestDate : value.requestDate}
         this.orgs.push(org);
       });
     });
   }
 
-  onChange(org, orgName, user) {
-    org = {orgName : orgName, user : user, approved : String(org.approved), requestDate : org.requestDate};
+  onChange(org, orgName, user, checked) {
+    let approved = "false"
+    if(org.approved == "false") approved = "true";
+
+    org = {orgName : orgName, user : user, approved : approved, requestDate : org.requestDate};
     console.log(org.approved);
 
     let valSubscription = this.database.list<any>('/orgs').valueChanges().subscribe((values) => {
@@ -57,6 +60,28 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   delete(orgName, user) {
-
+    let valSubscription = this.database.list<any>('/orgs').valueChanges().subscribe((values) => {
+      let i = 0;
+      values.forEach(value => {
+        if (value.orgName == orgName && value.user == user) {
+          let targetIndex = i;
+          let idSubscribtion = this.database.list<any>('/orgs').snapshotChanges().subscribe((vals) => {
+            let j = 0;
+            vals.forEach(val => {
+              if(j == targetIndex) {
+                let remove = this.database.object('/orgs/' + val.key);
+                remove.remove();
+                idSubscribtion.unsubscribe();
+              }
+              j++;
+            });
+            idSubscribtion.unsubscribe();
+          });
+          valSubscription.unsubscribe();
+        }
+        i++;
+      });
+      valSubscription.unsubscribe();
+    });
   }
 }
