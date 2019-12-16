@@ -13,6 +13,7 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
 import { AboutUsComponent } from './about-us/about-us.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HelpComponent } from './help/help.component';
+import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: "help", component: HelpComponent },
   { path: "dev", component: DevComponent},
   { path: "not-authorized", component: NotAuthorizedComponent},
+  { path: "admin-dashboard", component: AdminDashboardComponent},
   { path: "404", component: NotFoundComponent},
   { path: '**', redirectTo: '/404'}
 ];

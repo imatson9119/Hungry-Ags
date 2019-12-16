@@ -1,0 +1,17 @@
+<h1>Admin Dashboard</h1>
+
+<table style="width: 100vw;">
+    <tr>
+        <th>Org Name</th>
+        <th>User</th>
+        <th>Approved</th>
+        <th>Request Date</th>
+    </tr>
+    <tr *ngFor="let org of orgs">
+        <td>{{org.name}}</td>
+        <td>{{org.user}}</td>
+        <td><input checked=org.approved type="checkbox" ng-model="value" (change)="onChange(org.name, org.user, $event)"></td>
+        <td>{{org.requestDate}}</td>
+        <td><button (click)="delete(org.name, org.user)">Delete</button></td>
+    </tr>
+</table>
