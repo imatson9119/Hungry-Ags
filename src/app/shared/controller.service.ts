@@ -2,6 +2,7 @@ import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -79,6 +80,7 @@ export class ControllerService implements OnInit, OnDestroy {
   initUser(){
     this.photo = this.getStorage(this.PHOTO_KEY); 
     this.user = this.getStorage(this.EMAIL_KEY);
+    this.orgName = this.getStorage(this.ORGNAME_KEY);
     if(this.user != null){
       this.signedIn=true;
       if(this.user == "hungryagsofficial@gmail.com"){
@@ -86,18 +88,7 @@ export class ControllerService implements OnInit, OnDestroy {
       }
       ///////////////////////////////////////////
       // Alex here
-      ///////////////////////////////////////////
-      
-      let subscription = this.database.list<any>("/orgs").valueChanges().subscribe((values) => {
-        values.forEach(value => {
-          if(value.user == this.user) {
-            this.orgName = value.orgName;
-            this.setStorage(this.ORGNAME_KEY,this.orgName);
-            subscription.unsubscribe();
-          }
-        });
-        subscription.unsubscribe();
-      });
+      //////////////////////////////////////////
     }
   }
 }

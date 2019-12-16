@@ -1,5 +1,2 @@
-- Fix admin functionality
-- Integrate verified accounts with verified badge functionality
-- Finish help page
 - Add ability to filter calander events by verified status
 - Brainstorm ways to make our platform cater more to organizations (organization homepage? Link to org website on events?)
