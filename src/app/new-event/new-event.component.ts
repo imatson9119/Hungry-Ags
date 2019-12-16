@@ -228,7 +228,7 @@ export class NewEventComponent implements OnInit {
       let event = {
         id : this.eventLoaderService.curEvent.id,
         eventName: formControl.nameControl,
-        user: this.controller.user,
+        user: this.eventLoaderService.curEvent.user,
         sanctioned: false,
         startTime: start.toJSON(),
         endTime: end.toJSON(),
