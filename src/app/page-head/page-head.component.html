@@ -52,6 +52,9 @@
       <button *ngIf ="router.url != '/help'" mat-menu-item routerLink="/help">
         Help
       </button>
+      <button *ngIf ="router.url != '/admin-dashboard' && this.controllerService.admin" mat-menu-item routerLink="/admin-dashboard">
+        Admin Console
+      </button>
     </mat-menu>
   </div>
 </mat-toolbar>

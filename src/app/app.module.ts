@@ -46,6 +46,7 @@ import { AngularFireFunctions, AngularFireFunctionsModule } from '@angular/fire/
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HelpComponent } from './help/help.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AuthGuardAdminService } from './shared/auth-guard-admin.service';
 
 let config = new AuthServiceConfig([
   {
@@ -117,7 +118,7 @@ if (!environment.firebase) {
   providers: [HttpClientModule, {
     provide: AuthServiceConfig,
     useFactory: provideConfig
-  }, AuthGuardService, AuthService
+  }, AuthGuardService, AuthService, AuthGuardAdminService
   ],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmEmailDialog, EventDialog, RegistrationDialog,SampleDialog]
