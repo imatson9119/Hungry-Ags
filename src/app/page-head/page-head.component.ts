@@ -20,12 +20,11 @@ export class PageHeadComponent implements OnInit {
   public filter: string = "";
   public wasHome: boolean = false;
 
+  ////////////////////////////////////////////////////////////////////////////////
+  // This is where cached user info is retrieved and applied.
+  ////////////////////////////////////////////////////////////////////////////////
   ngOnInit() {
-    this.controllerService.photo = this.controllerService.getStorage(this.controllerService.PHOTO_KEY);
-    this.controllerService.user = this.controllerService.getStorage(this.controllerService.EMAIL_KEY);
-    if(this.controllerService.user != null){
-      this.controllerService.signedIn=true;
-    }
+    this.controllerService.initUser();
   }
 
   checkIsHome() {
