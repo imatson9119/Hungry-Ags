@@ -25,6 +25,9 @@
   display: flex;
   margin-left: 5px;
 }
+.material-icons{
+  user-select: none;  
+}
 .checkbox-label{
   color: #6c1420;
   font-size: 12px;
@@ -35,12 +38,14 @@
   transition: .4s;
   white-space: nowrap;
   overflow: hidden;
-  width: 115px;
-  margin-left: 10px;
+  width: 75px;
+  z-index: 1;
+  box-shadow: -11px 0 6px 4px #fff;
 }
 #search-input:focus + .checkbox-label{
   width: 0px;
   color: #6c142000;
+  box-shadow: none;
 }
 #right {
   display: inline-flex;
@@ -83,6 +88,7 @@
   align-items: center;
   justify-content: center;
   transition: .3s;
+  overflow: hidden;
 }
 
 #filter-icon {
@@ -103,6 +109,7 @@
   font-size: 16px;
   width: 100%;
   outline: none;
+  flex: 1;
 }
 
 #sign-in-button {
