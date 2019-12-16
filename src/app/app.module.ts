@@ -45,7 +45,7 @@ import { environment } from '../environments/environment';
 import { AngularFireFunctions, AngularFireFunctionsModule } from '@angular/fire/functions';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HelpComponent } from './help/help.component';
-
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 let config = new AuthServiceConfig([
   {
@@ -86,6 +86,7 @@ if (!environment.firebase) {
     AboutUsComponent,
     NotFoundComponent,
     HelpComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     BrowserModule,
