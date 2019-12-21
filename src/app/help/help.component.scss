@@ -66,6 +66,7 @@ ul{
     flex: 1;
     color: #6c1420;
     font-size: 70px;
+    user-select: none;
     display: flex;
     font-weight: bold;
     align-items: center;
@@ -96,6 +97,7 @@ ul{
 .info-title{
     font-size:60px;
     margin-bottom:50px;
+
 }
 .section{
     background-image: linear-gradient(175deg, darken(#fff,8%) 0%, darken(#f9f9f9,8%) 100%);
@@ -114,6 +116,11 @@ ul{
     font-size: 20px;
     color: #6c1420;
     font-weight: bold;
+    transition: .3s;
+    text-shadow: 0px 0px 15px #00000077;
+}
+.help-link:hover{
+    color: #db5656;
 }
 .email{
     color: #6c1420;

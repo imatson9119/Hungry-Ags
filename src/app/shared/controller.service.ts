@@ -52,9 +52,6 @@ export class ControllerService implements OnInit, OnDestroy {
       if(this.user == "hungryagsofficial@gmail.com"){
         this.admin = true;
       }
-      ///////////////////////////////////////////
-      // Alex here- set this.orgName
-      ///////////////////////////////////////////
       let subscription = this.database.list<any>("/orgs").valueChanges().subscribe((values) => {
         values.forEach(value => {
           if(value.user == this.user) {
@@ -86,9 +83,6 @@ export class ControllerService implements OnInit, OnDestroy {
       if(this.user == "hungryagsofficial@gmail.com"){
         this.admin = true;
       }
-      ///////////////////////////////////////////
-      // Alex here
-      //////////////////////////////////////////
     }
   }
 }

@@ -11,6 +11,12 @@
 ::ng-deep .fc-event-dot{
   background: rgba(0,0,0,0);
 }
+::ng-deep .fc-unthemed .fc-list-item td{
+  transition: .4s;
+}
+::ng-deep .fc-unthemed .fc-list-item:hover td{
+  background-color: #00000009;
+}
 .calendar-container {
   position: relative;
   width: 95%;
