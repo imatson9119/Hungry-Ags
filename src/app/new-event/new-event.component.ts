@@ -210,7 +210,7 @@ export class NewEventComponent implements OnInit {
     console.log("END: " + end);
 
     let sanctioned = false;
-    if(this.controller.orgName != "") sanctioned =true; 
+    if(this.controller.orgName != "" || this.controller.admin) sanctioned =true; 
 
     if(!this.eventLoaderService.loadEvent) {
       //Creates brand new event
