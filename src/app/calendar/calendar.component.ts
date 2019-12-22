@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, ComponentFactoryResolver } from "@angular/core";
 import listPlugin from "@fullcalendar/list";
-import { CalendarService } from "../calendar.service";
+import { CalendarService } from "./calendar.service";
 import { FoodEvent } from "./FoodEvent";
 import {
   MatDialog,
@@ -17,6 +17,7 @@ import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import { MockFoodEvents } from '../MockFoodEvents';
 import { EventLoaderService } from "../new-event/event-loader.service";
 import { Router } from '@angular/router';
+import { SEOService } from '../shared/seo.service';
 
 //Data interface for dialog boxes
 export interface Data {
@@ -46,7 +47,7 @@ export class CalendarComponent implements OnInit {
     public dialog: MatDialog,
     public http : HttpClient,
     public dataBase : AngularFireDatabase,
-    
+    public seoService: SEOService,
   ) {}
 
   ngOnInit() {
@@ -54,6 +55,8 @@ export class CalendarComponent implements OnInit {
       this.calendarService
         .getEvents()
         .subscribe(events => (this.events = events));
+      this.seoService.updateTitle("Hungry Ags")
+      this.seoService.updateDescription("Browse a selection of events containing free food posted by both Texas A&M students and organizations, or add your own to promote your own events.")
   }
 
   openDialog(arg): void {

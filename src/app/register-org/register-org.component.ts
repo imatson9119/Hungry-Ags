@@ -8,6 +8,7 @@ import {
 import { ControllerService } from '../shared/controller.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
+import { SEOService } from '../shared/seo.service';
 
 export interface DialogData {
   orgName: string;
@@ -22,9 +23,11 @@ export interface DialogData {
 export class RegisterOrgComponent implements OnInit {
   registrationForm: FormGroup;
   displayPassError : boolean = false;
-  constructor(public fb: FormBuilder, public dialog: MatDialog, public controllerService: ControllerService) { }
+  constructor(public fb: FormBuilder, public dialog: MatDialog, public controllerService: ControllerService, public seoService: SEOService) { }
   orgName: string;
   ngOnInit() {
+    this.seoService.updateTitle("Hungry Ags - Register Organization");
+    this.seoService.updateDescription("Part of an organization looking for prospective members? Register your event with Hungry Ags to gain a verified tag as well as to provide a contact email that interested users can contact.")
     this.registrationForm = this.fb.group({
       name: ['', Validators.required],
     });

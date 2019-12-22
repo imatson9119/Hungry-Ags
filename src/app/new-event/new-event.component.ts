@@ -1,12 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { CalendarService } from '../calendar.service';
+import { CalendarService } from '../calendar/calendar.service';
 import { ControllerService } from '../shared/controller.service';
 import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
 import { Router } from '@angular/router';
 import { FirebaseDatabase } from '@angular/fire';
 import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
 import { EventLoaderService } from './event-loader.service';
+import { SEOService } from '../shared/seo.service';
 
 @Component({
   selector: 'app-new-event',
@@ -33,11 +34,12 @@ export class NewEventComponent implements OnInit {
     public calendarService : CalendarService, 
     public controller : ControllerService, 
     public dataBase : AngularFireDatabase, 
+    public seoService: SEOService,
     public eventLoaderService : EventLoaderService) 
     {
       this.eventsRef = this.dataBase.list<any>('\events');
     }
-
+    
 
   darkTheme: NgxMaterialTimepickerTheme = {
     container: {
@@ -55,6 +57,8 @@ export class NewEventComponent implements OnInit {
 };
 
   ngOnInit() {
+    this.seoService.updateTitle('Hungry Ags - Add an Event');
+    this.seoService.updateDescription('Hosting an event that has free food or simply know of one? Come here to add your event to the Hungry Ags calander. This is a great way to let others know about events going on at Texas A&M!')
     //Initializes form fields
     this.eventForm = this.fb.group({
       nameControl: ['', [Validators.required]],

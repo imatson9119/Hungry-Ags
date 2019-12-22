@@ -1,7 +1,7 @@
 import { AppComponent } from "../app.component";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { CalendarService } from "../calendar.service";
+import { CalendarService } from "../calendar/calendar.service";
 import { ControllerService } from "../shared/controller.service";
 import { AuthService } from 'angularx-social-login';
 

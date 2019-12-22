@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { SEOService } from '../shared/seo.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -11,9 +12,11 @@ export class AdminDashboardComponent implements OnInit {
   public orgsRef : AngularFireList<any>;
   public orgs = [];
 
-  constructor(public database : AngularFireDatabase) { }
+  constructor(public database : AngularFireDatabase, public seoService: SEOService) { }
 
   ngOnInit() {
+    this.seoService.updateTitle("Hungry Ags - Admin Console");
+    this.seoService.updateDescription("Hey, you're not supposed to be here.")
     //Subscribe to and populate orgs
     let orgSubscription = this.database.list<any>('/orgs').valueChanges().subscribe((values) => {
       this.orgs = []

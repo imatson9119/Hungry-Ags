@@ -6,7 +6,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { CalendarComponent, EventDialog } from "./calendar/calendar.component";
 import { LoginComponent } from "./login/login.component";
-import { AboutComponent } from "./about/about.component";
 import { PageHeadComponent } from "./page-head/page-head.component";
 import { MatButtonModule } from "@angular/material/button";
 import { MatToolbarModule } from "@angular/material/toolbar";
@@ -16,10 +15,6 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {
-  RegisterComponent,
-  ConfirmEmailDialog
-} from "./register/register.component";
 import { FooterComponent } from "./footer/footer.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { ReactiveFormsModule } from "@angular/forms";
@@ -73,11 +68,8 @@ if (!environment.firebase) {
     AppComponent,
     CalendarComponent,
     LoginComponent,
-    AboutComponent,
     PageHeadComponent,
-    RegisterComponent,
     FooterComponent,
-    ConfirmEmailDialog,
     NewEventComponent,
     RegisterOrgComponent,
     EventDialog,
@@ -123,6 +115,6 @@ if (!environment.firebase) {
   }, AuthGuardService, AuthService, AuthGuardAdminService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ConfirmEmailDialog, EventDialog, RegistrationDialog,SampleDialog]
+  entryComponents: [EventDialog, RegistrationDialog,SampleDialog]
 })
 export class AppModule { }

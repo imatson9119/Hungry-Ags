@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MockFoodEvents } from './MockFoodEvents'
+import { MockFoodEvents } from '../MockFoodEvents'
 import { of, Observable } from 'rxjs';
-import { FoodEvent } from './calendar/FoodEvent';
+import { FoodEvent } from './FoodEvent';
 import { AngularFireFunctions } from '@angular/fire/functions'
-import { sendEvents } from '../functions';
+import { sendEvents } from '../../functions';
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from '@angular/fire/database';
 
 @Injectable({
