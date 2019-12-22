@@ -69,6 +69,7 @@
     font-size: 35px;
     margin-top: 30px;
     margin-bottom: 11px;
+    font-weight: 100;
   }
   .button-dark {
     outline: none;
@@ -208,4 +209,7 @@
   }
   @media only screen and (max-width: 1000px) {
     .preview{width: calc(100vw + 100px);}
+  }
+  @media only screen and (max-width: 450px) {
+    .text-container{font-size:40px;}
   }

@@ -2,10 +2,13 @@
     background: linear-gradient(153deg, #6c1420 0%, #913441 100%);
     padding: 20px;
     border-radius: 8px;
-    color: white;
-    font-size: 35px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
     transition: .4s
+}
+h1 {
+  color: white;
+  font-size: 35px;
+  font-weight: 100;
 }
 .outer-form-container{
   background: rgba(0, 0, 0, 0.06);
@@ -70,6 +73,7 @@ mat-form-field{
   }
   @media only screen and (max-width: 600px) {
     .outer-form-container{margin:0px;margin-top:50px}
-    .main-container{border-radius:0px; background: transparent; color: #6c1420; box-shadow:none}
+    .main-container{border-radius:0px; background: transparent; box-shadow:none}
+    h1{ color: #6c1420;}
     mat-form-field{margin: 5px;}
   }
