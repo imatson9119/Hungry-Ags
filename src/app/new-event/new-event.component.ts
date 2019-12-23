@@ -84,7 +84,7 @@ export class NewEventComponent implements OnInit {
       
     }
     if(this.controller.orgName != ''){
-      this.eventForm.controls.orgControl.setValue(this.controller.orgName);
+      if (!this.eventLoaderService.loadEvent) this.eventForm.controls.orgControl.setValue(this.controller.orgName);
       this.eventForm.controls.orgControl.disable();
     }
   }
