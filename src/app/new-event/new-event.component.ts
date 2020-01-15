@@ -83,14 +83,12 @@ export class NewEventComponent implements OnInit {
       })
       
     }
-    if(this.controller.orgName.length > 0){
-      console.log("Org Name: " + this.controller.orgName);
+    if(this.controller.orgName != null && this.controller.orgName.length > 0){
       if (!this.eventLoaderService.loadEvent){
         this.eventForm.controls.orgControl.setValue(this.controller.orgName);
       }
       if(!this.controller.admin){
         this.eventForm.controls.orgControl.disable();
-        console.log("Disabled field");
       }
     }
   }
