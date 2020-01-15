@@ -84,11 +84,14 @@ export class NewEventComponent implements OnInit {
       
     }
     if(this.controller.orgName.length > 0){
-      console.log(this.controller.orgName);
-      if (!this.eventLoaderService.loadEvent) 
+      console.log("Org Name: " + this.controller.orgName);
+      if (!this.eventLoaderService.loadEvent){
         this.eventForm.controls.orgControl.setValue(this.controller.orgName);
-      if(!this.controller.admin)
+      }
+      if(!this.controller.admin){
         this.eventForm.controls.orgControl.disable();
+        console.log("Disabled field");
+      }
     }
   }
   ngOnDestroy() {
