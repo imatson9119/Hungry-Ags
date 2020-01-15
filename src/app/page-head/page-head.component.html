@@ -21,18 +21,27 @@
   <div id="right">
     <img *ngIf="router.url != '/login' && !controllerService.signedIn" id='sign-in-button'
       src='assets/btn_google_signin_light_normal_web.png' (click)='this.controllerService.signInWithGoogle();'>
-    <div class="user-panel" *ngIf='this.controllerService.signedIn == true;' [matMenuTriggerFor]="menu">
+    <div class="user-panel" *ngIf='this.controllerService.signedIn == true;' [matMenuTriggerFor]="menu" (menuOpened)="toggleHamburger()" (menuClosed)="toggleHamburger()">
       <img src={{this.controllerService.photo}} class='user-photo'>
       {{this.getUser()}}
       <button mat-icon-button>
-        <mat-icon>menu</mat-icon>
+        <div class="hamburgerWrapper">
+          <div class="hamburger line1"></div>
+          <div class="hamburger line2"></div>
+          <div class="hamburger line3"></div>
+        </div>
       </button>
     </div>
   </div>
   <div id="right-compact">
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>menu</mat-icon>
+    <button mat-icon-button [matMenuTriggerFor]="menu" (menuOpened)="toggleHamburger()" (menuClosed)="toggleHamburger()">
+      <div class="hamburgerWrapper">
+        <div class="hamburger line1"></div>
+        <div class="hamburger line2"></div>
+        <div class="hamburger line3"></div>
+      </div>
     </button>
+
     <mat-menu #menu="matMenu" xPosition ="before">
       <div class="username" *ngIf ="controllerService.signedIn">{{this.controllerService.user}}</div>
       <button mat-menu-item *ngIf="router.url != '/login' && !controllerService.signedIn" id='sign-in-button' (click)='this.controllerService.signInWithGoogle();'>

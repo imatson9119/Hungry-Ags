@@ -139,3 +139,28 @@
     display: flex;
   }
 }
+
+.hamburgerWrapper {
+  margin-top:5px;
+  margin-left:10px;
+}
+
+.hamburger {
+  margin-bottom:5px;
+  background-color: white;
+  width: 20px;
+  height: 0.1rem;
+  transition: all 0.3s;
+}
+
+.hamburgerActive .line1 {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hamburgerActive .line3 {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.hamburgerActive .line2 {
+  opacity: 0;
+}

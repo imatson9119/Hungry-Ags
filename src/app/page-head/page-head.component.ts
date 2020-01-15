@@ -109,4 +109,33 @@ export class PageHeadComponent implements OnInit {
     }
     return user.substring(0,22) + "...";
   }
+
+  toggleHamburger() {
+    console.log("Toggled Hamburger");
+    const hamburger = document.querySelectorAll(".hamburgerWrapper");
+    const line1 = document.querySelectorAll(".line1");
+    const line2 = document.querySelectorAll(".line2");
+    const line3 = document.querySelectorAll(".line3");
+
+    hamburger.forEach((item) => {
+      item.classList.toggle("hamburgerActive");
+    });
+
+    
+    line1.forEach((item) => {
+      item.classList.toggle("hamburgerActive");
+    });
+
+    
+    line2.forEach((item) => {
+      item.classList.toggle("hamburgerActive");
+    });
+
+    
+    line3.forEach((item) => {
+      item.classList.toggle("hamburgerActive");
+    });
+
+
+  }
 }
