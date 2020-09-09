@@ -1,27 +1,8 @@
-# AggieFood
+# Hungry Ags
+This project was developed in 24 hours for HowdyHack 2019. It is a web application that allows student organizations at Texas A&M to post events that are offering free food (specifically, recruiting events). This way, Aggies who are looking for free food are able to find a meal, and organizations looking for members get to pitch their organization to more potential members. It's a win-win!
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
+# Solution
+Hungry Ags was developed using the Angular web framework for the front-end. Google Firebase is used for hosting and for the database (Firebase Realtime Database), and Node.js was used to write some server-side functions that execute when various events occur on the site (i.e. registering a new org).
 
-## Development server
+For the entire team, this was one of our first experiences building a fully functional web application using Angular (with a proper back-end), and it was a valuable learning experience. The app is currently hosted at [hungry-ags.web.app](https://hungry-ags.web.app/home) if you would like to check out some of the functionality for yourself!
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
